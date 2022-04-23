@@ -1,0 +1,10 @@
+php artisan serve
+php artisan make:controller 'name'
+php artisan make:controller NameController --resource --model=Name
+php artisan make:model 'name'
+php artisan make:migration create_name_table
+php artisan make:migration add_colomn_to_name_table
+php artisan make:migration remove_table
+php artisan migrate
+php artisan route:list
+Git clone url  -----invitation projects
