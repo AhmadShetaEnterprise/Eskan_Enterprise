@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 
 class AdminController extends Controller
 {
@@ -14,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::all();
+        return view('admins.index', compact('user'));
     }
 
     /**

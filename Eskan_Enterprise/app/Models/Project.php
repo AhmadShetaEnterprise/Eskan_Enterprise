@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+
+        /**
+     * The users that belong to the role.
+     */
+    public function customers()
+    {
+        return $this->belongsToMany(User::class, 'project_customer');
+    }
 }

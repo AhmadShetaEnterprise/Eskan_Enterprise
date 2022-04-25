@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->foreign('project_id');
-            $table->foreign('user_id');
-            $table->foreign('level_id');
             $table->string('name');
+            $table->foreign('project_id');
+            $table->foreign('level_id');
             $table->string('site');
             $table->string('space');
             $table->float('price_m');
-            $table->float('price_total');
+            $table->float('total_price');
             $table->text('description ');
+            $table->foreign('customer_id');
             $table->timestamps();
         });
     }

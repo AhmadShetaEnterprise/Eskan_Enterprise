@@ -14,10 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('project_customers', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('project_id');
-            $table->foreign('customer_id');
-            $table->timestamps();
+            $table->foreignId('project_id')->constrained('projects');
+            $table->foreignId('customer_id')->constrained('customers');
         });
     }
 

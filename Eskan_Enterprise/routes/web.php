@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(AdminController::class)->group(function () {
-    Route::get('/orders/{id}', 'show');
-    Route::post('/orders', 'store');
+    Route::get('/adminPanel', 'index')->name('adminPanel');
 });
+
