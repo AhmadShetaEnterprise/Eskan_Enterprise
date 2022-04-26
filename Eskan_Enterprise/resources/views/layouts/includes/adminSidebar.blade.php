@@ -5,14 +5,22 @@
                 <div class="logo"><a href="index.html">
                         <!-- <img src="assets/images/logo.png" alt="" /> --><span>Eskan</span></a></div>
                 <li class="label">Main</li>
-                <li><a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard <span
+                {{-- <li>
+                    <a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard <span
                             class="badge badge-primary">2</span> <span
-                            class="sidebar-collapse-icon ti-angle-down"></span></a>
+                            class="sidebar-collapse-icon ti-angle-down"></span>
+                    </a>
                     <ul>
-                        <li><a href="index.html">Dashboard 1</a></li>
+                        <li><a href="{{ url('adminPanel') }}">Dashboard 1</a></li>
                         <li><a href="index1.html">Dashboard 2</a></li>
                     </ul>
-                </li>
+                </li> --}}
+                <li><a href="{{ url('index') }}">Dashboard </a></li>
+                <li><a href="projectsIndex">Projects</a></li>
+                <li><a href="propertiesIndex">properties</a></li>
+                <li><a href="subPropertiesIndex">Sub Properties</a></li>
+                <li><a href="?do=allDetails">Main Details</a></li>
+
 
                 <li class="label">Apps</li>
                 <li><a class="sidebar-sub-toggle"><i class="ti-bar-chart-alt"></i> Charts <span

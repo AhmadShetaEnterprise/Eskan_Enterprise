@@ -13,12 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('contract');
+            $table->string('personal');
+            $table->integer('customer_id');
+            $table->integer('unit_id');
+            $table->integer('level_id');
             $table->integer('project_id');
-            $table->integer('units');
-            $table->float('total_price');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::dropIfExists('images');
     }
 };

@@ -44,11 +44,11 @@
 
                             <div class="col-md-6">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" @error('phone') is-invalid @enderror" value="male" required id="gender">
+                                    <input class="form-check-input" type="radio" name="gender" @error('gender') is-invalid @enderror" value="male" required id="gender">
                                     <label class="form-check-label" for="gender">Male</label>
                                   </div>
                                   <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="gender" @error('phone') is-invalid @enderror" value="female" required id="gender" >
+                                    <input class="form-check-input" type="radio" name="gender" @error('gender') is-invalid @enderror" value="female" required id="gender" >
                                     <label class="form-check-label" for="gender">Female</label>
                                   </div>
                                   @error('gender')

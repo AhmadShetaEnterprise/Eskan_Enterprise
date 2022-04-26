@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreign('property_id');
+            $table->integer('property_id');
             $table->integer('levels');
             $table->integer('units');
             $table->integer('total_units');
-            $table->float('coast');
+            $table->integer('coast');
             $table->timestamps();
         });
     }

@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('levels', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('project_id');
-            $table->integer('units');
-            $table->float('total_price');
-            $table->timestamps();
+        Schema::table('customers', function (Blueprint $table) {
+            //
         });
     }
 
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('levels');
+        Schema::table('customers', function (Blueprint $table) {
+            //
+        });
     }
 };

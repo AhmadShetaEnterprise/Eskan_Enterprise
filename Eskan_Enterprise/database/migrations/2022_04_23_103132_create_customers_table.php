@@ -18,10 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->tinyInteger('age');
             $table->tinyInteger('gender');
-            $table->string('phone');
+            $table->string('phone', '11');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });

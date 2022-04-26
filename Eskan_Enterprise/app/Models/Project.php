@@ -17,4 +17,9 @@ class Project extends Model
     {
         return $this->belongsToMany(User::class, 'project_customer');
     }
+
+    public function properties()
+    {
+        return $this->belongsTo(Property::class, 'properties');
+    }
 }
