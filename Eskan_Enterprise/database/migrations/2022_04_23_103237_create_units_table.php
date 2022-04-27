@@ -16,13 +16,16 @@ return new class extends Migration
         Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('project_id');
+            $table->integer('property_id');
+            $table->integer('mainProject_id');
+            $table->integer('construction_id');
             $table->integer('level_id');
             $table->string('site');
             $table->string('space');
-            $table->float('price_m');
-            $table->float('total_price');
+            $table->integer('price_m');
+            $table->integer('total_price');
             $table->text('unitDescription');
+            $table->string('status');
             $table->integer('customer_id');
             $table->timestamps();
         });

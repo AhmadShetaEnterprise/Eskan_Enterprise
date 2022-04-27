@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\SubPropertyController;
+use App\Http\Controllers\MainProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,38 +32,48 @@ Route::controller(AdminController::class)->group(function () {
     Route::post('/insertCustomer', 'store')->name('insertCustomer');
 
 });
-// ProjectController start
-// ProjectController start
-// ProjectController start
-Route::controller(ProjectController::class)->group(function () {
-    Route::get('/projectsIndex', 'index')->name('projectsIndex');
+// ConstructionController start
+// ConstructionController start
+// ConstructionController start
+Route::controller(ConstructionController::class)->group(function () {
+    Route::get('/constructionsIndex', 'index')->name('constructionsIndex');
     Route::get('/addProject', 'create')->name('addProject');
+    Route::post('/insertConstruction', 'store')->name('insertConstruction');
+    Route::get('/editConstruction/{id}', 'edit')->name('editConstruction');
 });
-// ProjectController end
-// ProjectController end
-// ProjectController end
+// ConstructionController end
+// ConstructionController end
+// ConstructionController end
 
 // PropertyController start
 // PropertyController start
 // PropertyController start
 
 Route::controller(PropertyController::class)->group(function () {
-    Route::get('/propertiesIndex', 'index')->name('projectsIndex');
+    Route::get('/propertiesIndex', 'index')->name('constructionsIndex');
 });
 // PropertyController end
 // PropertyController end
 // PropertyController end
 
-// SubPropertyController start
-// SubPropertyController start
-// SubPropertyController start
+// MainProjectController start
+// MainProjectController start
+// MainProjectController start
 
-Route::controller(SubPropertyController::class)->group(function () {
-    Route::get('/subPropertiesIndex', 'index')->name('projectsIndex');
+Route::controller(MainProjectController::class)->group(function () {
+    Route::get('/mainProjectsIndex', 'index')->name('constructionsIndex');
 });
-// SubPropertyController end
-// SubPropertyController end
-// SubPropertyController end
+// MainProjectController end
+// MainProjectController end
+// MainProjectController end
+
+
+Route::controller(UnitController::class)->group(function () {
+    Route::get('/unitsIndex', 'index')->name('unitsIndex');
+});
+// MainProjectController end
+// MainProjectController end
+// MainProjectController end
 
 
 

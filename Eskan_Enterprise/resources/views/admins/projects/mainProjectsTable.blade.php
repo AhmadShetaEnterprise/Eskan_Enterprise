@@ -9,12 +9,12 @@
         </tr>
         </thead>
         <tbody>
-@foreach ($subProperty as $item)
+@foreach ($mainProject as $data)
 
         <tr>
-            <th scope="row">{{ $item->id }}</th>
-            <td>{{ $item->name }}</td>
-            <td>{{ $item->property_id }}</td>
+            <th scope="row">{{ $data->id }}</th>
+            <td>{{ $data->name }}</td>
+            <td>{{ $data->property->name }}</td>
 
         </tr>
 @endforeach

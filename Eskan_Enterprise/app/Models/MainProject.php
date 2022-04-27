@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class unit extends Model
+class MainProject extends Model
 {
     use HasFactory;
 
@@ -13,11 +13,8 @@ class unit extends Model
         return $this->belongsTo(Property::class, 'property_id');
     }
 
-    public function mainProject() {
-        return $this->belongsTo(MainProject::class, 'mainProject_id');
+    public function project() {
+        return $this->hasMany(Construction::class, 'property_id', 'id');
     }
 
-    public function project() {
-        return $this->belongsTo(Construction::class, 'mainProject_id');
-    }
 }

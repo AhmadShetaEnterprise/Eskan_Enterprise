@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Project;
+use App\Models\MainProject;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class MainProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project = Project::all();
-        return view('admins.projectsIndex', compact('project'));
+        $mainProject = MainProject::all();
+        return view('admins.mainProjectsIndex', compact('mainProject'));
     }
 
     /**

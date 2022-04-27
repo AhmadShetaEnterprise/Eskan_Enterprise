@@ -10,7 +10,7 @@
 @elseif ($_GET['do'] == 'allDetails')
 @include('admins.allDetails')
 @elseif ($_GET['do'] == 'projects')
-@include('admins.projects.projectsTable')
+@include('admins.constructions.constructionTable')
 @else
 I don't have any records!
 @endif

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('customer_id');
             $table->integer('unit_id');
             $table->integer('level_id');
-            $table->integer('project_id');
+            $table->integer('construction_id');
             $table->timestamps();
         });
     }

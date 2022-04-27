@@ -13,10 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_properties', function (Blueprint $table) {
+        Schema::create('constructions', function (Blueprint $table) {
             $table->id();
-            $table->integer('property_id');
             $table->string('name');
+            $table->integer('property_id');
+            $table->integer('mainProject_id');
+            $table->integer('levels');
+            $table->integer('units');
+            $table->integer('total_units');
+            $table->integer('coast');
             $table->timestamps();
         });
     }
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_properties');
+        Schema::dropIfExists('constructions');
     }
 };

@@ -2,10 +2,9 @@
 
 @section('content')
 @if (!isset($_GET['do']))
-@include('admins.projects.projectsTable')
+@include('admins.projects.mainProjectsTable')
 @elseif ($_GET['do'] == 'allDetails')
 @include('admins.allDetails')
-
 @else
 I don't have any records!
 @endif

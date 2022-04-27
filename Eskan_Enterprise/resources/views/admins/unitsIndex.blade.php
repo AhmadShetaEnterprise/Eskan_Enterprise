@@ -2,7 +2,7 @@
 
 @section('content')
 @if (!isset($_GET['do']))
-@include('admins.projects.subPropertiesTable')
+@include('admins.projects.unitsTable')
 @elseif ($_GET['do'] == 'allDetails')
 @include('admins.allDetails')
 @else

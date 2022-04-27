@@ -11,7 +11,7 @@ class Customer extends Model
 
     public function customers()
     {
-        return $this->belongsToMany(User::class, 'project_customer');
+        return $this->belongsToMany(User::class);
     }
 
 }

@@ -15,10 +15,11 @@
                         <li><a href="index1.html">Dashboard 2</a></li>
                     </ul>
                 </li> --}}
-                <li><a href="{{ url('index') }}">Dashboard </a></li>
-                <li><a href="projectsIndex">Projects</a></li>
-                <li><a href="propertiesIndex">properties</a></li>
-                <li><a href="subPropertiesIndex">Sub Properties</a></li>
+                <li><a href="{{ url('index') }}">الرئيسية </a></li>
+                <li><a href="constructionsIndex">المنشئات</a></li>
+                <li><a href="unitsIndex">الوحدات</a></li>
+                <li><a href="propertiesIndex">الاقسام</a></li>
+                <li><a href="mainProjectsIndex">المشاريع الرئيسية</a></li>
                 <li><a href="?do=allDetails">Main Details</a></li>
 
 
