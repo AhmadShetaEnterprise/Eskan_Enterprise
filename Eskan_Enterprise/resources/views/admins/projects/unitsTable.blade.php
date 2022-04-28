@@ -1,39 +1,44 @@
-<div class="col-lg-8">
+<div class="col-lg-12 col-md-6 col-sm-3">
     <table class="table table-light table-bordered">
         <thead>
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">اسم الوحدة</th>
-            <th scope="col">قسم</th>
-            <th scope="col">المشروع الرئيسي</th>
-            <th scope="col">المنشأة</th>
-            <th scope="col">الادوار</th>
-            <th scope="col">الموقع</th>
-            <th scope="col">المساحة</th>
-            <th scope="col">سعر المتر</th>
-            <th scope="col">سعر الوحدة</th>
-            <th scope="col">الوصف</th>
-            <th scope="col">الحالة</th>
-            <th scope="col"> عميل</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">id</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">اسم الوحدة</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">قسم</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">المنشأة</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">المشروع الرئيسي</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">الادوار</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">الموقع</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">المساحة</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">سعر المتر</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">سعر الوحدة</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">الوصف</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center">الحالة</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center"> عميل</th>
+            <th scope="col" class="text-xl-center" class="text-xl-center"> امر</th>
         </tr>
         </thead>
         <tbody>
 @foreach ($units as $item)
 
         <tr>
-            <th scope="row">{{ $item->id }}</th>
-            <td>{{ $item->name }}</td>
-            <td>{{ $item->property->name }}</td>
-            <td>{{ $item->mainProject->name }}</td>
-            <td>{{ $item->project->name }}</td>
-            <td>{{ $item->levels }}</td>
-            <td>{{ $item->site }}</td>
-            <td>{{ $item->space }}</td>
-            <td>{{ $item->price_m }}</td>
-            <td>{{ $item->total_price }}</td>
-            <td>{{ $item->unitDescription }}</td>
-            <td>{{ $item->status }}</td>
-            <td>{{ $item->customer_id }}</td>
+            <th scope="row" class="text-xl-center">{{ $item->id }}</th>
+            <td class="text-xl-center">{{ $item->name }}</td>
+            <td class="text-xl-center">{{ $item->property->name }}</td>
+            <td class="text-xl-center">{{ $item->project->name }}</td>
+            <td class="text-xl-center">{{ $item->mainProject->name }}</td>
+            <td class="text-xl-center">{{ $item->level_id }}</td>
+            <td class="text-xl-center">{{ $item->site }}</td>
+            <td class="text-xl-center">{{ $item->space }}</td>
+            <td class="text-xl-center">{{ $item->price_m }}</td>
+            <td class="text-xl-center">{{ $item->total_price }}</td>
+            <td class="text-xl-center">{{ $item->unitDescription }}</td>
+            <td class="text-xl-center">{{ $item->status }}</td>
+            <td class="text-xl-center">{{ $item->customer_id }}</td>
+            <td>
+                <a class="btn btn-info btn-sm m-1" href="{{ url('editUnits/'.$item->id) }}">تعديل</ac>    
+                <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteUnits/'.$item->id) }}">حذف</ac>    
+            </td>
 
         </tr>
 @endforeach

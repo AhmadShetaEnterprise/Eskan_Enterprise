@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\MainProject;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends Model
 {
     use HasFactory;
 
-    public function customers()
+    public function mainProject()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(MainProject::class);
     }
 
 }

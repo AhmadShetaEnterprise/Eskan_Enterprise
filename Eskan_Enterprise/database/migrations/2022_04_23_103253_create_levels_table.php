@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('levels', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('construction_id');
-            $table->integer('units');
-            $table->integer('total_price');
             $table->timestamps();
         });
     }

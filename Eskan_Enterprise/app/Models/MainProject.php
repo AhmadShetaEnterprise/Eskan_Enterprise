@@ -9,11 +9,16 @@ class MainProject extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'property_id',
+    ];
+
     public function property() {
         return $this->belongsTo(Property::class, 'property_id');
     }
 
-    public function project() {
+    public function construction() {
         return $this->hasMany(Construction::class, 'property_id', 'id');
     }
 

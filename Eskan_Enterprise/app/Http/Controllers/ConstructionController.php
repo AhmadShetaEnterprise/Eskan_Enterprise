@@ -43,7 +43,7 @@ class ConstructionController extends Controller
         //     $ext             = $file->getClientOriginalExtension();
         //     $filename        = time().'.'.$ext;
         //     $file->move('assets/images/uploads/customer/',$filename);
-        //     $customer->image = $filename;
+        //     $customers->image = $filename;
         // }
         // if ($request->input('email')->exists())
         // {
@@ -80,8 +80,8 @@ class ConstructionController extends Controller
      */
     public function edit($id)
     {
-        $construction = Construction::find($id);
-        return view('admins.constructionsIndex?do=editConstruction', compact('construction'));
+        $constructions = Construction::find($id);
+        return view('admins.constructions.editConstruction', compact('constructions'));
     }
 
     /**
@@ -93,7 +93,30 @@ class ConstructionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $constructions = Construction::find($id);
+        // if ($request->hasFile('image'))
+        // {
+        //     $path = 'assets/images/uploads/Construction/'.$constructions->image;
+        //     if (File::exists($path))
+        //     {
+        //         File::delete($path);
+        //     }
+        //     $file      = $request->file('image');
+        //     $ext       = $file->getClientOriginalExtension();
+        //     $filename  = time().'.'.$ext;
+        //     $file->move('assets/images/uploads/construction/',$filename);
+        //     $category->image = $filename;
+        // }
+
+        $constructions->name            = $request->input('name');
+        $constructions->property_id     = $request->input('property_id');
+        $constructions->mainProject_id  = $request->input('mainProject_id');
+        $constructions->levels          = $request->input('levels');
+        $constructions->units           = $request->input('units');
+        $constructions->total_units     = $request->input('total_units');
+        $constructions->coast           = $request->input('coast');
+        $constructions->update();
+        return redirect('/constructionsIndex')->with('status', 'constructions updated successfully');
     }
 
     /**
@@ -104,6 +127,16 @@ class ConstructionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $constructions = Construction::find($id);
+        // if ($category->image)
+        // {
+        //    $path = 'assets/images/uploads/Construction/'.$constructions->image;
+        //    if (File::exists($path))
+        //    {
+        //        File::delete($path);
+        //    }
+        // }
+        $constructions->delete();
+        return redirect('/constructionsIndex')->with('status', 'constructions deleted successfully');    
     }
 }

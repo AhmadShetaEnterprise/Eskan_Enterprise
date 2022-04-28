@@ -29,6 +29,7 @@
     <link href="{{ asset('assets/css/lib/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/lib/helper.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body>

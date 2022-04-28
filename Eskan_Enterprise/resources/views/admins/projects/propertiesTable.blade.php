@@ -1,17 +1,17 @@
 <div class="col-lg-8">
-    <a href="?do=addCustomer" class="btn btn-warning mb-2" href="">Add New Property</a>
+    <a href="?do=addProperty" class="btn btn-warning mb-2 myText-button">اضافة قسم جديد</a>
     <table class="table table-light table-bordered">
         <thead>
         <tr>
-            <th scope="col">id</th>
-            <th scope="col">name</th>
+            <th scope="col" class="text-xl-center">id</th>
+            <th scope="col" class="text-xl-center">name</th>
         </thead>
         <tbody>
 @foreach ($property as $item)
 
         <tr>
-            <th scope="row">{{ $item->id }}</th>
-            <td>{{ $item->name }}</td>
+            <th scope="row" class="text-xl-center">{{ $item->id }}</th>
+            <td class="text-xl-center">{{ $item->name }}</td>
         </tr>
 @endforeach
         </tbody>

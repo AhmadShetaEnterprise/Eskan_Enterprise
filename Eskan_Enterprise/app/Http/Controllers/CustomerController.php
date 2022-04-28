@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\Customer;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\User;
 
-class AdminController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class AdminController extends Controller
     public function index()
     {
         $customers = Customer::all();
-        return view('admins.index', compact('customers'));
+        return view('admins.customerIndex', compact('customers'));
     }
 
     /**
@@ -27,7 +25,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admins.addCustomer');
+        return view('admins.customers.addCustomer');
     }
 
     /**
@@ -64,10 +62,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Admin $admin)
+    public function show($id)
     {
         //
     }
@@ -75,33 +73,52 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Admin $admin)
+    public function edit($id)
     {
-        //
-    }
+        $customers = Customer::find($id);
+        return view('admins.customers.editCustomer', compact('customers'));    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $customers = Customer::find($id);
+        // if ($request->hasFile('image'))
+        // {
+        //     $file            = $request->file('image');
+        //     $ext             = $file->getClientOriginalExtension();
+        //     $filename        = time().'.'.$ext;
+        //     $file->move('assets/images/uploads/customer/',$filename);
+        //     $customers->image = $filename;
+        // }
+        // if ($request->input('email')->exists())
+        // {
+        //     alert('email exists');
+        // }
+
+        $customers->name        = $request->input('name');
+        $customers->age         = $request->input('age');
+        $customers->gender      = $request->input('gender');
+        $customers->phone       = $request->input('phone');
+        $customers->email       = $request->input('email');
+        $customers->update();
+        return redirect('/addCustomer')->with('status', 'Category added successfully');    }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Admin  $admin
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
         //
     }

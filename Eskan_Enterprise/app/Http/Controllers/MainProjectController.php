@@ -14,8 +14,8 @@ class MainProjectController extends Controller
      */
     public function index()
     {
-        $mainProject = MainProject::all();
-        return view('admins.mainProjectsIndex', compact('mainProject'));
+        $mainProjects = MainProject::all();
+        return view('admins.mainProjectsIndex', compact('mainProjects'));
     }
 
     /**
@@ -36,7 +36,12 @@ class MainProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mainProjects = new MainProject();
+
+        $mainProjects->name            = $request->input('name');
+        $mainProjects->property_id     = $request->input('property_id');
+        $mainProjects->save(); 
+        return redirect('/mainProjectsIndex')->with('status', 'Category added successfully');
     }
 
     /**
@@ -58,7 +63,8 @@ class MainProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mainProjects = MainProject::find($id);
+        return view('admins.mainProjects.editmainProjects', compact('mainProjects'));
     }
 
     /**
@@ -70,8 +76,13 @@ class MainProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $mainProjects = MainProject::find($id);
+
+        $mainProjects->name            = $request->input('name');
+        $mainProjects->property_id     = $request->input('property_id');
+        $mainProjects->update(); 
+        return redirect('/mainProjectsIndex')->with('status', 'Category added successfully');
+    }   
 
     /**
      * Remove the specified resource from storage.
