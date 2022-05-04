@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Property;
 use App\Models\Construction;
+use App\Models\MainProject;
 use Illuminate\Http\Request;
 
 class ConstructionController extends Controller
@@ -14,8 +16,8 @@ class ConstructionController extends Controller
      */
     public function index()
     {
-        $project = Construction::all();
-        return view('admins.constructionsIndex', compact('project'));
+        $constructions = Construction::all();
+        return view('admins.constructionsIndex', compact('constructions'));
     }
 
     /**
@@ -25,7 +27,9 @@ class ConstructionController extends Controller
      */
     public function create()
     {
-        return view('admins.constructionsIndex?do=addConstruction');
+        $properties   = Property::all();
+        $mainProjects = MainProject::all();
+        return view('admins.constructions.addconstruction', compact('properties', 'mainProjects'));
     }
 
     /**
@@ -57,7 +61,7 @@ class ConstructionController extends Controller
         $constructions->units           = $request->input('units');
         $constructions->total_units     = $request->input('total_units');
         $constructions->coast           = $request->input('coast');
-        $constructions->save(); 
+        $constructions->save();
         return redirect('/constructionsIndex?addConstruction')->with('status', 'Category added successfully');
     }
 
@@ -137,6 +141,6 @@ class ConstructionController extends Controller
         //    }
         // }
         $constructions->delete();
-        return redirect('/constructionsIndex')->with('status', 'constructions deleted successfully');    
+        return redirect('/constructionsIndex')->with('status', 'constructions deleted successfully');
     }
 }

@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for=""> نوع</label>
+                        <label for="">قسم</label>
                         <input type="text" class="form-control  font-weight-bold text-dark" name="property_id" required>
                     </div>
 

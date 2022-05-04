@@ -23,7 +23,7 @@ class Construction extends Model
         /**
      * The users that belong to the role.
      */
-    public function customers()
+    public function customer()
     {
         return $this->belongsToMany(Customer::class);
     }
@@ -36,7 +36,7 @@ class Construction extends Model
         return $this->belongsTo(MainProject::class, 'mainProject_id');
     }
 
-    
+
 
 
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
@@ -55,7 +56,7 @@ Route::controller(CustomerController::class)->group(function () {
                 // ConstructionController start
 Route::controller(ConstructionController::class)->group(function () {
     Route::get('/constructionsIndex', 'index')->name('constructionsIndex');
-    Route::get('/addProject', 'create')->name('addProject');
+    Route::get('/addConstruction', 'create')->name('addConstruction');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
     Route::get('/editConstruction/{id}', 'edit')->name('editConstruction');
     Route::put('updateConstruction/{id}', 'update')->name('updateConstruction');
@@ -72,6 +73,11 @@ Route::controller(ConstructionController::class)->group(function () {
                 // PropertyController start
 Route::controller(PropertyController::class)->group(function () {
     Route::get('/propertiesIndex', 'index')->name('propertiesIndex');
+    Route::get('/addProperty', 'create')->name('addProperty');
+    Route::post('/insertProperty', 'store')->name('insertProperty');
+    Route::get('/editProperty/{id}', 'edit')->name('editProperty');
+    Route::put('updateProperty/{id}', 'update')->name('updateProperty');
+    Route::get('deleteProperty/{id}', 'destroy');
 });
                 // PropertyController end
                 // PropertyController end
@@ -113,6 +119,11 @@ Route::controller(LevelController::class)->group(function () {
                 // UnitController start
 Route::controller(UnitController::class)->group(function () {
     Route::get('/unitsIndex', 'index')->name('unitsIndex');
+    Route::get('/addUnit', 'create')->name('addUnit');
+    Route::post('/insertUnit', 'store')->name('insertUnit');
+    Route::get('/editUnit/{id}', 'edit')->name('editUnit');
+    Route::put('updateUnit/{id}', 'update')->name('updateUnit');
+    Route::get('deleteUnit/{id}', 'destroy');
 });
                 // UnitController end
                 // UnitController end

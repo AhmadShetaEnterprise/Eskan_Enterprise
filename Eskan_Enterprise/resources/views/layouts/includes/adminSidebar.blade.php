@@ -16,12 +16,12 @@
                     </ul>
                 </li> --}}
                 <li><a href="{{ url('customerIndex') }}">الرئيسية </a></li>
-                <li><a href="constructionsIndex">المنشئات</a></li>
-                <li><a href="unitsIndex">الوحدات</a></li>
-                <li><a href="propertiesIndex">الاقسام</a></li>
-                <li><a href="mainProjectsIndex">المشاريع الرئيسية</a></li>
-                <li><a href="levelsIndex">الطوابق</a></li>
-                <li><a href="?do=allDetails">Main Details</a></li>
+                <li><a href="{{ url('constructionsIndex') }}">المنشئات</a></li>
+                <li><a href="{{ url('unitsIndex') }}">الوحدات</a></li>
+                <li><a href="{{ url('propertiesIndex') }}">الاقسام</a></li>
+                <li><a href="{{ url('mainProjectsIndex') }}">المشاريع الرئيسية</a></li>
+                <li><a href="{{ url('levelsIndex') }}">الطوابق</a></li>
+                <li><a href="{{ url('?do=allDetails') }}">Main Details</a></li>
 
 
                 <li class="label">Apps</li>

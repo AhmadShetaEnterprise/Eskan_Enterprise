@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Prophecy\Prophet;
 
 class PropertyController extends Controller
 {
@@ -25,7 +26,7 @@ class PropertyController extends Controller
      */
     public function create()
     {
-        //
+        return redirect('/propertiesIndex?do=addProperty');
     }
 
     /**
@@ -36,7 +37,11 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $properties = new Property();
+
+        $properties->name            = $request->input('name');
+        $properties->save();
+        return redirect('/propertiesIndex')->with('status', 'Category added successfully');
     }
 
     /**
@@ -58,7 +63,8 @@ class PropertyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $properties = Property::find($id);
+        return view('admins.properties.editProperty', compact('properties'));
     }
 
     /**
@@ -70,7 +76,11 @@ class PropertyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $properties = Property::find($id);
+
+        $properties->name        = $request->input('name');
+        $properties->update();
+        return redirect('/propertiesIndex')->with('status', 'Property updated successfully');
     }
 
     /**
@@ -81,6 +91,16 @@ class PropertyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $properties = Property::find($id);
+        // if ($category->image)
+        // {
+        //    $path = 'assets/images/uploads/Construction/'.$constructions->image;
+        //    if (File::exists($path))
+        //    {
+        //        File::delete($path);
+        //    }
+        // }
+        $properties->delete();
+        return redirect('/propertiesIndex')->with('status', 'Property deleted successfully');
     }
 }
