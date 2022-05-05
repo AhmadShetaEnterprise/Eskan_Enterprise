@@ -45,6 +45,7 @@ Route::controller(CustomerController::class)->group(function () {
     Route::post('/insertCustomer', 'store')->name('insertCustomer');
     Route::get('/editCustomer/{id}', 'edit')->name('editCustomer');
     Route::put('updateCustomer/{id}', 'update')->name('updateCustomer');
+    Route::get('/customerShow/{id}', 'show')->name('customerShow');
 });
                 // CustomerController end
                 // CustomerController end
@@ -124,6 +125,7 @@ Route::controller(UnitController::class)->group(function () {
     Route::get('/editUnit/{id}', 'edit')->name('editUnit');
     Route::put('updateUnit/{id}', 'update')->name('updateUnit');
     Route::get('deleteUnit/{id}', 'destroy');
+    Route::get('/unitShow/{id}', 'show')->name('unitShow');
 });
                 // UnitController end
                 // UnitController end

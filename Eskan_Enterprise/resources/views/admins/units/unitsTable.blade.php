@@ -25,7 +25,11 @@
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
-            <td class="text-xl-center">{{ $item->name }}</td>
+            <td class="text-xl-center">
+                <a href="{{ url('unitShow/'.$item->id) }}">
+                    {{ $item->name }}
+                </a>
+            </td>
             <td class="text-xl-center">{{ $item->property->name }}</td>
             <td class="text-xl-center">{{ $item->construction->name }}</td>
             <td class="text-xl-center">{{ $item->mainProject->name }}</td>
@@ -35,11 +39,11 @@
             <td class="text-xl-center">{{ $item->price_m }}</td>
             <td class="text-xl-center">{{ $item->total_price }}</td>
             <td class="text-xl-center">{{ $item->unitDescription }}</td>
-            <td class="text-xl-center">{{ $item->status }}</td>
-            <td class="text-xl-center">{{ $item->customer->name }}</td>
+            <td class="text-xl-center">{{ $item->status ? $item->status : 'خالية' }}</td>
+            <td class="text-xl-center">@if ($item->customer_id) {{ $item->customer->name }} @else لا يوجد @endif</td>
             <td>
-                <a class="btn btn-info btn-sm m-1" href="{{ url('editUnits/'.$item->id) }}">تعديل</ac>
-                <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteUnits/'.$item->id) }}">حذف</ac>
+                <a class="btn btn-info btn-sm m-1" href="{{ url('editUnit/'.$item->id) }}">تعديل</ac>
+                <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteUnit/'.$item->id) }}">حذف</ac>
             </td>
 
         </tr>

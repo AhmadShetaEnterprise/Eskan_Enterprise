@@ -17,12 +17,12 @@
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
-            <td class="text-xl-center">{{ $item->name }}</td>
+            <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->id) }}"> {{ $item->name }} </a></td>
             <td class="text-xl-center">{{ $item->age }}</td>
             <td class="text-xl-center">{{ $item->gender }}</td>
             <td class="text-xl-center">{{ $item->phone }}</td>
             <td class="text-xl-center">{{ $item->email }}</td>
-            <td>
+            <td class="text-xl-center">
                 <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل العميل</ac>    
             </td>
 

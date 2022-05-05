@@ -26,7 +26,7 @@ class Customer extends Model
     }
 
     public function unit() {
-        return $this->hasMany(Unit::class, 'customer_id', 'id');
+        return $this->hasMany(Unit::class);
     }
 
 }

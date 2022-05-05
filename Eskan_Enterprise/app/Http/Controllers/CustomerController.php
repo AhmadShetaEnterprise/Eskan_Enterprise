@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -67,7 +68,16 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $customers = Customer::find($id);
+        $units     = Customer::with('unit')->find($id)->unit;
+        // $unitsJoin = Unit::join('customers' , 'customers.id', '=', 'units.customer_id')
+        // ->join('constructions', 'constructions.id', '=', 'units.construction_id')
+        // ->select('customers.*')
+        // ->where('customers.id', 'units.customer_id')
+        // ->get('units.name', 'customers.name', 'constructions.name');
+        // $units = Customer::with(['unit'])->find($id);
+        // $units     = Unit::all();
+        return view('admins.customers.customerShow', compact('customers', 'units'));   
     }
 
     /**

@@ -16,7 +16,7 @@
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
             <td class="text-xl-center">{{ $item->name }}</td>
             <td class="text-xl-center">{{ $item->property->name }}</td>
-            <td>
+            <td class="text-xl-center">
                 <a class="btn btn-info btn-sm" href="{{ url('editMainProject/'.$item->id) }}">تعديل </ac>    
 
             </td>

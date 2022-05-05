@@ -58,27 +58,46 @@ public function store(Request $request)
 ////////////////////////////////////////////////
 public function show($id)
 {
-    //
+    $units     = Unit::find($id);
+    // $customers = Unit::with('customer')->find($id)->customer;
+    return view('admins.units.unitShow', compact('units'));   
+
 }
 ////////////////////////////////////////////////
 //* Show the form for editing the specified resource.
 ////////////////////////////////////////////////
 public function edit($id)
 {
-    $myTempletes = Templete::find($id);
-    return view('editMyTempletesIndex', compact('myTempletes'));
+    $units = Unit::find($id);
+    $customers     = Customer::all();
+    $properties    = Property::all();
+    $mainProjects  = MainProject::all();
+    $constructions = Construction::all();
+    return view('admins.units.editUnit', compact('units', 'customers' , 'properties', 'mainProjects', 'constructions'));
 }
 ////////////////////////////////////////////////
 //* Update the specified resource in storage.
 ////////////////////////////////////////////////
 public function update(Request $request, $id)
 {
-    $myTempletes = Templete::find($id);
+    $units = Unit::find($id);
+    
 
-    $myTempletes->name = $request->input('name');
+    $units->name            = $request->input('name');
+    $units->property_id     = $request->input('property_id');
+    $units->mainProject_id  = $request->input('mainProject_id');
+    $units->construction_id = $request->input('construction_id');
+    $units->level_id        = $request->input('level_id');
+    $units->site            = $request->input('site');
+    $units->space           = $request->input('space');
+    $units->price_m         = $request->input('price_m');
+    $units->total_price     = $request->input('total_price');
+    $units->unitDescription = $request->input('unitDescription');
+    $units->status          = $request->input('status');
+    $units->customer_id     = $request->input('customer_id');
 
-    $myTempletes->update();
-    return redirect('/myTempletesIndexIndex')->with('status', 'MyTempletesIndex Updated successfully');
+    $units->update();
+    return redirect('unitsIndex')->with('status', 'Unit Updated successfully');
 }
 ////////////////////////////////////////////////
 //* Remove the specified resource from storage

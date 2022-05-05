@@ -26,4 +26,10 @@ class MainProject extends Model
         return $this->hasMany(Unit::class, 'mainProject_id', 'id');
     }
 
+    
+    public function customer()
+    {
+        return $this->belongsToMany(Customer::class);
+    }
+
 }
