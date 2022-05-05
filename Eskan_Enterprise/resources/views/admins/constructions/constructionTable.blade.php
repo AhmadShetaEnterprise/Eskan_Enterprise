@@ -1,5 +1,5 @@
-<div class="col-lg-8">
-    <a href="?do=addConstruction" class="btn btn-warning mb-2 btn-block responsive-width text-dark myText-button" href="">اضافة منشأة جديدة</a>
+<div class="col-lg-12">
+    <a href="{{ route('addConstruction') }}" class="btn btn-warning mb-2 btn-block responsive-width text-dark myText-button">اضافة منشأة جديدة</a>
     <table class="table table-light table-bordered">
         <thead>
         <tr>
@@ -15,7 +15,7 @@
         </tr>
         </thead>
         <tbody>
-@foreach ($project as $item)
+@foreach ($constructions as $item)
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
@@ -26,9 +26,9 @@
             <td class="text-xl-center">{{ $item->units }}</td>
             <td class="text-xl-center">{{ $item->total_units }}</td>
             <td class="text-xl-center">{{ $item->coast }}</td>
-            <td>
-                <a class="btn btn-info btn-sm m-1" href="{{ url('editConstruction/'.$item->id) }}">تعديل المشروع</ac>    
-                <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteConstruction/'.$item->id) }}">حذف المشروع</ac>    
+            <td class="text-xl-center">
+                <a class="btn btn-info btn-sm m-1" href="{{ url('editConstruction/'.$item->id) }}">تعديل المشروع</ac>
+                <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteConstruction/'.$item->id) }}">حذف المشروع</ac>
             </td>
 
         </tr>

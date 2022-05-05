@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->tinyInteger('age');
-            $table->tinyInteger('gender');
+            $table->string('gender');
             $table->string('phone', '11');
             $table->string('email')->unique();
             $table->rememberToken();

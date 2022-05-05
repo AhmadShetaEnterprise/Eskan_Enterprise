@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->integer('property_id');
             $table->integer('mainProject_id');
             $table->integer('construction_id');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('price_m');
             $table->integer('total_price');
             $table->text('unitDescription');
-            $table->string('status');
+            $table->srting('status')->default('خالية');
             $table->integer('customer_id');
             $table->timestamps();
         });

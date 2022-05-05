@@ -79,7 +79,8 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $customers = Customer::find($id);
-        return view('admins.customers.editCustomer', compact('customers'));    }
+        return view('admins.customers.editCustomer', compact('customers'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -110,7 +111,8 @@ class CustomerController extends Controller
         $customers->phone       = $request->input('phone');
         $customers->email       = $request->input('email');
         $customers->update();
-        return redirect('/addCustomer')->with('status', 'Category added successfully');    }
+        return redirect('/addCustomer')->with('status', 'Category added successfully');
+    }
 
     /**
      * Remove the specified resource from storage.

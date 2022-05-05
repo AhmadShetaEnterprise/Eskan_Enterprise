@@ -4,7 +4,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h1 class="text-success font-italic text-center bg-dark font-weight-bold">Add Customer</h1>
+            <h1 class="text-success font-italic text-center bg-dark font-weight-bold">Add Construction</h1>
         </div>
         <div class="card-body">
             <form action="{{ url('insertConstruction') }}" method="POST" enctype="multipart/form-data">
@@ -16,15 +16,34 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="">القسم</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="property_id">
+                        <div>
+                            <label for="">القسم</label>
+                        </div>
+                        @foreach ( $properties as $property)
+                        <div class="form-check d-inline-flex">
+                            <label class="form-check-label mr-3" for="exampleRadios2">
+                            <input class="form-check-input mr-2" type="radio" name="property_id" id="exampleRadios2" value="{{ $property->id }}">
+                                {{ $property->name }}
+                            </label>
+                        </div>
+                        @endforeach
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="">المشروع</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="mainProject_id" required>
+
+                        <div>
+                            <label for="">المشروع</label>
+                        </div>
+                        @foreach ( $mainProjects as $mainProject)
+                        <div class="form-check d-inline-flex">
+                            <label class="form-check-label mr-3" for="exampleRadios2">
+                            <input class="form-check-input mr-2" type="radio" name="mainProject_id" id="exampleRadios2" value="{{ $mainProject->id }}">
+                                {{ $mainProject->name }}
+                            </label>
+                        </div>
+                        @endforeach
                     </div>
-                    
+
                     <div class="col-md-6 mb-3">
                         <label for="">الطوابق</label>
                         <input type="text" class="form-control  font-weight-bold text-dark" name="levels">

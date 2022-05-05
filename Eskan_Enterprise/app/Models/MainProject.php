@@ -19,7 +19,11 @@ class MainProject extends Model
     }
 
     public function construction() {
-        return $this->hasMany(Construction::class, 'property_id', 'id');
+        return $this->hasMany(Construction::class, 'mainProject_id', 'id');
+    }
+
+    public function unit() {
+        return $this->hasMany(Unit::class, 'mainProject_id', 'id');
     }
 
 }

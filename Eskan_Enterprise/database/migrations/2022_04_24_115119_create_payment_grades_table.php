@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('receiving_grade_duration');
             $table->integer('staying_due');
             $table->integer('installment_duration');
-            $table>integer('installment');      
+            $table->integer('installment');
             $table->integer('cash_discount');
             $table->timestamps();
         });
