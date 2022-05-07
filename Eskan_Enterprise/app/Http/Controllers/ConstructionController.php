@@ -28,8 +28,8 @@ class ConstructionController extends Controller
     public function create()
     {
         $properties   = Property::all();
-        $mainProjects = MainProject::all();
-        return view('admins.constructions.addconstruction', compact('properties', 'mainProjects'));
+        $main_projects = MainProject::all();
+        return view('admins.constructions.addconstruction', compact('properties', 'main_projects'));
     }
 
     /**

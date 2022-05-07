@@ -12,14 +12,14 @@
         </div>
         <div class="d-lg-inline-flex">
             <div class="card-body col-lg-6"  style="width: 20rem;">
-                         
+
                 {{-- <h5 class="card-title">{{ $item->unit->name }}</h5> --}}
                 {{-- <h5 class="card-title">{{ $item->name }}</h5> --}}
 
                 <h5 class="card-title">{{ $units->status }}</h5>
                 <h5 class="card-title">{{ $units->customer->name }}</h5>
                 <h5 class="card-title">{{ $units->construction->name }}</h5>
-                <h5 class="card-title">{{ $units->mainProject->name }}</h5>
+                <h5 class="card-title">{{ $units->main_project->name }}</h5>
                 <h5 class="card-title">{{ $units->property->name }}</h5>
                 <h5 class="card-title">{{ $units->site }}</h5>
                 <h5 class="card-title">{{ $units->space }}</h5>
@@ -33,4 +33,4 @@
         </div>
     </div>
 
-  @endsection  
+  @endsection

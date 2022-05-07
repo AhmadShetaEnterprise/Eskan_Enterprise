@@ -14,20 +14,22 @@ class MainProject extends Model
         'property_id',
     ];
 
+    protected $hidden = ['created_at', 'updated_at'];
+
     public function property() {
         return $this->belongsTo(Property::class, 'property_id');
     }
 
     public function construction() {
-        return $this->hasMany(Construction::class, 'mainProject_id', 'id');
+        return $this->hasMany(Construction::class);
     }
 
-    public function unit() {
-        return $this->hasMany(Unit::class, 'mainProject_id', 'id');
+    public function units() {
+        return $this->hasMany(Unit::class, 'main_project_id', 'id');
     }
 
-    
-    public function customer()
+
+    public function customers()
     {
         return $this->belongsToMany(Customer::class);
     }

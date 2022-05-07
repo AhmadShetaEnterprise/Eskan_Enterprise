@@ -14,7 +14,7 @@ class Property extends Model
         return $this->hasMany(Property::class, 'property_id', 'id');
     }
 
-    public function mainProject() {
+    public function Main_Project() {
         return $this->hasMany(MainProject::class, 'property_id', 'id');
     }
 

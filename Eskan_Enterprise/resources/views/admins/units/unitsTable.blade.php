@@ -30,9 +30,9 @@
                     {{ $item->name }}
                 </a>
             </td>
-            <td class="text-xl-center">{{ $item->property->name }}</td>
-            <td class="text-xl-center">{{ $item->construction->name }}</td>
-            <td class="text-xl-center">{{ $item->mainProject->name }}</td>
+            <td class="text-xl-center">{{ $item->properties->name }}</td>
+            <td class="text-xl-center">{{ $item->constructions->name }}</td>
+            <td class="text-xl-center">{{ $item->main_projects->name }}</td>
             <td class="text-xl-center">{{ $item->level_id }}</td>
             <td class="text-xl-center">{{ $item->site }}</td>
             <td class="text-xl-center">{{ $item->space }}</td>

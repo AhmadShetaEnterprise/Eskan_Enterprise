@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\MainProject;
 use Illuminate\Http\Request;
 
-class MainProjectController extends Controller
+class Main_ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class MainProjectController extends Controller
      */
     public function index()
     {
-        $mainProjects = MainProject::all();
-        return view('admins.mainProjectsIndex', compact('mainProjects'));
+        $main_projects = MainProject::all();
+        return view('admins.main_projectsIndex', compact('main_projects'));
     }
 
     /**
@@ -36,12 +37,12 @@ class MainProjectController extends Controller
      */
     public function store(Request $request)
     {
-        $mainProjects = new MainProject();
+        $main_projects = new MainProject();
 
-        $mainProjects->name            = $request->input('name');
-        $mainProjects->property_id     = $request->input('property_id');
-        $mainProjects->save(); 
-        return redirect('/mainProjectsIndex')->with('status', 'Category added successfully');
+        $main_projects->name            = $request->input('name');
+        $main_projects->property_id     = $request->input('property_id');
+        $main_projects->save();
+        return redirect('/main_projectsIndex')->with('status', 'Category added successfully');
     }
 
     /**
@@ -52,7 +53,9 @@ class MainProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $customers = Customer::with('main_projects', 'units')->find($id);
+        // $customers->main_projects()->attach($id);
+        return view('admins.main_projects.showMain_project', compact('customers'));
     }
 
     /**
@@ -63,8 +66,8 @@ class MainProjectController extends Controller
      */
     public function edit($id)
     {
-        $mainProjects = MainProject::find($id);
-        return view('admins.mainProjects.editmainProjects', compact('mainProjects'));
+        $main_projects = MainProject::find($id);
+        return view('admins.main_projects.editmain_projects', compact('main_projects'));
     }
 
     /**
@@ -76,13 +79,13 @@ class MainProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mainProjects = MainProject::find($id);
+        $main_projects = MainProject::find($id);
 
-        $mainProjects->name            = $request->input('name');
-        $mainProjects->property_id     = $request->input('property_id');
-        $mainProjects->update(); 
-        return redirect('/mainProjectsIndex')->with('status', 'Category added successfully');
-    }   
+        $main_projects->name            = $request->input('name');
+        $main_projects->property_id     = $request->input('property_id');
+        $main_projects->update();
+        return redirect('/main_projectsIndex')->with('status', 'Category added successfully');
+    }
 
     /**
      * Remove the specified resource from storage.

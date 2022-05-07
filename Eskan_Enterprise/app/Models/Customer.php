@@ -20,12 +20,12 @@ class Customer extends Model
         'password',
     ];
 
-    public function mainProject()
+    public function main_projects()
     {
         return $this->belongsToMany(MainProject::class);
     }
 
-    public function unit() {
+    public function units() {
         return $this->hasMany(Unit::class);
     }
 

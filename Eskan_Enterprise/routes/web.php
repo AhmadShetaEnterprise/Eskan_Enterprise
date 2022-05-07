@@ -7,7 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\MainProjectController;
+use App\Http\Controllers\Main_ProjectController;
 use App\Http\Controllers\ConstructionController;
 
 /*
@@ -27,7 +27,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/index', 'index')->name('index');
@@ -85,19 +85,20 @@ Route::controller(PropertyController::class)->group(function () {
                 // PropertyController end
 
 
-                // MainProjectController start
-                // MainProjectController start
-                // MainProjectController start
-Route::controller(MainProjectController::class)->group(function () {
-    Route::get('/mainProjectsIndex', 'index')->name('mainProjectsIndex');
-    Route::get('/addMainProject', 'create')->name('addMainProject');
-    Route::post('/insertMainProject', 'store')->name('insertMainProject');
-    Route::get('/editMainProject/{id}', 'edit')->name('editMainProject');
-    Route::put('updateMainProject/{id}', 'update')->name('updateMainProject');
+                // Main_ProjectController start
+                // Main_ProjectController start
+                // Main_ProjectController start
+Route::controller(Main_ProjectController::class)->group(function () {
+    Route::get('/main_projectsIndex', 'index')->name('main_projectsIndex');
+    Route::get('/add_main_project', 'create')->name('add_main_project');
+    Route::post('/insert_main_project', 'store')->name('insert_main_project');
+    Route::get('/edit_main_project/{id}', 'edit')->name('edit_main_project');
+    Route::put('update_main_project/{id}', 'update')->name('update_main_project');
+    Route::get('/showMain_project/{id}', 'show')->name('showMain_project');
 });
-                // MainProjectController end
-                // MainProjectController end
-                // MainProjectController end
+                // Main_ProjectController end
+                // Main_ProjectController end
+                // Main_ProjectController end
 
 
                 // LevelController start

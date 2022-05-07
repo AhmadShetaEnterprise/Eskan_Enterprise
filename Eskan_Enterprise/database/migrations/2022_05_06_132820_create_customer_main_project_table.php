@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('constructions_customers', function (Blueprint $table) {
-            $table->id();
-            $table->integer('construction_id')->constrained('constructions');
-            $table->integer('customer_id')->constrained('customers');
+        Schema::create('customer_main_project', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('customer_id');
+            $table->integer('main_project_id');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('constructions_customers');
+        Schema::dropIfExists('customer_main_project');
     }
 };

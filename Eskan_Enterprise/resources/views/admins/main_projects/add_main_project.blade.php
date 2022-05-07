@@ -7,7 +7,7 @@
             <h1 class="text-success font-italic text-center bg-dark font-weight-bold">Add MainProject</h1>
         </div>
         <div class="card-body">
-            <form action="{{ url('insertMainProject') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('insert_main_project') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6 mb-3">

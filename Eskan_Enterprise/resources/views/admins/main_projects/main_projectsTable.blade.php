@@ -1,5 +1,5 @@
 <div class="col-lg-8">
-    <a href="?do=addMainProject" class="btn btn-warning mb-2 myText-button" href="">Add New Project</a>
+    <a href="?do=add_main_project" class="btn btn-warning mb-2 myText-button" href="">Add New Project</a>
     <table class="table table-light table-bordered">
         <thead>
         <tr>
@@ -10,14 +10,18 @@
         </tr>
         </thead>
         <tbody>
-@foreach ($mainProjects as $item)
+@foreach ($main_projects as $item)
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
-            <td class="text-xl-center">{{ $item->name }}</td>
+            <td class="text-xl-center">
+                <a href="{{ url('showMain_project/'.$item->id) }}">
+                    {{ $item->name }}
+                </a>
+            </td>
             <td class="text-xl-center">{{ $item->property->name }}</td>
             <td class="text-xl-center">
-                <a class="btn btn-info btn-sm" href="{{ url('editMainProject/'.$item->id) }}">تعديل </ac>    
+                <a class="btn btn-info btn-sm" href="{{ url('edit_main_project/'.$item->id) }}">تعديل </ac>
 
             </td>
 

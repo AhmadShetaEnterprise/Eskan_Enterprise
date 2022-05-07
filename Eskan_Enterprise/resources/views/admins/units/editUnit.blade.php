@@ -36,11 +36,11 @@
                         <div>
                             <label for="">المشروع</label>
                         </div>
-                        @foreach ( $mainProjects as $mainProject)
+                        @foreach ( $main_projects as $main_project)
                         <div class="form-check d-inline-flex">
                             <label class="form-check-label mr-3" for="exampleRadios2">
-                            <input class="form-check-input mr-2" type="radio" name="mainProject_id" id="exampleRadios2" {{ $units->mainProject_id == $mainProject->id ? 'checked' : '' }} value="{{ $mainProject->id }}">
-                                {{ $mainProject->name }}
+                            <input class="form-check-input mr-2" type="radio" name="mainProject_id" id="exampleRadios2" {{ $units->mainProject_id == $main_project->id ? 'checked' : '' }} value="{{ $main_project->id }}">
+                                {{ $main_project->name }}
                             </label>
                         </div>
                         @endforeach

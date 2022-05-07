@@ -26,7 +26,7 @@
             <td class="text-xl-center">{{ $item->name }}</td>
             <td class="text-xl-center">{{ $item->property->name }}</td>
             <td class="text-xl-center">{{ $item->project->name }}</td>
-            <td class="text-xl-center">{{ $item->mainProject->name }}</td>
+            <td class="text-xl-center">{{ $item->main_project->name }}</td>
             <td class="text-xl-center">{{ $item->level_id }}</td>
             <td class="text-xl-center">{{ $item->site }}</td>
             <td class="text-xl-center">{{ $item->space }}</td>
@@ -36,8 +36,8 @@
             <td class="text-xl-center">{{ $item->status }}</td>
             <td class="text-xl-center">{{ $item->customer_id }}</td>
             <td>
-                <a class="btn btn-info btn-sm m-1" href="{{ url('editUnits/'.$item->id) }}">تعديل</ac>    
-                <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteUnits/'.$item->id) }}">حذف</ac>    
+                <a class="btn btn-info btn-sm m-1" href="{{ url('editUnits/'.$item->id) }}">تعديل</ac>
+                <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteUnits/'.$item->id) }}">حذف</ac>
             </td>
 
         </tr>

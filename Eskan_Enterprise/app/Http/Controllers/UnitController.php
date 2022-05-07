@@ -27,9 +27,9 @@ public function create()
     $units         = Unit::all();
     $customers     = Customer::all();
     $properties    = Property::all();
-    $mainProjects  = MainProject::all();
+    $main_projects  = MainProject::all();
     $constructions = Construction::all();
-    return view('admins.units.addUnit', compact('units','customers' , 'properties', 'mainProjects', 'constructions'));
+    return view('admins.units.addUnit', compact('units','customers' , 'properties', 'main_projects', 'constructions'));
 }
 ////////////////////////////////////////////////
 //* Store a newly created resource in storage.
@@ -40,7 +40,7 @@ public function store(Request $request)
 
     $units->name            = $request->input('name');
     $units->property_id     = $request->input('property_id');
-    $units->mainProject_id  = $request->input('mainProject_id');
+    $units->mainProject_id  = $request->input('main_project_id');
     $units->construction_id = $request->input('construction_id');
     $units->level_id        = $request->input('level_id');
     $units->site            = $request->input('site');
@@ -60,7 +60,7 @@ public function show($id)
 {
     $units     = Unit::find($id);
     // $customers = Unit::with('customer')->find($id)->customer;
-    return view('admins.units.unitShow', compact('units'));   
+    return view('admins.units.unitShow', compact('units'));
 
 }
 ////////////////////////////////////////////////
@@ -71,9 +71,9 @@ public function edit($id)
     $units = Unit::find($id);
     $customers     = Customer::all();
     $properties    = Property::all();
-    $mainProjects  = MainProject::all();
+    $main_projects  = MainProject::all();
     $constructions = Construction::all();
-    return view('admins.units.editUnit', compact('units', 'customers' , 'properties', 'mainProjects', 'constructions'));
+    return view('admins.units.editUnit', compact('units', 'customers' , 'properties', 'main_projects', 'constructions'));
 }
 ////////////////////////////////////////////////
 //* Update the specified resource in storage.
@@ -81,11 +81,11 @@ public function edit($id)
 public function update(Request $request, $id)
 {
     $units = Unit::find($id);
-    
+
 
     $units->name            = $request->input('name');
     $units->property_id     = $request->input('property_id');
-    $units->mainProject_id  = $request->input('mainProject_id');
+    $units->mainProject_id  = $request->input('main_project_id');
     $units->construction_id = $request->input('construction_id');
     $units->level_id        = $request->input('level_id');
     $units->site            = $request->input('site');
@@ -104,10 +104,10 @@ public function update(Request $request, $id)
 ////////////////////////////////////////////////
 public function destroy($id)
 {
-    $myTempletes = Templete::find($id);
+    $units = Unit::find($id);
 
-    $myTempletes->delete();
-    return redirect('/myTempletesIndex')->with('status', 'MyTempletesIndex deleted successfully');
+    $units->delete();
+    return redirect('/myTempletesIndex')->with('status', 'Unit deleted successfully');
 }
 ////////////////////////////////////////////////
 }

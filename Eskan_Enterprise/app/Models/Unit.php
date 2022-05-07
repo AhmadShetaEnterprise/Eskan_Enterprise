@@ -25,26 +25,26 @@ class unit extends Model
         'customer_id',
     ];
 
-    public function property() {
+    public function properties() {
         return $this->belongsTo(Property::class, 'property_id', 'id');
     }
 
-    public function mainProject() {
-        return $this->belongsTo(MainProject::class, 'mainProject_id', 'id');
+    public function main_projects() {
+        return $this->belongsTo(MainProject::class, 'main_project_id', 'id');
     }
 
-    public function construction() {
+    public function constructions() {
         return $this->belongsTo(Construction::class, 'construction_id', 'id');
     }
 
     public function customer() {
-        return $this->belongsTo(Customer::class, 'customer_id', 'id')->withDefault(
+        return $this->belongsTo(Customer::class)->withDefault(
             [
                 'name' => 'default name from model'
             ]);
     }
 
-    public function level() {
+    public function levels() {
         return $this->belongsTo(Level::class, 'level_id', 'id');
     }
 }
