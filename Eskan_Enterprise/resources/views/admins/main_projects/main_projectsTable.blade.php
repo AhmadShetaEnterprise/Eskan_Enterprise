@@ -19,7 +19,7 @@
                     {{ $item->name }}
                 </a>
             </td>
-            <td class="text-xl-center">{{ $item->property->name }}</td>
+            <td class="text-xl-center">{{ $item->properties->name }}</td>
             <td class="text-xl-center">
                 <a class="btn btn-info btn-sm" href="{{ url('edit_main_project/'.$item->id) }}">تعديل </ac>
 

@@ -19,7 +19,7 @@
                     <div class="col-md-6 mb-3">
                         <label for=""> القسم</label>
                         <input type="text" class="form-control  font-weight-bold text-dark" name="property_id" value="{{ $main_projects->property_id }}" required>
-                        <input type="hidden" class="form-control  font-weight-bold text-dark" value="{{ $main_projects->property->name }}" required>
+                        <input type="hidden" class="form-control  font-weight-bold text-dark" value="{{ $main_projects->properties->name }}" required>
                     </div>
 
                     <div class="col-md-12 mb-3">

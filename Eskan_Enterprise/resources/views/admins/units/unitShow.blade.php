@@ -17,10 +17,10 @@
                 {{-- <h5 class="card-title">{{ $item->name }}</h5> --}}
 
                 <h5 class="card-title">{{ $units->status }}</h5>
-                <h5 class="card-title">{{ $units->customer->name }}</h5>
-                <h5 class="card-title">{{ $units->construction->name }}</h5>
-                <h5 class="card-title">{{ $units->main_project->name }}</h5>
-                <h5 class="card-title">{{ $units->property->name }}</h5>
+                <h5 class="card-title">{{ $units->customers->name }}</h5>
+                <h5 class="card-title">{{ $units->constructions->name }}</h5>
+                <h5 class="card-title">{{ $units->main_projects->name }}</h5>
+                <h5 class="card-title">{{ $units->properties->name }}</h5>
                 <h5 class="card-title">{{ $units->site }}</h5>
                 <h5 class="card-title">{{ $units->space }}</h5>
                 <h5 class="card-title">{{ $units->price_m }}</h5>

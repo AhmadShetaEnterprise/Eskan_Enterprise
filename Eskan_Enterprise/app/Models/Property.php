@@ -9,12 +9,12 @@ class Property extends Model
 {
     use HasFactory;
 
-    public function projects()
+    public function customers()
     {
-        return $this->hasMany(Property::class, 'property_id', 'id');
+        return $this->belongsToMany(customer::class);
     }
 
-    public function Main_Project() {
+    public function main_projects() {
         return $this->hasMany(MainProject::class, 'property_id', 'id');
     }
 

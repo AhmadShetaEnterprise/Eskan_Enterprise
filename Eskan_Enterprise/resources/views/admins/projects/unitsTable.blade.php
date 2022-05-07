@@ -24,7 +24,7 @@
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
             <td class="text-xl-center">{{ $item->name }}</td>
-            <td class="text-xl-center">{{ $item->property->name }}</td>
+            <td class="text-xl-center">{{ $item->properties->name }}</td>
             <td class="text-xl-center">{{ $item->project->name }}</td>
             <td class="text-xl-center">{{ $item->main_project->name }}</td>
             <td class="text-xl-center">{{ $item->level_id }}</td>

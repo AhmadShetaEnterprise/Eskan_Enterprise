@@ -69,7 +69,7 @@ class CustomerController extends Controller
     public function show($id)
     {
         $customers = Customer::find($id);
-        $units     = Customer::with('unit')->find($id)->unit;
+        $units     = Customer::with('units')->find($id)->units;
         // $unitsJoin = Unit::join('customers' , 'customers.id', '=', 'units.customer_id')
         // ->join('constructions', 'constructions.id', '=', 'units.construction_id')
         // ->select('customers.*')

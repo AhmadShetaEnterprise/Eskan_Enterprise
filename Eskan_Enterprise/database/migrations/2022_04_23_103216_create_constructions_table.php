@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('property_id');
-            $table->integer('mainProject_id');
+            $table->integer('main_project_id');
             $table->integer('levels');
             $table->integer('units');
             $table->integer('total_units');

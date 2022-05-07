@@ -40,7 +40,7 @@
             <td class="text-xl-center">{{ $item->total_price }}</td>
             <td class="text-xl-center">{{ $item->unitDescription }}</td>
             <td class="text-xl-center">{{ $item->status ? $item->status : 'خالية' }}</td>
-            <td class="text-xl-center">@if ($item->customer_id) {{ $item->customer->name }} @else لا يوجد @endif</td>
+            <td class="text-xl-center">@if ($item->customer_id) {{ $item->customers->name }} @else لا يوجد @endif</td>
             <td>
                 <a class="btn btn-info btn-sm m-1" href="{{ url('editUnit/'.$item->id) }}">تعديل</ac>
                 <a class="btn btn-danger btn-sm m-1" href="{{ url('deleteUnit/'.$item->id) }}">حذف</ac>

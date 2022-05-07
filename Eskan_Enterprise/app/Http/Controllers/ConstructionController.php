@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
 use App\Models\Property;
-use App\Models\Construction;
 use App\Models\MainProject;
+use App\Models\Construction;
 use Illuminate\Http\Request;
 
 class ConstructionController extends Controller
@@ -56,7 +57,7 @@ class ConstructionController extends Controller
 
         $constructions->name            = $request->input('name');
         $constructions->property_id     = $request->input('property_id');
-        $constructions->mainProject_id  = $request->input('mainProject_id');
+        $constructions->main_project_id = $request->input('main_project_id');
         $constructions->levels          = $request->input('levels');
         $constructions->units           = $request->input('units');
         $constructions->total_units     = $request->input('total_units');
@@ -73,7 +74,13 @@ class ConstructionController extends Controller
      */
     public function show($id)
     {
-        //
+        $status = $_GET['status'];
+        $constructions = Construction::with('customers', 'main_projects')->find($id);
+        $units = Unit::find($id)->where('construction_id', '=', $id)->get();
+        $units1 = Unit::find($id)->where('customer_id', '=', '8')->get();
+        $units2 = Unit::find($id)->where('status', '=', $status)->get();
+
+        return view('admins.constructions.showConstruction', compact('constructions', 'units', 'units1', 'units2'));
     }
 
     /**
@@ -114,7 +121,7 @@ class ConstructionController extends Controller
 
         $constructions->name            = $request->input('name');
         $constructions->property_id     = $request->input('property_id');
-        $constructions->mainProject_id  = $request->input('mainProject_id');
+        $constructions->main_project_id  = $request->input('main_project_id');
         $constructions->levels          = $request->input('levels');
         $constructions->units           = $request->input('units');
         $constructions->total_units     = $request->input('total_units');

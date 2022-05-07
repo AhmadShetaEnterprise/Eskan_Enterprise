@@ -53,9 +53,9 @@ class Main_ProjectController extends Controller
      */
     public function show($id)
     {
-        $customers = Customer::with('main_projects', 'units')->find($id);
-        // $customers->main_projects()->attach($id);
-        return view('admins.main_projects.showMain_project', compact('customers'));
+        $main_projects = MainProject::with('customers', 'units')->find($id);
+        $main_projects->customers()->attach($id);
+        return view('admins.main_projects.showMain_project', compact('main_projects'));
     }
 
     /**

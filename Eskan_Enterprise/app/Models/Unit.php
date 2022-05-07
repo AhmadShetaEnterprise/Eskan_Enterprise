@@ -13,7 +13,7 @@ class unit extends Model
     protected $fillable = [
         'name',
         'property_id',
-        'mainProject_id',
+        'main_project_id',
         'construction_id',
         'level_id',
         'site',
@@ -37,11 +37,8 @@ class unit extends Model
         return $this->belongsTo(Construction::class, 'construction_id', 'id');
     }
 
-    public function customer() {
-        return $this->belongsTo(Customer::class)->withDefault(
-            [
-                'name' => 'default name from model'
-            ]);
+    public function customers() {
+        return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
 
     public function levels() {

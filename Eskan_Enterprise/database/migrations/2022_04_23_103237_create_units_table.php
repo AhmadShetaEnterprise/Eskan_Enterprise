@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->integer('property_id');
-            $table->integer('mainProject_id');
+            $table->integer('main_project_id');
             $table->integer('construction_id');
             $table->integer('level_id');
             $table->string('site');

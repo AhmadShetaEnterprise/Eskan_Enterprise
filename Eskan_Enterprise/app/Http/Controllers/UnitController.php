@@ -40,7 +40,7 @@ public function store(Request $request)
 
     $units->name            = $request->input('name');
     $units->property_id     = $request->input('property_id');
-    $units->mainProject_id  = $request->input('main_project_id');
+    $units->main_project_id  = $request->input('main_project_id');
     $units->construction_id = $request->input('construction_id');
     $units->level_id        = $request->input('level_id');
     $units->site            = $request->input('site');
@@ -85,7 +85,7 @@ public function update(Request $request, $id)
 
     $units->name            = $request->input('name');
     $units->property_id     = $request->input('property_id');
-    $units->mainProject_id  = $request->input('main_project_id');
+    $units->main_project_id  = $request->input('main_project_id');
     $units->construction_id = $request->input('construction_id');
     $units->level_id        = $request->input('level_id');
     $units->site            = $request->input('site');

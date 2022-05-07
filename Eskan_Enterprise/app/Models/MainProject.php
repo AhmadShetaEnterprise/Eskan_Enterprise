@@ -16,12 +16,12 @@ class MainProject extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function property() {
-        return $this->belongsTo(Property::class, 'property_id');
+    public function properties() {
+        return $this->belongsTo(Property::class, 'property_id', 'id');
     }
 
-    public function construction() {
-        return $this->hasMany(Construction::class);
+    public function constructions() {
+        return $this->hasMany(Construction::class, 'main_project_id', 'id');
     }
 
     public function units() {

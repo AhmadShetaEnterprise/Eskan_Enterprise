@@ -12,7 +12,7 @@ class Construction extends Model
     protected $fillable = [
         'name',
         'property_id',
-        'mainProject_id',
+        'main_project_id',
         'levels',
         'units',
         'total_units',
@@ -25,14 +25,14 @@ class Construction extends Model
      */
     public function customers()
     {
-        return $this->belongsToMany(Customer::class);
+        return $this->belongsToMany(Customer::class, 'construction_customer', 'construction_id', 'customer_id', 'id', 'id');
     }
 
     public function properties() {
         return $this->belongsTo(Property::class, 'property_id');
     }
 
-    public function Main_Projects() {
+    public function main_projects() {
         return $this->belongsTo(MainProject::class, 'main_project_id', 'id');
     }
 

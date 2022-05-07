@@ -20,6 +20,11 @@ class Customer extends Model
         'password',
     ];
 
+    public function constructions()
+    {
+        return $this->belongsToMany(Construction::class, 'construction_customer', 'construction_id', 'customer_id', 'id', 'id');
+    }
+
     public function main_projects()
     {
         return $this->belongsToMany(MainProject::class);

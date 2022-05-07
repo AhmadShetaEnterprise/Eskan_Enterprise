@@ -14,12 +14,12 @@
             <div class="card-body col-lg-6"  style="width: 20rem;">
                 @foreach ($units as $item)
 
-                <h5 class="card-title">{{ $item->customer->name }}</h5>
+                <h5 class="card-title">{{ $item->customers->name }}</h5>
                 <h5 class="card-title">{{ $item->name }}</h5>
 
-                <h5 class="card-title">{{ $item->construction->name }}</h5>
-                <h5 class="card-title">{{ $item->main_project->name }}</h5>
-                <h5 class="card-title">{{ $item->property->name }}</h5>
+                <h5 class="card-title">{{ $item->constructions->name }}</h5>
+                <h5 class="card-title">{{ $item->main_projects->name }}</h5>
+                <h5 class="card-title">{{ $item->properties->name }}</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
                 @endforeach

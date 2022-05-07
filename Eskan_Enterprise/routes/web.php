@@ -59,6 +59,7 @@ Route::controller(ConstructionController::class)->group(function () {
     Route::get('/constructionsIndex', 'index')->name('constructionsIndex');
     Route::get('/addConstruction', 'create')->name('addConstruction');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
+    Route::get('/showConstruction/{id}', 'show')->name('showConstruction');
     Route::get('/editConstruction/{id}', 'edit')->name('editConstruction');
     Route::put('updateConstruction/{id}', 'update')->name('updateConstruction');
     Route::get('deleteConstruction/{id}', 'destroy');

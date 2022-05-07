@@ -19,12 +19,12 @@
                     <div class="col-md-6 mb-3">
                         <label for="">القسم</label>
                         <input type="hidden" class="form-control  font-weight-bold text-dark" name="property_id" value="{{ $constructions->property_id }}" required>
-                        <input type="text" class="form-control  font-weight-bold text-dark"  value="{{ $constructions->property->name }}">
+                        <input type="text" class="form-control  font-weight-bold text-dark"  value="{{ $constructions->properties->name }}">
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="">المشروع</label>
-                        <input type="hidden" class="form-control  font-weight-bold text-dark" name="mainProject_id" value="{{ $constructions->mainProject_id }}" required>
+                        <input type="hidden" class="form-control  font-weight-bold text-dark" name="main_project_id" value="{{ $constructions->main_project_id }}" required>
                         <input type="text" class="form-control  font-weight-bold text-dark"  value="{{ $constructions->main_project->name }}" required>
                     </div>
 
