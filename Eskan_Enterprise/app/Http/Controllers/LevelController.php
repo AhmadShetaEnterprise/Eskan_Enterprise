@@ -36,9 +36,20 @@ class LevelController extends Controller
 ////////////////////////////////////////////////
 //* Display the specified resource.
 ////////////////////////////////////////////////
+    public function showLevels()
+    {
+        $levels = Level::all();
+        return view('admins.constructions.showLevels', compact('levels'));
+    }
+////////////////////////////////////////////////
+//* Display the specified resource.
+////////////////////////////////////////////////
     public function show($id)
     {
-        //
+        $level = Level::with('units')->find($id);
+        return view('admins.constructions.showLevels', compact('level'));
+
+        // return view('admins.constructions.singleLevel', compact('level'));
     }
 ////////////////////////////////////////////////
 //* Show the form for editing the specified resource.

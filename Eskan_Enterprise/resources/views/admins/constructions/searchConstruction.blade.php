@@ -12,27 +12,25 @@
 
         <h2 class="card-title">Property      :{{ $constructions->properties->name}}</h2>
         <h2 class="card-title">Main Project  :{{ $constructions->main_projects->name}}</h2>
-        <h2 class="card-title">
-            <a href="{{url('showLevels')}}">
-                Levels  :{{ $constructions->levels}}</h2>
-            </a>
         <br>
         <div class="d-lg-inline-flex">
             <div class="card-body col-lg-6"  style="width: 20rem;">
-                الوحدات المسجلة
+                <h3>
+                    الوحدات المسجلة
+                </h3>
+                    
 
                 @if (!$units == null)
 
                 @foreach ($units as $item)
                 <h5 class="card-title">{{ $item->name}}-->{{ $item->status }}-->{{$item->customers->name}}</h5>
                 @endforeach
-                
+
                 @elseif($units == null)
                 <h5 class="card-title">no</h5>
                 @else
                 <h5 class="card-title">{{ $item->name}}-->{{ $item->status }}-->{{$item->customers->name}}</h5>
                 @endif
-
 
 
                 <p class="card-text">.</p>
@@ -42,7 +40,6 @@
                 <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=ملغاة') }}" class="btn btn-primary">منشئات ملغاة</a>
 
             </div>
-            
 
         </div>
     </div>

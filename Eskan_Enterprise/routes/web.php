@@ -29,6 +29,7 @@ Auth::routes();
 
 Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::controller(AdminController::class)->group(function () {
     Route::get('/index', 'index')->name('index');
     // Route::get('/addCustomer', 'create')->name('addCustomer');
@@ -60,6 +61,9 @@ Route::controller(ConstructionController::class)->group(function () {
     Route::get('/addConstruction', 'create')->name('addConstruction');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
     Route::get('/showConstruction/{id}', 'show')->name('showConstruction');
+    Route::get('/singleLevel{id}', 'showl')->name('singleLevel');
+
+    Route::get('/searchConstruction/{id}', 'search')->name('searchConstruction');
     Route::get('/editConstruction/{id}', 'edit')->name('editConstruction');
     Route::put('updateConstruction/{id}', 'update')->name('updateConstruction');
     Route::get('deleteConstruction/{id}', 'destroy');
@@ -107,6 +111,8 @@ Route::controller(Main_ProjectController::class)->group(function () {
                 // LevelController start
 Route::controller(LevelController::class)->group(function () {
     Route::get('/levelsIndex', 'index')->name('levelsIndex');
+    Route::get('/showLevels', 'showLevels')->name('showLevels');
+    // Route::get('singleLevel{id}', 'show')->name('singleLevel');
     Route::get('/addLevel', 'create')->name('addLevel');
     Route::post('/insertLevel', 'store')->name('insertLevel');
     Route::get('/editLevel/{id}', 'edit')->name('editLevel');

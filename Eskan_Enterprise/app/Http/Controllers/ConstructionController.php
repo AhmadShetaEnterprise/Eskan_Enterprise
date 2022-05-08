@@ -74,14 +74,35 @@ class ConstructionController extends Controller
      */
     public function show($id)
     {
-        $constructions = Construction::with('customers', 'main_projects')->find($id);
-        if ($_GET['status']) {
-            $status =$_GET['status'];
-            $units = Unit::find($id)->where([['construction_id', '=', $id],['status', '=', $status]])->get();
-        }
-        $allUnits = Unit::find($id)->where('construction_id', '=', $id)->get();
+        $constructions = Construction::with('customers', 'main_projects', 'units')->find($id);
+        $construction_id = $constructions->id;
+        $units = Unit::find($id)->where('construction_id', '=', $construction_id)->get();
 
-        return view('admins.constructions.showConstruction', compact('constructions', 'units', 'allUnits'));
+        return view('admins.constructions.showConstruction', compact('constructions', 'units'));
+    }
+
+    public function showl($id)
+    {
+        $level = Level::with('units')->find($id);
+        return view('admins.constructions.showLevels', compact('level'));
+
+        // return view('admins.constructions.singleLevel', compact('level'));
+    }
+
+    public function select($id)
+    {
+        $result = Unit::select('id', 'name')
+        ->orderByDesc(
+        Constructio::selectRaw(1)
+            ->leftJoin('server_site', 'sites.id', 'server_site.site_id')
+            ->whereColumn('server_site.server_id', 'servers.id')
+            ->where('server_site.site_id', $site->id)
+            ->union(fn ($query) => $query->selectRaw(0))
+            ->limit(1)
+            ->toBase()
+        )
+        ->orderBy('name', 'asc')
+        ->simplePaginate($per_page);
     }
 
 
@@ -89,13 +110,10 @@ class ConstructionController extends Controller
     public function search($id)
     {
         $constructions = Construction::with('customers', 'main_projects')->find($id);
-        if ($_GET['status']) {
-            $status =$_GET['status'];
-            $units = Unit::find($id)->where([['construction_id', '=', $id],['status', '=', $status]])->get();
-        }
-        $allUnits = Unit::find($id)->where('construction_id', '=', $id)->get();
+        $status =$_GET['status'];
+        $units = Unit::find($id)->where([['construction_id', '=', $id],['status', '=', $status]])->get();
 
-        return view('admins.constructions.showConstruction', compact('constructions', 'units', 'allUnits'));
+        return view('admins.constructions.searchConstruction', compact('constructions', 'units'));
     }
 
     /**

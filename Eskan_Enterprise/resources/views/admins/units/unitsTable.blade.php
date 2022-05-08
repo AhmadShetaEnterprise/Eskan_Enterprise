@@ -31,7 +31,11 @@
                 </a>
             </td>
             <td class="text-xl-center">{{ $item->properties->name }}</td>
-            <td class="text-xl-center">{{ $item->constructions->name }}</td>
+            <td class="text-xl-center">
+            <a href="{{ url('showConstruction/'.$item->constructions->id) }}">
+                    {{ $item->constructions->name }}
+            </a>
+            </td>
             <td class="text-xl-center">{{ $item->main_projects->name }}</td>
             <td class="text-xl-center">{{ $item->level_id }}</td>
             <td class="text-xl-center">{{ $item->site }}</td>
