@@ -3,46 +3,52 @@
 @section('content')
 
     <div class="card" style="width: ;">
-        <div class="card-header text-lg-center text-danger">
+        <div class="card-header text-lg-center text-danger col-lg-12">
             <h1>
                 {{ $constructions->name }}
             </h1>
             <img src="..." class="card-img-top" alt="...">
         </div>
-
+        
         <h2 class="card-title">Property      :{{ $constructions->properties->name}}</h2>
         <h2 class="card-title">Main Project  :{{ $constructions->main_projects->name}}</h2>
         <h2 class="card-title">
-            <a href="{{url('showLevels')}}">
-                Levels  :{{ $constructions->levels}}</h2>
+            <a href="">
+                Levels  :{{$levels =  $constructions->levels}} </h2>
             </a>
         <br>
         <div class="d-lg-inline-flex">
             <div class="card-body col-lg-6"  style="width: 20rem;">
                 الوحدات المسجلة
 
-                @if (!$units == null)
 
                 @foreach ($units as $item)
-                <h5 class="card-title">{{ $item->name}}-->{{ $item->status }}-->{{$item->customers->name}}</h5>
+                <h5 class="card-title">{{ $item->name }}-->{{ $item->status }}-->{{$item->customers->name}}</h5>
+ 
                 @endforeach
+                {{-- {{dd($units)}} --}}
+
+
+
                 
-                @elseif($units == null)
-                <h5 class="card-title">no</h5>
-                @else
-                <h5 class="card-title">{{ $item->name}}-->{{ $item->status }}-->{{$item->customers->name}}</h5>
-                @endif
-
-
-
                 <p class="card-text">.</p>
                 <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=خالية') }}" class="btn btn-primary">منشئات خالية</a>
                 <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=تعاقد') }}" class="btn btn-primary">منشئات تعاقد</a>
                 <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=محجوزة') }}" class="btn btn-primary">منشئات محجوزة</a>
                 <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=ملغاة') }}" class="btn btn-primary">منشئات ملغاة</a>
-
+                
             </div>
-            
+            <div>
+                @for ($i = 1; $i < $levels+1; $i++)
+                <div>
+                    <h4>                          
+                        {{-- <a href="{{ url('showLevel/'.$i-1) }}">الدور {{ $i }}</a>  --}}
+                        <a href="{{route('showLevel', ['id'=>$i-1, 'constructions'=>$constructions->id])}}">الدور {{ $i }}</a> 
+                        {{-- <a href="{{ route('showLevel', ['id' => 5, 'constructions' => $constructions->id]) }}">الدور {{ $i }}</a>  --}}
+                    </h4>
+                </div>
+                @endfor
+            </div>
 
         </div>
     </div>

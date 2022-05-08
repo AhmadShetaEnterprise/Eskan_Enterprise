@@ -10,7 +10,8 @@
         </tr>
         </thead>
         <tbody>
-@foreach ($levels as $item)
+            
+@foreach ($level as $item)
 
         <tr>
             <th scope="row" class="text-xl-center" class="text-xl-center">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
 use App\Models\Level;
 use Illuminate\Http\Request;
 
@@ -36,10 +37,10 @@ class LevelController extends Controller
 ////////////////////////////////////////////////
 //* Display the specified resource.
 ////////////////////////////////////////////////
-    public function showLevels()
+    public function showLevel($id,$constructions)
     {
-        $levels = Level::all();
-        return view('admins.constructions.showLevels', compact('levels'));
+        $level = Unit::select()->where('construction_id', '=', $constructions)->offset($id*4)->limit(4)->get();
+        return view('admins.constructions.showLevel', compact('level'));
     }
 ////////////////////////////////////////////////
 //* Display the specified resource.
@@ -47,7 +48,7 @@ class LevelController extends Controller
     public function show($id)
     {
         $level = Level::with('units')->find($id);
-        return view('admins.constructions.showLevels', compact('level'));
+        return view('admins.constructions.showLevel', compact('level'));
 
         // return view('admins.constructions.singleLevel', compact('level'));
     }

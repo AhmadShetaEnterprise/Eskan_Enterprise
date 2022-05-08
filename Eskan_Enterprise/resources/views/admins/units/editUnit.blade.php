@@ -103,7 +103,7 @@
                         <select class="custom-select form-control  font-weight-bold text-dark" name="customer_id" >
                             <option  selected value="0">عميل</option>
                             @foreach ( $customers as $customer)
-                            <option value="{{ $customer->id }}" {{ $units->customer_id == $customer->id ? 'selected' : '' }} >{{ $units->customer->name }}</option>
+                            <option value="{{ $customer->id }}" {{ $units->customer_id == $customer->id ? 'selected' : '' }} >{{ $units->customers->name ? $units->customers->name : '' }}</option>
                             @endforeach
                         </select>
                     </div>

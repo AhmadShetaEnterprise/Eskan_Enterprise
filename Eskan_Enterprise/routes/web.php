@@ -61,8 +61,6 @@ Route::controller(ConstructionController::class)->group(function () {
     Route::get('/addConstruction', 'create')->name('addConstruction');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
     Route::get('/showConstruction/{id}', 'show')->name('showConstruction');
-    Route::get('/singleLevel{id}', 'showl')->name('singleLevel');
-
     Route::get('/searchConstruction/{id}', 'search')->name('searchConstruction');
     Route::get('/editConstruction/{id}', 'edit')->name('editConstruction');
     Route::put('updateConstruction/{id}', 'update')->name('updateConstruction');
@@ -111,13 +109,20 @@ Route::controller(Main_ProjectController::class)->group(function () {
                 // LevelController start
 Route::controller(LevelController::class)->group(function () {
     Route::get('/levelsIndex', 'index')->name('levelsIndex');
-    Route::get('/showLevels', 'showLevels')->name('showLevels');
-    // Route::get('singleLevel{id}', 'show')->name('singleLevel');
+    // Route::get('/showLevel/{id}/{constructions}', 'showLevel')->name('showLevel');
+    Route::get('singleLevel{id}', 'show')->name('singleLevel');
     Route::get('/addLevel', 'create')->name('addLevel');
     Route::post('/insertLevel', 'store')->name('insertLevel');
     Route::get('/editLevel/{id}', 'edit')->name('editLevel');
     Route::put('updateLevel/{id}', 'update')->name('updateLevel');
 });
+Route::get('/showLevel{id}/{constructions}', [App\Http\Controllers\LevelController::class, 'showLevel'])->name('showLevel');
+Route::get('showLevel/{id}', function ($id) {
+});
+// Route::get('/showLevel/{id}'         , 'LevelController@showLevel');
+Route::get('showLevel/{id}/{constructions}'  , [LevelController::class, 'showLevel']);
+
+
                 // LevelController end
                 // LevelController end
                 // LevelController end

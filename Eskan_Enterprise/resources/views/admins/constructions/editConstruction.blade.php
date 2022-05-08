@@ -25,7 +25,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="">المشروع</label>
                         <input type="hidden" class="form-control  font-weight-bold text-dark" name="main_project_id" value="{{ $constructions->main_project_id }}" required>
-                        <input type="text" class="form-control  font-weight-bold text-dark"  value="{{ $constructions->main_project->name }}" required>
+                        <input type="text" class="form-control  font-weight-bold text-dark"  value="{{ $constructions->main_projects->name }}" required>
                     </div>
 
                     <div class="col-md-6 mb-3">

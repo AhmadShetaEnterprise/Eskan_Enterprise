@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Level;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Construction extends Model
 {
@@ -35,6 +36,10 @@ class Construction extends Model
     public function main_projects() {
         return $this->belongsTo(MainProject::class, 'main_project_id', 'id');
     }
+
+    // public function level() {
+    //     return $this->belongsToMany(Level::class);
+    // }
 
     public function units() {
         return $this->hasMany(Unit::class, 'construction_id', 'id');

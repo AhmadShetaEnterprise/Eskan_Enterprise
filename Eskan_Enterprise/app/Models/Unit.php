@@ -38,7 +38,9 @@ class unit extends Model
     }
 
     public function customers() {
-        return $this->belongsTo(Customer::class, 'customer_id', 'id');
+        return $this->belongsTo(Customer::class, 'customer_id', 'id')->withDefault(
+            ['name'=> 'لا يوجد']
+        );
     }
 
     public function levels() {
