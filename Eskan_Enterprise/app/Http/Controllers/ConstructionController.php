@@ -74,13 +74,28 @@ class ConstructionController extends Controller
      */
     public function show($id)
     {
-        $status = $_GET['status'];
         $constructions = Construction::with('customers', 'main_projects')->find($id);
-        $units = Unit::find($id)->where('construction_id', '=', $id)->get();
-        $units1 = Unit::find($id)->where('customer_id', '=', '8')->get();
-        $units2 = Unit::find($id)->where('status', '=', $status)->get();
+        if ($_GET['status']) {
+            $status =$_GET['status'];
+            $units = Unit::find($id)->where([['construction_id', '=', $id],['status', '=', $status]])->get();
+        }
+        $allUnits = Unit::find($id)->where('construction_id', '=', $id)->get();
 
-        return view('admins.constructions.showConstruction', compact('constructions', 'units', 'units1', 'units2'));
+        return view('admins.constructions.showConstruction', compact('constructions', 'units', 'allUnits'));
+    }
+
+
+    
+    public function search($id)
+    {
+        $constructions = Construction::with('customers', 'main_projects')->find($id);
+        if ($_GET['status']) {
+            $status =$_GET['status'];
+            $units = Unit::find($id)->where([['construction_id', '=', $id],['status', '=', $status]])->get();
+        }
+        $allUnits = Unit::find($id)->where('construction_id', '=', $id)->get();
+
+        return view('admins.constructions.showConstruction', compact('constructions', 'units', 'allUnits'));
     }
 
     /**

@@ -20,7 +20,7 @@
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
             <td class="text-xl-center">
-                <a href="{{ url('showConstruction/'.$item->id.'/?status=') }}">
+                <a href="{{ url('showConstruction/'.$item->id) }}">
                     {{ $item->name }}
                 </a>
             </td>

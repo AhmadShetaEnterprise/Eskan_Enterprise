@@ -9,39 +9,26 @@
             </h1>
             <img src="..." class="card-img-top" alt="...">
         </div>
-        
+
         <h2 class="card-title">Property      :{{ $constructions->properties->name}}</h2>
         <h2 class="card-title">Main Project  :{{ $constructions->main_projects->name}}</h2>
         <br>
         <div class="d-lg-inline-flex">
             <div class="card-body col-lg-6"  style="width: 20rem;">
                 الوحدات المسجلة
+
                 @if (!$units == null)
+
                 @foreach ($units as $item)
                 <h5 class="card-title">{{ $item->name}}-->{{ $item->status }}-->{{$item->customers->name}}</h5>
                 @endforeach
+
                 @elseif($units == null)
                 <h5 class="card-title">no</h5>
-                @endif     
-
-                @if (!$units2 == null)
-                @foreach ($units2 as $item)
+                @else
                 <h5 class="card-title">{{ $item->name}}-->{{ $item->status }}-->{{$item->customers->name}}</h5>
-                @endforeach
-                @elseif($units2 == null)
-                <h5 class="card-title">no</h5>
-                @endif      
-                
-                
+                @endif
 
-
-                {{--  select where customer_id --}}
-                
-                {{-- @foreach ($units1 as $item1)               
-                    <h5 class="card-title">{{ $item1->name}}</h5>
-                @endforeach --}}
-
-                {{--  select where customer_id --}}
 
                 <p class="card-text">.</p>
                 <a href="{{ url('showConstruction/'.$constructions->id.'/?status=خالية') }}" class="btn btn-primary">منشئات خالية</a>
