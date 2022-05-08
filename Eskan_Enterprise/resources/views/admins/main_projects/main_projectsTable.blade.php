@@ -15,7 +15,7 @@
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
             <td class="text-xl-center">
-                <a href="{{ url('showMain_project/'.$item->id) }}">
+                <a href="{{ url('show_main_project/'.$item->id) }}">
                     {{ $item->name }}
                 </a>
             </td>

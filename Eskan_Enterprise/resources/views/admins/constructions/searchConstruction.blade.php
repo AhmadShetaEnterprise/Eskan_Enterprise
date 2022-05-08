@@ -18,7 +18,7 @@
                 <h3>
                     الوحدات المسجلة
                 </h3>
-                    
+
 
                 @if (!$units == null)
 
@@ -34,10 +34,11 @@
 
 
                 <p class="card-text">.</p>
-                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=خالية') }}" class="btn btn-primary">منشئات خالية</a>
-                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=تعاقد') }}" class="btn btn-primary">منشئات تعاقد</a>
-                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=محجوزة') }}" class="btn btn-primary">منشئات محجوزة</a>
-                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=ملغاة') }}" class="btn btn-primary">منشئات ملغاة</a>
+                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=خالية') }}" class="btn btn-primary">وحدات خالية</a>
+                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=تعاقد') }}" class="btn btn-primary">وحدات تعاقد</a>
+                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=محجوزة') }}" class="btn btn-primary">وحدات محجوزة</a>
+                <a href="{{ url('searchConstruction/'.$constructions->id.'/?status=ملغاة') }}" class="btn btn-primary">وحدات ملغاة</a>
+                <a href="{{ url('showConstruction/'.$constructions->id) }}" class="btn btn-danger">كل الوحدات</a>
 
             </div>
 

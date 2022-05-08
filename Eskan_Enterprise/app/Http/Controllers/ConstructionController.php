@@ -80,7 +80,7 @@ class ConstructionController extends Controller
 
         return view('admins.constructions.showConstruction', compact('constructions', 'units'));
     }
-    
+
     public function search($id)
     {
         $constructions = Construction::with('customers', 'main_projects')->find($id);

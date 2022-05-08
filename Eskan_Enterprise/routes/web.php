@@ -95,9 +95,11 @@ Route::controller(Main_ProjectController::class)->group(function () {
     Route::get('/main_projectsIndex', 'index')->name('main_projectsIndex');
     Route::get('/add_main_project', 'create')->name('add_main_project');
     Route::post('/insert_main_project', 'store')->name('insert_main_project');
+    Route::get('/show_main_project/{id}', 'show')->name('show_main_project');
+    Route::get('/search_main_project/{id}', 'search')->name('search_main_project');
     Route::get('/edit_main_project/{id}', 'edit')->name('edit_main_project');
     Route::put('update_main_project/{id}', 'update')->name('update_main_project');
-    Route::get('/showMain_project/{id}', 'show')->name('showMain_project');
+    Route::get('/show_main_project/{id}', 'show')->name('show_main_project');
 });
                 // Main_ProjectController end
                 // Main_ProjectController end

@@ -54,10 +54,27 @@ class Main_ProjectController extends Controller
     public function show($id)
     {
         $main_projects = MainProject::with('customers', 'units')->find($id);
-        $main_projects->customers()->attach($id);
-        return view('admins.main_projects.showMain_project', compact('main_projects'));
+        // $main_projects->customers()->attach($id);
+        return view('admins.main_projects.show_main_project', compact('main_projects'));
     }
 
+    // public function show($id)
+    // {
+    //     $constructions = MainProject::with('customers', 'main_projects')->find($id);
+    //     $construction_id = $constructions->id;
+    //     $units = Unit::select()->where('construction_id', '=', $construction_id)->get();
+
+    //     return view('admins.constructions.showConstruction', compact('constructions', 'units'));
+    // }
+
+    // public function search($id)
+    // {
+    //     $constructions = MainProject::with('customers', 'main_projects')->find($id);
+    //     $status =$_GET['status'];
+    //     $units = Unit::find($id)->where([['construction_id', '=', $id],['status', '=', $status]])->get();
+
+    //     return view('admins.constructions.searchConstruction', compact('constructions', 'units'));
+    // }
     /**
      * Show the form for editing the specified resource.
      *
