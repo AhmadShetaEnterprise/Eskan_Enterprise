@@ -61,11 +61,12 @@ Route::controller(ConstructionController::class)->group(function () {
     Route::get('/addConstruction', 'create')->name('addConstruction');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
     Route::get('/showConstruction/{id}', 'show')->name('showConstruction');
+    Route::get('/showConstructionLevels/{id}', 'showConstructionLevels')->name('showConstructionLevels');
+    Route::get('/showConstructionUnits/{id}', 'showConstructionUnits')->name('showConstructionUnits');
     Route::get('/searchConstruction/{id}', 'search')->name('searchConstruction');
     Route::get('/editConstruction/{id}', 'edit')->name('editConstruction');
     Route::put('updateConstruction/{id}', 'update')->name('updateConstruction');
     Route::get('deleteConstruction/{id}', 'destroy');
-
 });
                 // ConstructionController end
                 // ConstructionController end
@@ -78,11 +79,13 @@ Route::controller(ConstructionController::class)->group(function () {
 Route::controller(PropertyController::class)->group(function () {
     Route::get('/propertiesIndex', 'index')->name('propertiesIndex');
     Route::get('/addProperty', 'create')->name('addProperty');
+    Route::get('/showProperties/{id}', 'show')->name('showProperties');
     Route::post('/insertProperty', 'store')->name('insertProperty');
     Route::get('/editProperty/{id}', 'edit')->name('editProperty');
     Route::put('updateProperty/{id}', 'update')->name('updateProperty');
     Route::get('deleteProperty/{id}', 'destroy');
 });
+Route::get('/showProperties/{id}', [App\Http\Controllers\PropertyController::class, 'show'])->name('showProperties');
                 // PropertyController end
                 // PropertyController end
                 // PropertyController end
@@ -123,8 +126,6 @@ Route::get('showLevel/{id}', function ($id) {
 });
 // Route::get('/showLevel/{id}'         , 'LevelController@showLevel');
 Route::get('showLevel/{id}/{constructions}'  , [LevelController::class, 'showLevel']);
-
-
                 // LevelController end
                 // LevelController end
                 // LevelController end

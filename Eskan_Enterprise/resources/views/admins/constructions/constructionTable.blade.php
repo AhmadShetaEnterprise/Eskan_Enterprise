@@ -24,10 +24,10 @@
                     {{ $item->name }}
                 </a>
             </td>
-            <td class="text-xl-center">{{ $item->properties->name }}</td>
-            <td class="text-xl-center">{{ $item->main_projects->name }}</td>
-            <td class="text-xl-center">{{ $item->levels }}</td>
-            <td class="text-xl-center">{{ $item->units }}</td>
+            <td class="text-xl-center"><a href="{{ url('showProperties/'.$item->property_id) }}">{{ $item->properties->name }}</a></td>
+            <td class="text-xl-center"><a href="{{ url('show_main_project/'.$item->main_project_id) }}">{{ $item->main_projects->name }}</a></td>
+            <td class="text-xl-center"><a href="{{ url('showConstructionLevels/'.$item->id) }}">{{ $item->levels }}</a></td>
+            <td class="text-xl-center"><a href="{{ url('showConstructionUnits/'.$item->id) }}">{{ $item->units }}</a></td>
             <td class="text-xl-center">{{ $item->total_units }}</td>
             <td class="text-xl-center">{{ $item->coast }}</td>
             <td class="text-xl-center">

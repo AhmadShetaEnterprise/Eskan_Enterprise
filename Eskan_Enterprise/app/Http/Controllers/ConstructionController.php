@@ -81,6 +81,24 @@ class ConstructionController extends Controller
         return view('admins.constructions.showConstruction', compact('constructions', 'units'));
     }
 
+    public function showConstructionLevels($id)
+    {
+        $constructions = Construction::with('customers', 'main_projects')->find($id);
+        $construction_id = $constructions->id;
+        $units = Unit::select()->where('construction_id', '=', $construction_id)->get();
+
+        return view('admins.constructions.levelsTable', compact('constructions', 'units'));
+    }
+
+    public function showConstructionUnits($id)
+    {
+        $constructions = Construction::with('customers', 'main_projects')->find($id);
+        $construction_id = $constructions->id;
+        $units = Unit::select()->where('construction_id', '=', $construction_id)->get();
+
+        return view('admins.constructions.showConstructionUnits', compact('constructions', 'units'));
+    }
+
     public function search($id)
     {
         $constructions = Construction::with('customers', 'main_projects')->find($id);

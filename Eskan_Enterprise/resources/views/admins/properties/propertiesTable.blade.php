@@ -12,7 +12,7 @@
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
-            <td class="text-xl-center">{{ $item->name }}</td>
+            <td class="text-xl-center"><a href="{{ url('showProperties/'.$item->id) }}">{{ $item->name }}</a></td>
             <td class="text-xl-center">
                 <a class="btn btn-info btn-sm mr-1" href="{{ url('editProperty/'.$item->id) }}">تعديل القسم</ac>
                 <a class="btn btn-danger btn-sm ml-1" href="{{ url('deleteProperty/'.$item->id) }}">حذف القسم</ac>

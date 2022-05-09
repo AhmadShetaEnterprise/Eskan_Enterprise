@@ -84,7 +84,7 @@ class Main_ProjectController extends Controller
     public function edit($id)
     {
         $main_projects = MainProject::find($id);
-        return view('admins.main_projects.editmain_projects', compact('main_projects'));
+        return view('admins.main_projects.edit_main_project', compact('main_projects'));
     }
 
     /**

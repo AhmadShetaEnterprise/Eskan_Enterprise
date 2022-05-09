@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
+use Prophecy\Prophet;
 use App\Models\Property;
 use Illuminate\Http\Request;
-use Prophecy\Prophet;
 
 class PropertyController extends Controller
 {
@@ -52,7 +53,21 @@ class PropertyController extends Controller
      */
     public function show($id)
     {
-        //
+        $properties = Property::with('unit', 'main_projects')->find($id);
+        
+        $property_id = $properties->id;
+        $units = Unit::select()->where('property_id', '=', $property_id)->get();
+        
+        // $units = Unit::join('main_projects', 'units.property_id', '=', 'main_projects.property_id')
+        // ->where([['units.property_id', '=', $property_id]])
+        // ->get(['units.*', 'main_projects.name']);
+
+        // $units = Unit::select('units.*', 'main_projects.name as main_projects_name')
+        // ->join('main_projects', 'main_projects.property_id', '=', 'main_projects.property_id')
+        // ->where([['units.property_id', '=', $property_id]])
+        // ->get(['units.*', 'main_projects_name']);
+
+        return view('admins.properties.showProperties', compact('properties', 'units'));
     }
 
     /**
