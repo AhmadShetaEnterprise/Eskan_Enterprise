@@ -20,7 +20,7 @@
                 <li><a href="{{ url('unitsIndex') }}">الوحدات</a></li>
                 <li><a href="{{ url('propertiesIndex') }}">الاقسام</a></li>
                 <li><a href="{{ url('main_projectsIndex') }}">المشاريع الرئيسية</a></li>
-                <li><a href="{{ url('levelsIndex') }}">الطوابق</a></li>
+                {{-- <li><a href="{{ url('levelsIndex') }}">الطوابق</a></li> --}}
                 <li><a href="{{ url('?do=allDetails') }}">Main Details</a></li>
 
 
