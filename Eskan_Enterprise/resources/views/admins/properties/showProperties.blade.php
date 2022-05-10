@@ -51,12 +51,14 @@
                 {{-- {{dd($units)}} --}}
 
                 <p class="card-text">.</p>
-                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=خالية') }}" class="btn btn-primary">وحدات خالية</a>
-                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=تعاقد') }}" class="btn btn-primary">وحدات تعاقد</a>
-                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=محجوزة') }}" class="btn btn-primary">وحدات محجوزة</a>
-                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=ملغاة') }}" class="btn btn-primary">وحدات ملغاة</a>
-                <a href="{{ url('showConstruction/'.$properties->id) }}" class="btn btn-danger">كل الوحدات</a>
 
+                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=خالية') }}" class="btn btn-success">وحدات خالية</a>
+                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=تعاقد') }}" class="btn btn-danger">وحدات تعاقد</a>
+                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=محجوزة') }}" class="btn btn-warning">وحدات محجوزة</a>
+                <a href="{{ url('searchConstruction/'.$properties->id.'/?status=ملغاة') }}" class="btn btn-outline-danger">وحدات ملغاة</a>
+                <a href="{{ url('showConstruction/'.$properties->id) }}" class="btn btn-primary">كل الوحدات</a>
+                
+                <p class="card-text">.</p>
             </div>
             {{-- <div>
                 @for ($i = 1; $i < $levels+1; $i++)

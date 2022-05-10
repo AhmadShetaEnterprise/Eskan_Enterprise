@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
-use App\Http\Controllers\Main_ProjectController;
+use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\ConstructionController;
+use App\Http\Controllers\Main_ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,6 +148,40 @@ Route::controller(UnitController::class)->group(function () {
                 // UnitController end
                 // UnitController end
                 // UnitController end
+
+
+                // FinanceController start
+                // FinanceController start
+                // FinanceController start
+Route::controller(FinanceController::class)->group(function () {
+    Route::get('/financesIndex', 'index')->name('financesIndex');
+    Route::get('/addFinance', 'create')->name('addFinance');
+    Route::post('/insertFinance', 'store')->name('insertFinance');
+    Route::get('/unitFinance/{id}', 'show')->name('unitFinance');
+    Route::get('/editFinance/{id}', 'edit')->name('editFinance');
+    Route::put('updateFinance{id}', 'update')->name('updatFinance');
+    Route::get('deleteFinance/{id}', 'destroy');
+});
+                // FinanceController end
+                // FinanceController end
+                // FinanceController end
+
+
+                // InstallmentController start
+                // InstallmentController start
+                // InstallmentController start
+Route::controller(InstallmentController::class)->group(function () {
+    Route::get('/installmentsIndex', 'index')->name('installmentsIndex');
+    Route::get('/addInstallment', 'create')->name('addInstallment');
+    Route::post('/insertInstallment', 'store')->name('insertInstallment');
+    Route::get('/unitInstallment/{id}', 'show')->name('unitInstallment');
+    Route::get('/editInstallment/{id}', 'edit')->name('editInstallment');
+    Route::put('updateInstallment{id}', 'update')->name('updatInstallment');
+    Route::get('deleteInstallment/{id}', 'destroy');
+});
+                // InstallmentController end
+                // InstallmentController end
+                // InstallmentController end
 
 
 

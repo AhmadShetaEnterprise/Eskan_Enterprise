@@ -20,9 +20,9 @@ return new class extends Migration
             $table->integer('licences_payment');
             $table->integer('start_payment');
             $table->integer('to_recieve_payment');
-            $table->integer('residual');
+            $table->integer('residual')->nullable();
             $table->integer('installments');
-            $table->integer('installment_value');
+            $table->integer('installment_value')->nullable();
             $table->timestamps();
         });
     }
