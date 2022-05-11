@@ -6,6 +6,7 @@ use App\Models\Unit;
 use App\Models\Property;
 use App\Models\MainProject;
 use App\Models\Construction;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class ConstructionController extends Controller
@@ -76,7 +77,7 @@ class ConstructionController extends Controller
     {
         $constructions = Construction::with('customers', 'main_projects')->find($id);
         $construction_id = $constructions->id;
-        $units = Unit::select()->where('construction_id', '=', $construction_id)->get();
+        $units = Unit::select()->where('construction_id', $construction_id)->get();
 
         return view('admins.constructions.showConstruction', compact('constructions', 'units'));
     }
@@ -102,10 +103,11 @@ class ConstructionController extends Controller
     public function search($id)
     {
         $constructions = Construction::with('customers', 'main_projects')->find($id);
+        $customers = Customer::all();
         $status =$_GET['status'];
         $units = Unit::find($id)->where([['construction_id', '=', $id],['status', '=', $status]])->get();
 
-        return view('admins.constructions.searchConstruction', compact('constructions', 'units'));
+        return view('admins.constructions.searchConstruction', compact('constructions', 'units', 'customers'));
     }
 
     /**

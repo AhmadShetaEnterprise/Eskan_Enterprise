@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Payment;
 use Illuminate\Http\Request;
+use Illuminate\support\facades\DB;
 
 class PaymentController extends Controller
 {
@@ -53,24 +54,21 @@ class PaymentController extends Controller
         $payment->construction_id    = $request->input('construction_id');
         $payment->level_id           = $request->input('level_id');
 
-        $payments     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('recieving_payment', 'start_payment', 'licences_payment', 'space_payment');
-        // foreach ($payments as $data) {
-        //     $space_payment    = $data->space_payment;
-        //     $licences_payment = $data->licences_payment;
-        //     $start_payment    = $data->start_payment;
-        //     $recieving_payment= $data->recieving_payment;      
-            
-        // }
-        // echo $countPayments = ($space_payment+$licences_payment+$start_payment+$recieving_payment);
+        $space_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('space_payment');
+        $licences_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('licences_payment');
+        $start_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('start_payment');
+        $recieving_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('recieving_payment');
 
-        $currentPayment = ($request->input('space_payment')
+
+        $countPayments = ($space_payment+$licences_payment+$start_payment+$recieving_payment);
+            $currentPayment = ($request->input('space_payment')
             +$request->input('licences_payment')
             +$request->input('start_payment')
             +$request->input('recieving_payment'));
-        
-            
-        dd($currentPayment);
+
+
         $payment->residual           = $payment->unit_coast-$countPayments - $currentPayment;
+        // dd($payment->residual);
         $payment->save();
         return redirect('/paymentsIndex')->with('status', 'Payment added successfully');
     }

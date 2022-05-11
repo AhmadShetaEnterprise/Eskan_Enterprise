@@ -143,6 +143,7 @@ Route::controller(UnitController::class)->group(function () {
     Route::post('/insertUnit', 'store')->name('insertUnit');
     Route::get('/editUnit/{id}', 'edit')->name('editUnit');
     Route::put('updateUnit/{id}', 'update')->name('updateUnit');
+    Route::put('updateStatusUnit/{status}', 'updateStatusUnit')->name('updateStatusUnit');
     Route::get('deleteUnit/{id}', 'destroy');
     Route::get('/unitShow/{id}', 'show')->name('unitShow');
 });

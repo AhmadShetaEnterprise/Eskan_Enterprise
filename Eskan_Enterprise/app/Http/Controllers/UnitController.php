@@ -100,6 +100,21 @@ public function update(Request $request, $id)
     return redirect('unitsIndex')->with('status', 'Unit Updated successfully');
 }
 ////////////////////////////////////////////////
+//* Update the specified resource in storage.
+////////////////////////////////////////////////
+public function updateStatusUnit(Request $request, $id)
+{
+    $units = Unit::find($id);
+
+    // $customer_id = $_GET['customer_id'];
+
+    $units->status          = $request->input('status');
+    $units->customer_id     = $request->input('customer_id');
+
+    $units->update();
+    return redirect('searchConstruction')->with('status', 'status Updated successfully');
+}
+////////////////////////////////////////////////
 //* Remove the specified resource from storage
 ////////////////////////////////////////////////
 public function destroy($id)
