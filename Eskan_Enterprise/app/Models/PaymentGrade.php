@@ -5,8 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Main_Project_customer extends Model
+class PaymentGrade extends Model
 {
     use HasFactory;
-
 }

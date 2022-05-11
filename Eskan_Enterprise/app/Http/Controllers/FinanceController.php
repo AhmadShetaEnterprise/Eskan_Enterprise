@@ -42,10 +42,8 @@ class FinanceController extends Controller
         $finances->space_payment      = $request->input('space_payment');
         $finances->licences_payment   = $request->input('licences_payment');
         $finances->start_payment      = $request->input('start_payment');
-        $finances->to_recieve_payment = $request->input('to_recieve_payment');
-        $finances->residual           = $request->input('residual');
-        $finances->installments       = $request->input('installments');
-        $finances->installment_value  = $request->input('installment_value');
+        $finances->recieving_payment = $request->input('recieving_payment');
+
         $finances->save();
         return redirect('/financesIndex')->with('status', 'Finance added successfully');
     }

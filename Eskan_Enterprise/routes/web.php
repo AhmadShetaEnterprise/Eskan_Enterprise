@@ -6,6 +6,7 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\FinanceController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\InstallmentController;
@@ -179,9 +180,26 @@ Route::controller(InstallmentController::class)->group(function () {
     Route::put('updateInstallment{id}', 'update')->name('updatInstallment');
     Route::get('deleteInstallment/{id}', 'destroy');
 });
-                // InstallmentController end
-                // InstallmentController end
-                // InstallmentController end
+                // paymentController end
+                // paymentController end
+                // paymentController end
+
+
+                // paymentController start
+                // paymentController start
+                // paymentController start
+Route::controller(PaymentController::class)->group(function () {
+    Route::get('/paymentsIndex', 'index')->name('paymentsIndex');
+    Route::get('/addpayment', 'create')->name('addpayment');
+    Route::post('/insertPayment', 'store')->name('insertPayment');
+    Route::get('/unitPayment/{id}', 'show')->name('unitPayment');
+    Route::get('/editPayment/{id}', 'edit')->name('editPayment');
+    Route::put('updatePayment{id}', 'update')->name('updatPayment');
+    Route::get('deletePayment/{id}', 'destroy');
+});
+                // paymentController end
+                // paymentController end
+                // paymentController end
 
 
 

@@ -38,21 +38,17 @@ class InstallmentController extends Controller
     {
         $installments = new Installment();
 
-        $installments->name               = $request->input('name');
-        $installments->space_payment      = $request->input('space_payment');
-        $installments->licences_payment   = $request->input('licences_payment');
-        $installments->start_payment      = $request->input('start_payment');
-        $installments->to_recieve_payment = $request->input('to_recieve_payment');
-        $installments->unit_coast         = $request->input('unit_coast');
-        $installments->residual           = $request->input('residual');
-        $installments->installments       = $request->input('installments');
         $installments->installment_value  = $request->input('installment_value');
         $installments->installment_month  = $request->input('installment_month');
-        $installments->status             = $request->input('status');
         $installments->customer_id        = $request->input('customer_id');
-        $installments->unit_id        = $request->input('unit_id');
+        $installments->unit_id            = $request->input('unit_id');
+        $installments->property_id        = $request->input('property_id');
+        $installments->main_project_id    = $request->input('main_project_id');
+        $installments->construction_id    = $request->input('construction_id');
+        $installments->level_id           = $request->input('level_id');
+        
         $installments->save();
-        return redirect('/installmentsIndex')->with('status', 'Finance added successfully');
+        return redirect('/installmentsIndex')->with('status', 'Installment added successfully');
     }
 
     /**

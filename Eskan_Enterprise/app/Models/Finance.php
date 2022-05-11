@@ -10,6 +10,16 @@ class Finance extends Model
 {
     use HasFactory;
 
+    
+
+    protected $fillable = [
+        'name',
+        'space_payment',
+        'licences_payment',
+        'start_payment',
+        'recieving_payment',
+    ];
+
     public function installment() {
         return $this->hasMany(Installment::class);
     }

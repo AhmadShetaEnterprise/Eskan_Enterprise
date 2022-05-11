@@ -18,18 +18,17 @@
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
-            <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->id) }}"> {{ $item->name }} </a></td>
+            <td class="text-xl-center"><a href=""> {{ $item->name }} </a></td>
             <td class="text-xl-center">{{ $item->space_payment }}</td>
             <td class="text-xl-center">{{ $item->licences_payment }}</td>
             <td class="text-xl-center"><a href="">{{ $item->start_payment }}</a></td>
             <td class="text-xl-center">
                 <a href="">
-                    {{ $item->to_recieve_payment }}
+                    {{ $item->recieving_payment }}
                 </a>
             </td>
-            <td class="text-xl-center"><a href="">{{ $item->installments }}</a></td>
             <td class="text-xl-center">
-                <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل نظام الدفع</ac>    
+                <a class="btn btn-info btn-sm" href="{{ url('editPayment/'.$item->id) }}">تعديل نظام الدفع</ac>    
             </td>
 
         </tr>
