@@ -32,7 +32,7 @@
             <td class="text-xl-center"><a href="">{{ $item->unit_coast }}</a></td>
             <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->unit_id) }}"> {{ $item->customer_id }} </a></td>
             <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->customer_id) }}"> {{ $item->unit_id }} </a></td>
-            <td class="text-xl-center"><a href="{{ url('financesTable') }}"> {{ $item->finances_name }} </a></td>
+            <td class="text-xl-center"><a href="{{ url('financesTable') }}"> {{ $item->finance_id }} </a></td>
             <td class="text-xl-center">{{ $item->space_payment }}</td>
             <td class="text-xl-center">{{ $item->licences_payment }}</td>
             <td class="text-xl-center"><a href="">{{ $item->start_payment }}</a></td>

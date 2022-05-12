@@ -142,11 +142,15 @@ Route::controller(UnitController::class)->group(function () {
     Route::get('/addUnit', 'create')->name('addUnit');
     Route::post('/insertUnit', 'store')->name('insertUnit');
     Route::get('/editUnit/{id}', 'edit')->name('editUnit');
+    Route::put('firstUnitPayment{id}', 'firstUnitPayment')->name('firstUnitPayment');
+    Route::get('/editStatusUnit/{id}', 'editStatusUnit')->name('editStatusUnit');
     Route::put('updateUnit/{id}', 'update')->name('updateUnit');
-    Route::put('updateStatusUnit/{status}', 'updateStatusUnit')->name('updateStatusUnit');
+    Route::put('updateStatusUnit{id}', 'update')->name('updateStatusUnit');
     Route::get('deleteUnit/{id}', 'destroy');
     Route::get('/unitShow/{id}', 'show')->name('unitShow');
 });
+Route::get('/editStatusUnit/{id}', [App\Http\Controllers\UnitController::class, 'editStatusUnit'])->name('editStatusUnit');
+
                 // UnitController end
                 // UnitController end
                 // UnitController end

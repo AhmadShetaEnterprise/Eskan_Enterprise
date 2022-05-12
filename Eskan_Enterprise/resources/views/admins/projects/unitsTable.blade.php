@@ -31,7 +31,7 @@
             <td class="text-xl-center">{{ $item->site }}</td>
             <td class="text-xl-center">{{ $item->space }}</td>
             <td class="text-xl-center">{{ $item->price_m }}</td>
-            <td class="text-xl-center">{{ $item->total_price }}</td>
+            <td class="text-xl-center">{{ $item->unit_coast }}</td>
             <td class="text-xl-center">{{ $item->unitDescription }}</td>
             <td class="text-xl-center">{{ $item->status }}</td>
             <td class="text-xl-center">{{ $item->customer_id }}</td>

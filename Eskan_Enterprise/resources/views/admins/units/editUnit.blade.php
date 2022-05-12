@@ -80,7 +80,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">سعر الوحدة</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="total_price" value="{{ $units->total_price }}" required>
+                        <input type="text" class="form-control  font-weight-bold text-dark" name="unit_coast" value="{{ $units->unit_coast }}" required>
                     </div>
 
                     <div class="col-md-6 mb-3">

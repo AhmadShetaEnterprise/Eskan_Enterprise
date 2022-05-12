@@ -20,7 +20,7 @@ class Finance extends Model
         'recieving_payment',
     ];
 
-    public function installment() {
-        return $this->hasMany(Installment::class);
+    public function payments() {
+        return $this->hasMany(Payment::class, 'finance_id', 'id');
     }
 }

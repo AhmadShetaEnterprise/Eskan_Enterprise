@@ -41,7 +41,7 @@
             <td class="text-xl-center">{{ $item->site }}</td>
             <td class="text-xl-center">{{ $item->space }}</td>
             <td class="text-xl-center">{{ $item->price_m }}</td>
-            <td class="text-xl-center">{{ $item->total_price }}</td>
+            <td class="text-xl-center">{{ $item->unit_coast }}</td>
             <td class="text-xl-center">{{ $item->unitDescription }}</td>
             <td class="text-xl-center"><a href="{{ url('searchConstruction/'.$item->constructions->id.'/?status='.$item->status) }}">{{ $item->status ? $item->status : 'خالية' }}</a></td>
             <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->customers->id) }}" class=" m-2" style="width: 125px">@if ($item->customer_id) {{ $item->customers->name }} @else   @endif</a></td>

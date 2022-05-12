@@ -19,7 +19,7 @@ class unit extends Model
         'site',
         'space',
         'price_m',
-        'total_price',
+        'unit_coast',
         'unitDescription',
         'status',
         'customer_id',

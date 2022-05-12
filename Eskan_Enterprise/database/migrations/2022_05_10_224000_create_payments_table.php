@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->integer('unit_coast');
-            $table->integer('finances_name')->nullable();
+            $table->integer('finance_id')->nullable();
             $table->integer('space_payment')->nullable();
             $table->integer('licences_payment')->nullable();
             $table->integer('start_payment')->nullable();

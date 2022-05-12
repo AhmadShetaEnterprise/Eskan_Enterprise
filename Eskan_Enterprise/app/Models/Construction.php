@@ -42,7 +42,9 @@ class Construction extends Model
     // }
 
     public function units() {
-        return $this->hasMany(Unit::class, 'construction_id', 'id');
+        return $this->hasMany(Unit::class, 'construction_id', 'id')->withDefault([
+            'status'=>'خالية'
+        ]);
     }
 
 

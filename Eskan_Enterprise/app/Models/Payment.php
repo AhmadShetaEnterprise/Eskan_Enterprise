@@ -12,7 +12,7 @@ class Payment extends Model
     
     protected $fillable = [
         'unit_coast',
-        'finances_name',
+        'finance_id',
         'space_payment',
         'licences_payment',
         'start_payment',
@@ -27,4 +27,9 @@ class Payment extends Model
         'construction_id',
         'level_id',
         ];
+
+        public function finance() {
+            return $this->belongsTo(Finance::class, 'finance_id', 'id');
+        }
+
 }

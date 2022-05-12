@@ -28,7 +28,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">نظام الدفع</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="finances_name" required>
+                        <input type="text" class="form-control  font-weight-bold text-dark" name="finance_id" required>
                     </div>
 
                     <div class="col-md-6 mb-3">
