@@ -33,13 +33,13 @@
             <td class="text-xl-center">
                 <a href="">{{ $item->recieving_payment }}</a>
             </td>
-            <td class="text-xl-center"><a href="">{{ $item->unit_coast }}</a></td>
+            <td class="text-xl-center"><a href="">{{ $item->unit_price }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->residual }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->installments }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->installment_value }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->installments_month }}</a></td>
             <td class="text-xl-center">
-                <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل نظام الدفع</ac>    
+                <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل نظام الدفع</ac>
             </td>
 
         </tr>

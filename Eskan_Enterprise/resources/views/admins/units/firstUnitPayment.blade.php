@@ -15,7 +15,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">قيمة الوحدة</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="unit_coast" value="{{ $units->unit_coast }}" required>
+                        <input type="text" class="form-control  font-weight-bold text-dark" name="unit_price" value="{{ $units->unit_price }}" required>
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -24,13 +24,13 @@
                             <option value="">اختر</option>
                             @foreach ($finances as $finance)
                                 @foreach ($payments as $payment)
-                                    
+
                                 @if ((!$payment))
                                 <option value="{{ $finance->id }}">{{ $finance->name }}</option>
-                                
+
                                 @else
                                 <option value="{{ $finance->id }}"   {{ $payment->finance_id == $finance->id ? 'selected' : '' }}>{{ $finance->name }}</option>
-                                
+
                                 @endif
                                 @endforeach
                             @endforeach
@@ -133,7 +133,7 @@
                             @endforeach
                         </select>
                     </div>
-                    
+
                     <div class="col-md-6 mb-3">
                         {{-- <label for="">رقم الوحدة</label> --}}
                         <input type="hidden" class="form-control  font-weight-bold text-dark" name="name" value="{{ $units->name }}" required>

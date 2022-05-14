@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('payment_grades', function (Blueprint $table) {
             $table->id();
-            $table->integer('unit_coast');
+            $table->integer('unit_price');
             $table->integer('beforehand');
             $table->integer('license_grade');
             $table->string('license_grade_duration');

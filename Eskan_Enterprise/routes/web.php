@@ -140,6 +140,7 @@ Route::get('showLevel/{id}/{constructions}'  , [LevelController::class, 'showLev
 Route::controller(UnitController::class)->group(function () {
     Route::get('/unitsIndex', 'index')->name('unitsIndex');
     Route::get('/addUnit', 'create')->name('addUnit');
+    Route::get('/addUnitTest', 'create')->name('addUnitTest');
     Route::post('/insertUnit', 'store')->name('insertUnit');
     Route::get('/editUnit/{id}', 'edit')->name('editUnit');
     Route::put('firstUnitPayment{id}', 'firstUnitPayment')->name('firstUnitPayment');

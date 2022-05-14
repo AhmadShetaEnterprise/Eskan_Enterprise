@@ -39,7 +39,7 @@ class PaymentController extends Controller
     {
         $payment = new Payment();
 
-        $payment->unit_coast         = $request->input('unit_coast');
+        $payment->unit_price         = $request->input('unit_price');
         $payment->finances_name      = $request->input('finances_name');
         $payment->space_payment      = $request->input('space_payment');
         $payment->licences_payment   = $request->input('licences_payment');
@@ -67,7 +67,7 @@ class PaymentController extends Controller
             +$request->input('recieving_payment'));
 
 
-        $payment->residual           = $payment->unit_coast-$countPayments - $currentPayment;
+        $payment->residual           = $payment->unit_price-$countPayments - $currentPayment;
         // dd($payment->residual);
         $payment->save();
         return redirect('/paymentsIndex')->with('status', 'Payment added successfully');

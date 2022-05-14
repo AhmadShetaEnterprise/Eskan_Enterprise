@@ -29,7 +29,7 @@ public function create()
     $properties    = Property::all();
     $main_projects  = MainProject::all();
     $constructions = Construction::all();
-    return view('admins.units.addUnit', compact('units','customers' , 'properties', 'main_projects', 'constructions'));
+    return view('tests.addUnitTest', compact('units','customers' , 'properties', 'main_projects', 'constructions'));
 }
 ////////////////////////////////////////////////
 //* Store a newly created resource in storage.
@@ -46,7 +46,7 @@ public function store(Request $request)
     $units->site            = $request->input('site');
     $units->space           = $request->input('space');
     $units->price_m         = $request->input('price_m');
-    $units->total_price     = $request->input('total_price');
+    $units->unit_price     = $request->input('unit_price');
     $units->unitDescription = $request->input('unitDescription');
     $units->status          = $request->input('status');
     $units->customer_id     = $request->input('customer_id');
@@ -58,9 +58,9 @@ public function store(Request $request)
 ////////////////////////////////////////////////
 public function show($id)
 {
-    $units     = Unit::find($id);
+    $unit     = Unit::find($id);
     // $customers = Unit::with('customer')->find($id)->customer;
-    return view('admins.units.unitShow', compact('units'));
+    return view('admins.units.unitShow', compact('unit'));
 
 }
 ////////////////////////////////////////////////
@@ -91,7 +91,7 @@ public function update(Request $request, $id)
     $units->site            = $request->input('site');
     $units->space           = $request->input('space');
     $units->price_m         = $request->input('price_m');
-    $units->total_price     = $request->input('total_price');
+    $units->unit_price     = $request->input('unit_price');
     $units->unitDescription = $request->input('unitDescription');
     $units->status          = $request->input('status');
     $units->customer_id     = $request->input('customer_id');

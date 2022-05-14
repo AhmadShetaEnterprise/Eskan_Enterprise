@@ -2,7 +2,7 @@
     <a href="?do=addPayment" class="btn btn-warning mb-2 text-dark text-bold myText-button" href="">دفعة جديدة  </a>
     <table class="table table-light table-bordered">
         <thead>
-            
+
         <tr>
             <th scope="col" class="text-xl-center">id</th>
             <th scope="col" class="text-xl-center">قيمة الوحدة</th>
@@ -29,7 +29,7 @@
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
-            <td class="text-xl-center"><a href="">{{ $item->unit_coast }}</a></td>
+            <td class="text-xl-center"><a href="">{{ $item->unit_price }}</a></td>
             <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->unit_id) }}"> {{ $item->customer_id }} </a></td>
             <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->customer_id) }}"> {{ $item->unit_id }} </a></td>
             <td class="text-xl-center"><a href="{{ url('financesTable') }}"> {{ $item->finance_id }} </a></td>
@@ -37,7 +37,7 @@
             <td class="text-xl-center">{{ $item->licences_payment }}</td>
             <td class="text-xl-center"><a href="">{{ $item->start_payment }}</a></td>
             <td class="text-xl-center">{{ $item->recieving_payment }}</td>
-            <td class="text-xl-center"><a href="">{{ $item->unit_coast - $item->residual }}</a></td>
+            <td class="text-xl-center"><a href="">{{ $item->unit_price - $item->residual }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->residual }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->installments }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->installment_value }}</a></td>
@@ -46,7 +46,7 @@
             <td class="text-xl-center"><a href="">{{ $item->construction_id }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->level_id }}</a></td> --}}
             <td class="text-xl-center">
-                <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل نظام الدفع</ac>    
+                <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل نظام الدفع</ac>
             </td>
 
         </tr>

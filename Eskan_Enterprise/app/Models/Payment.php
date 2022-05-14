@@ -9,9 +9,9 @@ class Payment extends Model
 {
     use HasFactory;
 
-    
+
     protected $fillable = [
-        'unit_coast',
+        'unit_price',
         'finance_id',
         'space_payment',
         'licences_payment',

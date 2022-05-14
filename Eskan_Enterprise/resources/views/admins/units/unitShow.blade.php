@@ -24,7 +24,7 @@
                 </td>
                 <td>
                     {{-- @if ()
-                        
+
                     @endif --}}
                     <a href="{{ url('editStatusUnit/'.$unit->id) }}" class="btn btn-outline-success m-2" style="width: 125px">
                         دفعة جديدة
@@ -37,17 +37,17 @@
                             <th><h6 class="m-2 p-2 bg-dark text-lg-center">
                                 {{-- {{ $units->constructions->status }} --}}
                                 @if (!empty($unit))
-                                    
+
                                     @if ($unit->status == 'خالية') حجز
-                                    
+
                                     @elseif ($unit->status == 'تعاقد') العميل
-                                    
+
                                     @elseif ($unit->status == 'محجوزة') العميل
-                                    
+
                                     @elseif ($unit->status == 'محجوزة') العميل
-                                    
+
                                     @else حجز
-                                
+
                                     @endif
 
                                 @else العميل
@@ -67,7 +67,7 @@
                     </thead>
                         <tbody>
                             <tr>
-                                {{-- <td><a href="{{ url('unitShow/'.$unit->id) }}" class="btn btn-primary m-2" style="width: 125px">{{$unit->name}}</a></td> --}}                       
+                                {{-- <td><a href="{{ url('unitShow/'.$unit->id) }}" class="btn btn-primary m-2" style="width: 125px">{{$unit->name}}</a></td> --}}
                             @if ($unit->status == 'خالية')
                                 <td>
                                     <a href="{{ url('editStatusUnit/'.$unit->id) }}" class="btn btn-outline-success m-2" style="width: 125px">
@@ -98,7 +98,7 @@
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->site}}</a></td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->space}}</a></td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->price_m}}</a></td>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->unit_coast}}</a></td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->unit_price}}</a></td>
                             <td><a href="{{ route('showLevel', ['id'=>$unit->level_id-1, 'constructions'=>$unit->constructions->id]) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->levels->name}}</a></td>
                         </tr>
                     </tbody>

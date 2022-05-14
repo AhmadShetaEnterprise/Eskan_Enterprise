@@ -47,7 +47,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">قيمة الوحدة</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="unit_coast" required>
+                        <input type="text" class="form-control  font-weight-bold text-dark" name="unit_price" required>
                     </div>
 
                     <div class="col-md-6 mb-3">

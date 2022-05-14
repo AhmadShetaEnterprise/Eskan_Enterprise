@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('site');
             $table->string('space');
             $table->integer('price_m');
-            $table->integer('unit_coast');
+            $table->integer('unit_price');
             $table->text('unitDescription');
             $table->srting('status')->default('خالية');
             $table->integer('customer_id');
