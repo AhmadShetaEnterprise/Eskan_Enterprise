@@ -19,7 +19,10 @@ class ConstructionController extends Controller
     public function index()
     {
         $constructions = Construction::all();
-        return view('admins.constructionsIndex', compact('constructions'));
+        $customers     = Customer::all();
+        $properties    = Property::all();
+        $main_projects = MainProject::all();
+        return view('admins.constructionsIndex', compact('constructions','customers' , 'properties', 'main_projects',));
     }
 
     /**
@@ -32,6 +35,28 @@ class ConstructionController extends Controller
         $properties   = Property::all();
         $main_projects = MainProject::all();
         return view('admins.constructions.addconstruction', compact('properties', 'main_projects'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response
+     */
+    public function createConstructionsRows(Request $request)
+    {
+        $property_id     = $request->input('property_id');
+        $main_project_id = $request->input('main_project_id');
+        $levels          = $request->input('levels');
+        $units           = $request->input('units');
+        $rows            = $request->input('rows');
+        $total_units     = $units * $rows;
+        $property     = Property::find($property_id);
+        $properties   = Property::all();
+        $main_project = MainProject::find($main_project_id);
+        $main_projects= MainProject::all();
+        return view('admins.constructions.addconstructions', compact('properties', 'property', 'main_projects', 'main_project', 'levels', 'units', 'total_units', 'rows'));
     }
 
     /**
@@ -66,6 +91,43 @@ class ConstructionController extends Controller
         $constructions->save();
         return redirect('/constructionsIndex?addConstruction')->with('status', 'Category added successfully');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function constructionsMultipleStore(Request $request)
+    {
+
+        foreach ($request->name as $key => $value) {
+            
+            $constructions = new Construction();
+            // if ($request->hasFile('image'))
+        // {
+        //     $file            = $request->file('image');
+        //     $ext             = $file->getClientOriginalExtension();
+        //     $filename        = time().'.'.$ext;
+        //     $file->move('assets/images/uploads/customer/',$filename);
+        //     $customers->image = $filename;
+        // }
+        // if ($request->input('email')->exists())
+        // {
+            //     alert('email exists');
+            // }
+            
+            $constructions->name            = $value;
+            $constructions->property_id     = $request->property_id[$key];
+            $constructions->main_project_id = $request->main_project_id[$key];
+            $constructions->levels          = $request->levels[$key];
+            $constructions->units           = $request->units[$key];
+            $constructions->total_units     = $request->total_units[$key];
+            $constructions->coast           = $request->coast[$key];
+            $constructions->save();
+        }
+            return redirect('/constructionsIndex?addConstruction')->with('status', 'Category added successfully');
+        }
 
     /**
      * Display the specified resource.

@@ -62,7 +62,9 @@ Route::controller(CustomerController::class)->group(function () {
 Route::controller(ConstructionController::class)->group(function () {
     Route::get('/constructionsIndex', 'index')->name('constructionsIndex');
     Route::get('/addConstruction', 'create')->name('addConstruction');
+    Route::get('/addConstructions', 'createConstructionsRows')->name('addConstructions');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
+    Route::post('/constructionsMultipleStore', 'constructionsMultipleStore')->name('constructionsMultipleStore');
     Route::get('/showConstruction/{id}', 'show')->name('showConstruction');
     Route::get('/showConstructionLevels/{id}', 'showConstructionLevels')->name('showConstructionLevels');
     Route::get('/showConstructionUnits/{id}', 'showConstructionUnits')->name('showConstructionUnits');
@@ -141,7 +143,9 @@ Route::controller(UnitController::class)->group(function () {
     Route::get('/unitsIndex', 'index')->name('unitsIndex');
     Route::get('/addUnit', 'create')->name('addUnit');
     Route::get('/addUnitTest', 'create')->name('addUnitTest');
+    Route::get('/createUnitCustom', 'createUnitCustom')->name('createUnitCustom');
     Route::post('/insertUnit', 'store')->name('insertUnit');
+    Route::post('/unitMultipleStore', 'unitMultipleStore')->name('unitMultipleStore');
     Route::get('/editUnit/{id}', 'edit')->name('editUnit');
     Route::put('firstUnitPayment{id}', 'firstUnitPayment')->name('firstUnitPayment');
     Route::get('/editStatusUnit/{id}', 'editStatusUnit')->name('editStatusUnit');

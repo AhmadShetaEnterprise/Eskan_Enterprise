@@ -1,5 +1,6 @@
 <div class="col-lg-12">
     <a href="{{ route('addConstruction') }}" class="btn btn-warning mb-2 btn-block responsive-width text-dark myText-button">اضافة منشأة جديدة</a>
+    @include('admins.constructions.customAddConstrutionsNavbar')
     <table class="table table-light table-bordered">
         <thead>
         <tr>
