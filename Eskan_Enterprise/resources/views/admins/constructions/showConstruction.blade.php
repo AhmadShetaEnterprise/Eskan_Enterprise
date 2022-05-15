@@ -29,6 +29,8 @@
                     </tr>
                 </thead>
                 <tbody>
+@if ($units->isNotEmpty())
+
 @foreach ($units as $item)
 
                     <tr>
@@ -51,6 +53,10 @@
                         <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->levels->name}}</a></td>
                     </tr>
 @endforeach
+
+@else
+         ''
+@endif
                 </tbody>
             </table>
 
@@ -64,9 +70,9 @@
             </div>
             <div>
                 @for ($i = 1; $i < $levels+1; $i++)
-                <div>
+                <div class="d-inline-flex m-1">
                     <h4>
-                        <a href="{{route('showLevel', ['id'=>$i-1, 'constructions'=>$constructions->id])}}">الدور {{ $i }}</a>
+                        <a  class="btn btn-secondary" href="{{route('showLevel', ['id'=>$i-1, 'constructions'=>$constructions->id])}}">الدور {{ $i }}</a>
                     </h4>
                 </div>
                 @endfor

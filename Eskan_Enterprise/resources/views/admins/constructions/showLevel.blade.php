@@ -1,7 +1,8 @@
 @extends('layouts.adminPanelApp')
 
 @section('content')
-<div class="col-lg-8">
+<div class="row">
+<div class="col-lg-6">
     <table class="table table-light table-bordered">
         <thead>
         <tr>
@@ -10,7 +11,7 @@
         </tr>
         </thead>
         <tbody>
-            
+
 @foreach ($level as $item)
 
         <tr>
@@ -27,5 +28,16 @@
 @endforeach
         </tbody>
     </table>
+</div>
+<div class="col-lg-4 ml-1">
 
+        @for ($i = 1; $i < $constructions->levels+1; $i++)
+        <div class="">
+            <h4>
+                <a class="btn btn-secondary" href="{{route('showLevel', ['id'=>$i-1, 'constructions'=>$constructions->id])}}">الدور {{ $i }}</a>
+            </h4>
+        </div>
+        @endfor
+</div>
+</div>
 @endsection
