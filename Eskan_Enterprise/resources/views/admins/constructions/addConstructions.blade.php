@@ -13,13 +13,13 @@
             </thead>
             <tbody class="tbody">
                 <form action="{{ url('constructionsMultipleStore') }}" method="POST" enctype="multipart/form-data">
-                    @csrf 
+                    @csrf
                     @if (!$rows) {{$rows=1}}
-                        
+                    @endif
+
                     @for ($i = 0; $i < $rows; $i++)
                     @include('admins.constructions.addMultiInsertingRows') {{ $i }}
                     @endfor
-                    @endif
                     <div class="col-md-12 mb-3">
                         <button type="submit" class="btn btn-primary">اضافة</button>
                     </div>

@@ -51,7 +51,7 @@ class ConstructionController extends Controller
         $levels          = $request->input('levels');
         $units           = $request->input('units');
         $rows            = $request->input('rows');
-        $total_units     = $units * $rows;
+        $total_units     = $units * $levels;
         $property     = Property::find($property_id);
         $properties   = Property::all();
         $main_project = MainProject::find($main_project_id);
@@ -102,7 +102,7 @@ class ConstructionController extends Controller
     {
 
         foreach ($request->name as $key => $value) {
-            
+
             $constructions = new Construction();
             // if ($request->hasFile('image'))
         // {
@@ -116,7 +116,7 @@ class ConstructionController extends Controller
         // {
             //     alert('email exists');
             // }
-            
+
             $constructions->name            = $value;
             $constructions->property_id     = $request->property_id[$key];
             $constructions->main_project_id = $request->main_project_id[$key];

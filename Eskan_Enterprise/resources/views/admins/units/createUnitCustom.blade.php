@@ -13,13 +13,13 @@
             </thead>
             <tbody class="tbody">
                 <form action="{{ url('unitMultipleStore') }}" method="POST" enctype="multipart/form-data">
-                    @csrf 
+                    @csrf
                     @if (!$rows) {{$rows=1}}
-                        
-                    @for ($i = 0; $i < $rows; $i++)
-                    @include('layouts.includes.insertingUnitsRow') {{ $i }}
-                    @endfor
+
                     @endif
+                    @for ($i = 0; $i < $rows; $i++)
+                    @include('admins.units.insertingUnitsRow') {{ $i }}
+                    @endfor
                     <div class="col-md-12 mb-3">
                         <button type="submit" class="btn btn-primary">اضافة</button>
                     </div>
