@@ -13,3 +13,6 @@ public function store(Request $request)
     }
 
 }
+
+
+'phone' => 'required|regex:/(01)[0-9]{9}/'

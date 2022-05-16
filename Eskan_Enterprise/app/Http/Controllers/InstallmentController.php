@@ -36,6 +36,11 @@ class InstallmentController extends Controller
         return view('admins.installments.addInstallment', compact('units', 'customers', 'finances'));       
     }
 
+    public function existsInstallmentMonth()
+    {
+        return '<h1>تم الدفع من قبل</h1><h1>او</h1><h1>ان احد المدخلات فارغة</h1>';
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,19 +49,41 @@ class InstallmentController extends Controller
      */
     public function store(Request $request)
     {
-        $installments = new Installment();
-
-        $installments->installment_value  = $request->input('installment_value');
-        $installments->installment_month  = $request->input('installment_month');
-        $installments->customer_id        = $request->input('customer_id');
-        $installments->unit_id            = $request->input('unit_id');
-        $installments->property_id        = $request->input('property_id');
-        $installments->main_project_id    = $request->input('main_project_id');
-        $installments->construction_id    = $request->input('construction_id');
-        $installments->level_id           = $request->input('level_id');
         
-        $installments->save();
-        return redirect('/installmentsIndex')->with('status', 'Installment added successfully');
+        $installment = new Installment();
+
+        $installment->customer_id        = $request->input('customer_id');
+        $installment->unit_id            = $request->input('unit_id');
+        $exist_installment_month = Installment::select('installment_month')->where([['customer_id', $installment->customer_id],['unit_id', $installment->unit_id]])->get();
+        $month   = $request->input('month');  
+        $year   = $request->input('year');  
+        $installment->installment_month  = $month.'-'.$year;
+        
+        foreach ($exist_installment_month as $exist_installment) {
+            $array_month = [];
+            $months_array[] = $exist_installment->installment_month;                            
+            if (in_array($installment->installment_month, $months_array)) {
+                return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                dd($installment->installment_month,$exist_installment->installment_month,$exist_installment_month);               
+            }
+
+        }
+        if (!$month && !$year) {
+            $installment->installment_month  = $request->input('installment_month');
+        }
+
+        if (!$month || !$year) {
+            return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+        }
+                
+                $installment->installment_value  = $request->input('installment_value');
+                $installment->property_id        = $request->input('property_id');
+                $installment->main_project_id    = $request->input('main_project_id');
+                $installment->construction_id    = $request->input('construction_id');
+                $installment->level_id           = $request->input('level_id');
+                
+                $installment->save();
+                return redirect('/installmentsIndex')->with('status', 'Installment added successfully');
     }
 
     /**

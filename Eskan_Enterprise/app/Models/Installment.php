@@ -11,7 +11,6 @@ class Installment extends Model
     use HasFactory;
 
 
-
     protected $fillable = [
     'installment_value',
     'installment_month',
@@ -24,7 +23,7 @@ class Installment extends Model
     ];
 
     
-    public function properties() {
+    public function property() {
         return $this->belongsTo(Property::class, 'property_id', 'id');
     }
 
@@ -44,7 +43,7 @@ class Installment extends Model
         return $this->belongsTo(Unit::class, 'unit_id', 'id');
     }
      
-    public function customer() {
+    public function customers() {
         return $this->belongsTo(Customer::class, 'customer_id', 'id');
     }
 }

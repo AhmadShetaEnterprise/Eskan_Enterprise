@@ -75,30 +75,91 @@
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
                         </tr>
 
-                        {{-- {{ $count =  $payment->installments }} --}}
-                        {{-- {{ $date =  '01/05' }} --}}
-
                         @for ($i = 0; $i < $count=  $payment->installments; $i++)
-                        
-                        <tr>
-                            <td>
-                                <form action="" method="POST" enctype="multipart/form-data">
-                                    <div class="d-inline-flex">
-                                            <input type="text" name="installment_value" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
-                                            <input type="text" name="installment_month" class="form-control m-1" style="width: 125px" value="{{ $date++ }}">
-                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->customer_id }}">
-                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->unit_id }}">                                   
-                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->property_id }}">
-                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->main_project_id }}">
-                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->construction_id }}">
-                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->level_id }}">
-                                        <button type="submit" class="btn btn-success mt-1" style="width: 40px;height:40px">دفع</button>
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-
                         @endfor
+
+                        @if (isset($installments) && !empty($installments))
+                            @foreach ($installments as $installment)
+                            @php                               
+                                $months_array = [];
+                                $months_array[] = $installment->installment_month;                            
+                            @endphp
+                            @endforeach
+                            @if (!empty($months_array))
+                            <tr>
+                                <td>
+                                        <div class="d-inline-flex">
+                                                <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
+                                                <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ date('m-Y') }}">
+                                                <input type="hidden" name="" class="form-control" value="{{ $payment->customer_id }}">
+                                                <input type="hidden" name="" class="form-control" value="{{ $payment->unit_id }}">                                   
+                                                <input type="hidden" name="" class="form-control" value="{{ $payment->property_id }}">
+                                                <input type="hidden" name="" class="form-control" value="{{ $payment->main_project_id }}">
+                                                <input type="hidden" name="" class="form-control" value="{{ $payment->construction_id }}">
+                                                <input type="hidden" name="" class="form-control" value="{{ $payment->level_id }}">
+                                            <a type="" class="btn btn-success mt-1 text-dark" style="width: 200px;height:40px">تم دفع شهر{{ date('m-Y') }}</a>
+                                        </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <form action="{{ url('insertInstallment') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="d-inline-flex">
+                                                <input type="text" name="installment_value" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
+                                                {{-- <input type="text" name="installment_month" class="form-control m-1" style="width: 125px" value="" placeholder="دفع شهر اخر"> --}}
+                                                <div class="d-inline-flex m-1">
+                                                    <select class="folm-select " name="month" id="" style="width: 50px;height:40px">
+                                                        <option value="">شهر</option>
+                                                        @php
+                                                            $months = ['01','02','03','04','05','06','07','08','09','10','11','12']
+                                                        @endphp
+                                                        @foreach ($months as $month)
+                                                            <option value="{{ $month }}">{{ $month }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <select class="folm-select ml-1" name="year" id="" style="width: 100px;height:40px">                                                       
+                                                        <option value="{{ date('Y') }}">{{ date('Y') }}</option>
+                                                    </select>
+                                                </div>
+                                                <input type="hidden" name="customer_id" class="form-control" value="{{ $payment->customer_id }}">
+                                                <input type="hidden" name="unit_id" class="form-control" value="{{ $payment->unit_id }}">                                   
+                                                <input type="hidden" name="property_id" class="form-control" value="{{ $payment->property_id }}">
+                                                <input type="hidden" name="main_project_id" class="form-control" value="{{ $payment->main_project_id }}">
+                                                <input type="hidden" name="construction_id" class="form-control" value="{{ $payment->construction_id }}">
+                                                <input type="hidden" name="level_id" class="form-control" value="{{ $payment->level_id }}">
+                                            <button type="submit" class="btn btn-warning mt-1" style="width: 200px;height:40px">دفع شهر اخر</button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            @else 
+                            {{'empty'}}
+
+
+                            <tr>
+                                <td>
+                                    <form action="{{ url('insertInstallment') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="d-inline-flex">
+                                                <input type="text" name="installment_value" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
+                                                <input type="text" name="installment_month" class="form-control m-1" style="width: 125px" value="{{ date('m-Y') }}">
+                                                <input type="hidden" name="customer_id" class="form-control" value="{{ $payment->customer_id }}">
+                                                <input type="hidden" name="unit_id" class="form-control" value="{{ $payment->unit_id }}">                                   
+                                                <input type="hidden" name="property_id" class="form-control" value="{{ $payment->property_id }}">
+                                                <input type="hidden" name="main_project_id" class="form-control" value="{{ $payment->main_project_id }}">
+                                                <input type="hidden" name="construction_id" class="form-control" value="{{ $payment->construction_id }}">
+                                                <input type="hidden" name="level_id" class="form-control" value="{{ $payment->level_id }}">
+                                            <button type="submit" class="btn btn-warning mt-1" style="width: 100px;height:40px">دفع</button>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endif
+
+                        @endif
+
+
                     </tbody>
                 </table>
             </div>

@@ -74,11 +74,11 @@ class CustomerController extends Controller
         $units     = Customer::with('units')->find($id)->units;
         $installment = Installment::with('customers', 'unit', 'constructions', 'property','main_projects')->find($id);
         $installments = Installment::select()->where('customer_id', $id)->get();
+
         $payments = Payment::select()->where('customer_id', $id)->get();
         foreach ($payments as $payment) {
             
         }
-        $date = $payment->created_at->format('Y-m');
         // dd($payment);
 
         // $unitsJoin = Unit::join('customers' , 'customers.id', '=', 'units.customer_id')
@@ -88,7 +88,16 @@ class CustomerController extends Controller
         // ->get('units.name', 'customers.name', 'constructions.name');
         // $units = Customer::with(['unit'])->find($id);
         // $units     = Unit::all();
-        return view('admins.customers.customerShow', compact('customer', 'units', 'installments', 'payments', 'date'));   
+        foreach ($installments as $installment) {
+            if (!empty($installment) || !null($installment)) {
+
+                $months_array = [];
+                $months_array[] = $installment->installment_month;
+            } else {
+                $months_array[] = ['hi', 'hi'];
+            }
+        }
+        return view('admins.customers.customerShow', compact('customer', 'units', 'installments', 'payments'));   
     }
 
     /**

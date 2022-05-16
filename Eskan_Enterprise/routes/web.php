@@ -202,12 +202,15 @@ Route::controller(PaymentController::class)->group(function () {
 Route::controller(InstallmentController::class)->group(function () {
     Route::get('/installmentsIndex', 'index')->name('installmentsIndex');
     Route::get('/addInstallment', 'create')->name('addInstallment');
+    Route::get('/existsInstallmentMonth', 'existsInstallmentMonth')->name('existsInstallmentMonth');
     Route::post('/insertInstallment', 'store')->name('insertInstallment');
     Route::get('/unitInstallment/{id}', 'show')->name('unitInstallment');
     Route::get('/editInstallment/{id}', 'edit')->name('editInstallment');
     Route::put('updateInstallment{id}', 'update')->name('updatInstallment');
     Route::get('deleteInstallment/{id}', 'destroy');
 });
+// Route::post('/insertInstallment', [App\Http\Controllers\InstallmentController::class, 'store'])->name('insertInstallment');
+
                 // paymentController end
                 // paymentController end
                 // paymentController end
