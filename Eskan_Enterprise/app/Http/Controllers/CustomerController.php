@@ -77,7 +77,7 @@ class CustomerController extends Controller
 
         $payments = Payment::select()->where('customer_id', $id)->get();
         foreach ($payments as $payment) {
-            
+
         }
         // dd($payment);
 
@@ -89,7 +89,7 @@ class CustomerController extends Controller
         // $units = Customer::with(['unit'])->find($id);
         // $units     = Unit::all();
         foreach ($installments as $installment) {
-            if (!empty($installment) || !null($installment)) {
+            if (!empty($installment) || !is_null($installment)) {
 
                 $months_array = [];
                 $months_array[] = $installment->installment_month;
@@ -97,7 +97,7 @@ class CustomerController extends Controller
                 $months_array[] = ['hi', 'hi'];
             }
         }
-        return view('admins.customers.customerShow', compact('customer', 'units', 'installments', 'payments'));   
+        return view('admins.customers.customerShow', compact('customer', 'units', 'installments', 'payments'));
     }
 
     /**

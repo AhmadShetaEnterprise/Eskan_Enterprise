@@ -48,7 +48,8 @@
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->unit_price}}</a></td>
                             <td><a href="{{ route('showLevel', ['id'=>$item->level_id-1, 'constructions'=>$item->constructions->id]) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$item->levels->name}}</a></td>
                         </tr>
-                        
+                        @endforeach
+
                     </tbody>
                 </table>
                 <h3>المدفوعات</h3>
@@ -63,26 +64,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @endforeach
                         @foreach ($payments as $payment)
-                            
+
                         @endforeach
                         <tr>
                             <td><a href="#" class="btn btn-primary m-2" style="width: 125px">{{$payment->unit->name}}</a> </td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit->unit_price}}</a> </td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $paymentsDone =  $payment->unit_price - $payment->residual}}</a></td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance_id}}</a></td>
                         </tr>
 
                         @for ($i = 0; $i < $count=  $payment->installments; $i++)
                         @endfor
 
+
                         @if (isset($installments) && !empty($installments))
                             @foreach ($installments as $installment)
-                            @php                               
+                            @php
                                 $months_array = [];
-                                $months_array[] = $installment->installment_month;                            
+                                $months_array[] = $installment->installment_month;
                             @endphp
                             @endforeach
                             @if (!empty($months_array))
@@ -92,7 +93,7 @@
                                                 <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
                                                 <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ date('m-Y') }}">
                                                 <input type="hidden" name="" class="form-control" value="{{ $payment->customer_id }}">
-                                                <input type="hidden" name="" class="form-control" value="{{ $payment->unit_id }}">                                   
+                                                <input type="hidden" name="" class="form-control" value="{{ $payment->unit_id }}">
                                                 <input type="hidden" name="" class="form-control" value="{{ $payment->property_id }}">
                                                 <input type="hidden" name="" class="form-control" value="{{ $payment->main_project_id }}">
                                                 <input type="hidden" name="" class="form-control" value="{{ $payment->construction_id }}">
@@ -118,12 +119,12 @@
                                                             <option value="{{ $month }}">{{ $month }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <select class="folm-select ml-1" name="year" id="" style="width: 100px;height:40px">                                                       
+                                                    <select class="folm-select ml-1" name="year" id="" style="width: 100px;height:40px">
                                                         <option value="{{ date('Y') }}">{{ date('Y') }}</option>
                                                     </select>
                                                 </div>
                                                 <input type="hidden" name="customer_id" class="form-control" value="{{ $payment->customer_id }}">
-                                                <input type="hidden" name="unit_id" class="form-control" value="{{ $payment->unit_id }}">                                   
+                                                <input type="hidden" name="unit_id" class="form-control" value="{{ $payment->unit_id }}">
                                                 <input type="hidden" name="property_id" class="form-control" value="{{ $payment->property_id }}">
                                                 <input type="hidden" name="main_project_id" class="form-control" value="{{ $payment->main_project_id }}">
                                                 <input type="hidden" name="construction_id" class="form-control" value="{{ $payment->construction_id }}">
@@ -133,9 +134,7 @@
                                     </form>
                                 </td>
                             </tr>
-                            @else 
-                            {{'empty'}}
-
+                            @else
 
                             <tr>
                                 <td>
@@ -145,7 +144,7 @@
                                                 <input type="text" name="installment_value" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
                                                 <input type="text" name="installment_month" class="form-control m-1" style="width: 125px" value="{{ date('m-Y') }}">
                                                 <input type="hidden" name="customer_id" class="form-control" value="{{ $payment->customer_id }}">
-                                                <input type="hidden" name="unit_id" class="form-control" value="{{ $payment->unit_id }}">                                   
+                                                <input type="hidden" name="unit_id" class="form-control" value="{{ $payment->unit_id }}">
                                                 <input type="hidden" name="property_id" class="form-control" value="{{ $payment->property_id }}">
                                                 <input type="hidden" name="main_project_id" class="form-control" value="{{ $payment->main_project_id }}">
                                                 <input type="hidden" name="construction_id" class="form-control" value="{{ $payment->construction_id }}">
