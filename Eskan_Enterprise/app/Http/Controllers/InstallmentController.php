@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
+use App\Models\Finance;
+use App\Models\Customer;
 use App\Models\Installment;
 use Illuminate\Http\Request;
 
@@ -25,7 +28,12 @@ class InstallmentController extends Controller
      */
     public function create()
     {
-        return view('admins.installments.addInstallment');       
+
+        $units     = Unit::all();
+        $customers = Customer::all();
+        $finances  = Finance::all();
+
+        return view('admins.installments.addInstallment', compact('units', 'customers', 'finances'));       
     }
 
     /**
@@ -57,9 +65,13 @@ class InstallmentController extends Controller
      * @param  \App\Models\Installment  $installment
      * @return \Illuminate\Http\Response
      */
-    public function show(Installment $installment)
+    public function show($id)
     {
-        //
+        $Installment = Installment::with('customers', 'unit', 'constructions', 'property','main_projects')->find($id);
+        $customer_id = $customers->id;
+        $units = Unit::select()->where('customer_id', $customer_id)->get();
+
+        return view('admins.constructions.showConstruction', compact('Installment', 'units'));
     }
 
     /**

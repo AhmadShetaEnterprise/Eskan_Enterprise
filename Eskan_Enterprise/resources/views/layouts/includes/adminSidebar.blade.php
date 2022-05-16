@@ -21,8 +21,8 @@
                 <li><a href="{{ url('propertiesIndex') }}">الاقسام</a></li>
                 <li><a href="{{ url('main_projectsIndex') }}">المشاريع الرئيسية</a></li>
                 <li><a href="{{ url('financesIndex') }}">طرق الدفع</a></li>
-                <li><a href="{{ url('installmentsIndex') }}">الاقساط</a></li>
                 <li><a href="{{ url('paymentsIndex') }}">الدفعات</a></li>
+                <li><a href="{{ url('installmentsIndex') }}">الاقساط</a></li>
                 {{-- <li><a href="{{ url('levelsIndex') }}">الطوابق</a></li> --}}
                 <li><a href="{{ url('?do=allDetails') }}">Main Details</a></li>
 

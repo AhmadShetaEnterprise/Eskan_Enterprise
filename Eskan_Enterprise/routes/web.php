@@ -178,6 +178,24 @@ Route::controller(FinanceController::class)->group(function () {
                 // FinanceController end
 
 
+                // paymentController start
+                // paymentController start
+                // paymentController start
+Route::controller(PaymentController::class)->group(function () {
+    Route::get('/paymentsIndex', 'index')->name('paymentsIndex');
+    Route::get('/addPayment', 'create')->name('addPayment');
+    Route::post('/insertPayment', 'store')->name('insertPayment');
+    Route::get('/unitPayment/{id}', 'show')->name('unitPayment');
+    Route::get('/editPayment/{id}', 'edit')->name('editPayment');
+    Route::put('updatePayment{id}', 'update')->name('updatPayment');
+    Route::get('deletePayment/{id}', 'destroy');
+                });
+                // paymentController end
+                // paymentController end
+                // paymentController end
+
+
+
                 // InstallmentController start
                 // InstallmentController start
                 // InstallmentController start
@@ -194,22 +212,6 @@ Route::controller(InstallmentController::class)->group(function () {
                 // paymentController end
                 // paymentController end
 
-
-                // paymentController start
-                // paymentController start
-                // paymentController start
-Route::controller(PaymentController::class)->group(function () {
-    Route::get('/paymentsIndex', 'index')->name('paymentsIndex');
-    Route::get('/addpayment', 'create')->name('addpayment');
-    Route::post('/insertPayment', 'store')->name('insertPayment');
-    Route::get('/unitPayment/{id}', 'show')->name('unitPayment');
-    Route::get('/editPayment/{id}', 'edit')->name('editPayment');
-    Route::put('updatePayment{id}', 'update')->name('updatPayment');
-    Route::get('deletePayment/{id}', 'destroy');
-});
-                // paymentController end
-                // paymentController end
-                // paymentController end
 
 
 

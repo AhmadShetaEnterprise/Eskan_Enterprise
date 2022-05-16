@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
+use App\Models\Finance;
 use App\Models\Payment;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\support\facades\DB;
 
@@ -16,6 +19,7 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = Payment::all();
+
         return view('admins.paymentsIndex', compact('payments'));
     }
 
@@ -26,7 +30,12 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        return view('admins.payments.addPayment');
+        
+        $units     = Unit::all();
+        $customers = Customer::all();
+        $finances  = Finance::all();
+        
+        return view('admins.payments.addPayment', compact('units', 'customers', 'finances'));
     }
 
     /**
@@ -40,7 +49,7 @@ class PaymentController extends Controller
         $payment = new Payment();
 
         $payment->unit_price         = $request->input('unit_price');
-        $payment->finances_name      = $request->input('finances_name');
+        $payment->finance_id         = $request->input('finance_id');
         $payment->space_payment      = $request->input('space_payment');
         $payment->licences_payment   = $request->input('licences_payment');
         $payment->start_payment      = $request->input('start_payment');
@@ -54,22 +63,30 @@ class PaymentController extends Controller
         $payment->construction_id    = $request->input('construction_id');
         $payment->level_id           = $request->input('level_id');
 
-        $space_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('space_payment');
-        $licences_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('licences_payment');
-        $start_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('start_payment');
-        $recieving_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('recieving_payment');
+            $space_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('space_payment');
+            $licences_payment  = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('licences_payment');
+            $start_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('start_payment');
+            $recieving_payment = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('recieving_payment');
 
 
-        $countPayments = ($space_payment+$licences_payment+$start_payment+$recieving_payment);
-            $currentPayment = ($request->input('space_payment')
-            +$request->input('licences_payment')
-            +$request->input('start_payment')
-            +$request->input('recieving_payment'));
+            $countPayments = ($space_payment+$licences_payment+$start_payment+$recieving_payment);
+                $currentPayment = ($request->input('space_payment')
+                +$request->input('licences_payment')
+                +$request->input('start_payment')
+                +$request->input('recieving_payment'));
+            
+            $allPayments = $countPayments + $currentPayment;
 
-
-        $payment->residual           = $payment->unit_price-$countPayments - $currentPayment;
+        $payment->residual           = $payment->unit_price - $allPayments;
+        $payment->discount           = $request->input('discount');
+            $discount     = $payment->discount/100; 
+        $payment->cash_payment       = $request->input('cash_payment');
+            if ($discount) {
+                $payment->cash_discount  = $payment->residual - ($payment->residual * $discount);
+            }
         // dd($payment->residual);
         $payment->save();
+
         return redirect('/paymentsIndex')->with('status', 'Payment added successfully');
     }
 

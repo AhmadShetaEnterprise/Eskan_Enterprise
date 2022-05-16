@@ -47,6 +47,10 @@ class Construction extends Model
         ]);
     }
 
+    
+    public function installments() {
+        return $this->hasMany(Installment::class, 'construction_id', 'id');
+    }
 
 
 

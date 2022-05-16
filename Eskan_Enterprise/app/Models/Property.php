@@ -19,7 +19,11 @@ class Property extends Model
     }
 
     public function unit() {
-        return $this->hasMany(Unit::class);
+        return $this->hasMany(Unit::class, 'property_id', 'id');
+    }
+
+    public function installments() {
+        return $this->hasMany(Installment::class, 'property_id', 'id');
     }
 
 

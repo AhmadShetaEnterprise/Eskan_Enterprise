@@ -46,4 +46,13 @@ class unit extends Model
     public function levels() {
         return $this->belongsTo(Level::class, 'level_id', 'id');
     }
+
+    public function payments() {
+        return $this->hasMany(Payment::class, 'unit_id', 'id');
+    }
+
+    public function installments() {
+        return $this->hasMany(Installment::class, 'unit_id', 'id');
+    }
+    
 }

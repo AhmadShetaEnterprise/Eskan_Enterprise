@@ -34,4 +34,14 @@ class Customer extends Model
         return $this->hasMany(Unit::class);
     }
 
+    
+    public function payments() {
+        return $this->hasMany(Payment::class, 'customer_id', 'id');
+    }
+
+    
+    public function installments() {
+        return $this->hasMany(Installment::class, 'customer_id', 'id');
+    }
+
 }

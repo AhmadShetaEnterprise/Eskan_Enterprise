@@ -1,5 +1,8 @@
 <div class="col-lg-8">
     <a href="?do=addFinance" class="btn btn-warning mb-2 text-dark text-bold myText-button" href="">اضافة نظام دفع</a>
+    <a href="?do=addPayment" class="btn btn-secondary mb-2 text-dark text-bold myText-button" href="">دفعة جديدة  </a>
+    <a href="{{ url('installmentsIndex') }}" class="mb-2 btn btn-secondary text-dark text-bold myText-button">الاقساط</a>
+    <a href="{{ url('paymentsIndex') }}" class="mb-2 btn btn-secondary text-dark text-bold myText-button">الدفعات</a>
     <table class="table table-light table-bordered">
         <thead>
         <tr>

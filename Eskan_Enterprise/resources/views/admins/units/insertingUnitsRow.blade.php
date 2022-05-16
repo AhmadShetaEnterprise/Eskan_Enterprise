@@ -86,6 +86,8 @@
     <div class="col-lg-1">
         <label for="">سعر الوحدة</label>
         <input type="text" value="{{ $unit_price }}" class="form-control   text-dark" style="width='20px'" name="unit_price[]" required>
+        <input type="hidden" value="" class="form-control   text-dark" style="width='20px'" name="unitDescription[]" required>
+
     </div>
 
     <div class="col-lg-1">

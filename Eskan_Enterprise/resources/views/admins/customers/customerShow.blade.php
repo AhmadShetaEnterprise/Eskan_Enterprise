@@ -5,7 +5,7 @@
     <div class="card" style="width: ;">
         <div class="card-header text-lg-center text-danger">
             <h1>
-                {{ $customers->name }}
+                {{ $customer->name }}
             </h1>
             {{-- {{ $customers->item->name}} --}}
             <img src="..." class="card-img-top" alt="...">
@@ -48,8 +48,57 @@
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->unit_price}}</a></td>
                             <td><a href="{{ route('showLevel', ['id'=>$item->level_id-1, 'constructions'=>$item->constructions->id]) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$item->levels->name}}</a></td>
                         </tr>
+                        
+                    </tbody>
+                </table>
+                <h3>المدفوعات</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="m-2 p-2 bg-dark text-lg-center">الوحدة</th>
+                            <th class="m-2 p-2 bg-dark text-lg-center"> قيمة الوحدة</th>
+                            <th class="m-2 p-2 bg-dark text-lg-center">المدفوع</th>
+                            <th class="m-2 p-2 bg-dark text-lg-center">المتبقي</th>
+                            <th class="m-2 p-2 bg-dark text-lg-center">نظام الدفع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         @endforeach
+                        @foreach ($payments as $payment)
+                            
+                        @endforeach
+                        <tr>
+                            <td><a href="#" class="btn btn-primary m-2" style="width: 125px">{{$payment->unit->name}}</a> </td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit->unit_price}}</a> </td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $paymentsDone =  $payment->unit_price - $payment->residual}}</a></td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
+                        </tr>
 
+                        {{-- {{ $count =  $payment->installments }} --}}
+                        {{-- {{ $date =  '01/05' }} --}}
+
+                        @for ($i = 0; $i < $count=  $payment->installments; $i++)
+                        
+                        <tr>
+                            <td>
+                                <form action="" method="POST" enctype="multipart/form-data">
+                                    <div class="d-inline-flex">
+                                            <input type="text" name="installment_value" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
+                                            <input type="text" name="installment_month" class="form-control m-1" style="width: 125px" value="{{ $date++ }}">
+                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->customer_id }}">
+                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->unit_id }}">                                   
+                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->property_id }}">
+                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->main_project_id }}">
+                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->construction_id }}">
+                                            <input type="hidden" name="installment_month" class="form-control" value="{{ $payment->level_id }}">
+                                        <button type="submit" class="btn btn-success mt-1" style="width: 40px;height:40px">دفع</button>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+
+                        @endfor
                     </tbody>
                 </table>
             </div>

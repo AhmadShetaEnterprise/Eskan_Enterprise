@@ -10,39 +10,30 @@
             <form action="{{ url('insertInstallment') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
+
                     <div class="col-md-6 mb-3">
                         <label for="">نظام الدفع</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="name" required>
+                        <input type="text" disabled value="{{ $payment->name }}" class="form-control  font-weight-bold text-dark" name="" required>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="">الوحدة </label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="unit_id" required>
+                        <select name="unit_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
+                            <option value="">الوحدات</option>
+                            @foreach ($units as $unit)
+                                <option value="{{ $unit->id }}">{{ $unit->name }}</option>
+                            @endforeach                          
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="">العميل </label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="customer_id" required>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="">دفعة ارض</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="space_payment" >
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="">دفعة تراخيص</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="licences_payment" >
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="">دفعة بدأ أعمال</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="start_payment" >
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="">دفعة تسليم</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="recieving_payment" >
+                        <select name="customer_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
+                            <option value="">العميل</option>
+                            @foreach ($customers as $customer)
+                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            @endforeach                          
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-3">

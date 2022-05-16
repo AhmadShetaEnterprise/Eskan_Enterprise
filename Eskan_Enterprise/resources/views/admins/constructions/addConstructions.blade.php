@@ -14,7 +14,7 @@
             <tbody class="tbody">
                 <form action="{{ url('constructionsMultipleStore') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if (!$rows) {{$rows=1}}
+                    @if (!$rows) {{$rows=2}}
                     @endif
 
                     @for ($i = 0; $i < $rows; $i++)

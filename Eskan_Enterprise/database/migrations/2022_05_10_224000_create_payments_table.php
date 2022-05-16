@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('start_payment')->nullable();
             $table->integer('recieving_payment')->nullable();
             $table->integer('residual')->nullable();
+            $table->integer('discount')->nullable();
+            $table->integer('cash_payment')->nullable();
             $table->integer('installments')->nullable();
             $table->integer('installment_value')->nullable();
             $table->integer('customer_id');

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
+use App\Models\Payment;
 use App\Models\Customer;
+use App\Models\Installment;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -68,8 +70,17 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        $customers = Customer::find($id);
+        $customer = Customer::find($id);
         $units     = Customer::with('units')->find($id)->units;
+        $installment = Installment::with('customers', 'unit', 'constructions', 'property','main_projects')->find($id);
+        $installments = Installment::select()->where('customer_id', $id)->get();
+        $payments = Payment::select()->where('customer_id', $id)->get();
+        foreach ($payments as $payment) {
+            
+        }
+        $date = $payment->created_at->format('Y-m');
+        // dd($payment);
+
         // $unitsJoin = Unit::join('customers' , 'customers.id', '=', 'units.customer_id')
         // ->join('constructions', 'constructions.id', '=', 'units.construction_id')
         // ->select('customers.*')
@@ -77,7 +88,7 @@ class CustomerController extends Controller
         // ->get('units.name', 'customers.name', 'constructions.name');
         // $units = Customer::with(['unit'])->find($id);
         // $units     = Unit::all();
-        return view('admins.customers.customerShow', compact('customers', 'units'));   
+        return view('admins.customers.customerShow', compact('customer', 'units', 'installments', 'payments', 'date'));   
     }
 
     /**

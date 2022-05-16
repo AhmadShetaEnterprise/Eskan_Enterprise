@@ -27,11 +27,15 @@ class MainProject extends Model
     public function units() {
         return $this->hasMany(Unit::class, 'main_project_id', 'id');
     }
-
-
+    
+    
     public function customers()
     {
         return $this->belongsToMany(Customer::class);
+    }
+    
+    public function installments() {
+        return $this->hasMany(Installment::class, 'main_project_id', 'id');
     }
 
 }

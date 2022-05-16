@@ -86,7 +86,11 @@ class ConstructionController extends Controller
         $constructions->main_project_id = $request->input('main_project_id');
         $constructions->levels          = $request->input('levels');
         $constructions->units           = $request->input('units');
-        $constructions->total_units     = $request->input('total_units');
+        if (!empty($request->input('total_units'))) {
+            $constructions->total_units     = $request->input('total_units');            
+        } else {
+            $constructions->total_units     = $constructions->units * $constructions->levels;
+        }
         $constructions->coast           = $request->input('coast');
         $constructions->save();
         return redirect('/constructionsIndex?addConstruction')->with('status', 'Category added successfully');

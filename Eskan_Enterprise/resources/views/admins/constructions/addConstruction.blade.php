@@ -56,7 +56,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">كل الوحدات</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="total_units">
+                        <input type="text" class="form-control  font-weight-bold text-dark" name="total_units" placeholder="ستضاف تلقائيا اذا تركت فارغة">
                     </div>
 
                     <div class="col-md-6 mb-3">

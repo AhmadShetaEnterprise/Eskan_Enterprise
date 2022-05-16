@@ -32,4 +32,13 @@ class Payment extends Model
             return $this->belongsTo(Finance::class, 'finance_id', 'id');
         }
 
+        public function customer() {
+            return $this->belongsTo(Customer::class, 'customer_id', 'id');
+        }
+
+        public function unit() {
+            return $this->belongsTo(Unit::class, 'unit_id', 'id');
+        }
+
+
 }
