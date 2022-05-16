@@ -21,4 +21,10 @@ class Level extends Model
     public function units() {
         return $this->hasMany(Level::class, 'level_id', 'id');
     }
+
+
+    // public function levels() {
+    //     return $this->belongsToMany(Level::class);
+    // }
+
 }

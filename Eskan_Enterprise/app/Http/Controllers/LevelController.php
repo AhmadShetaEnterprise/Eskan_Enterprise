@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Construction;
 use App\Models\Unit;
 use App\Models\Level;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ class LevelController extends Controller
 {
 ///////////////////////////////////////////////
 //* Display a listing of the resource.
-///////////////////////////////////////////////    
+///////////////////////////////////////////////
     public function index()
     {
         $levels = Level::all();
@@ -40,7 +41,8 @@ class LevelController extends Controller
     public function showLevel($id,$constructions)
     {
         $level = Unit::select()->where('construction_id', '=', $constructions)->offset($id*4)->limit(4)->get();
-        return view('admins.constructions.showLevel', compact('level'));
+        $constructions = Construction::find($constructions);
+        return view('admins.constructions.showLevel', compact('level', 'constructions'));
     }
 ////////////////////////////////////////////////
 //* Display the specified resource.
@@ -58,7 +60,7 @@ class LevelController extends Controller
     public function edit($id)
     {
         $levels = Level::find($id);
-        return view('admins.constructions.editLevel', compact('levels'));   
+        return view('admins.constructions.editLevel', compact('levels'));
     }
 ////////////////////////////////////////////////
 //* Update the specified resource in storage.
@@ -70,7 +72,7 @@ class LevelController extends Controller
         $levels->name        = $request->input('name');
 
         $levels->update();
-        return redirect('/levelsIndex')->with('status', 'Level Updated successfully'); 
+        return redirect('/levelsIndex')->with('status', 'Level Updated successfully');
     }
 ////////////////////////////////////////////////
 //* Remove the specified resource from storage
@@ -80,7 +82,7 @@ class LevelController extends Controller
         $levels = Level::find($id);
 
         $levels->delete();
-        return redirect('/levelsIndex')->with('status', 'Level deleted successfully');   
+        return redirect('/levelsIndex')->with('status', 'Level deleted successfully');
     }
 ////////////////////////////////////////////////
 

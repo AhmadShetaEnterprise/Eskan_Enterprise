@@ -22,8 +22,9 @@
                             <th><h3 class="m-2 p-2 bg-dark text-lg-center">الحالة</h3></th>
                             <th><h3 class="m-2 p-2 bg-dark text-lg-center">
                                 {{-- {{ $units->constructions->status }} --}}
-                                @if (!empty($units))
-
+                                @if ($units->isEmpty())
+                                العميل
+                                @else
                                     @foreach ($units as $item)
 
                                     @endforeach
@@ -40,7 +41,6 @@
 
                                     @endif
 
-                                @else العميل
 
                                 @endif
 
@@ -54,6 +54,8 @@
                     </thead>
                     <tbody>
 @foreach ($units as $item)
+
+                        @if ($item->count() > 0)
 
                         <tr>
                             <td><a href="{{ url('unitShow/'.$item->id) }}" class="btn btn-primary m-2" style="width: 125px">{{$item->name}}</a></td>
@@ -73,8 +75,10 @@
                             <td><a href="{{ url('customerShow/'.$item->customers->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">{{$item->customers->name}}</a></td>
                             @elseif ($item->status == 'محجوزة')
                             <td><a href="{{ url('customerShow/'.$item->customers->id) }}" class="btn btn-outline-warning m-2" style="width: 125px">{{$item->customers->name}}</a></td>
-                            @else
+                            @elseif ($item->status == 'ملغاة')
                             <td><a href="{{ url('editStatusUnit/'.$item->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">حجز</a></td>
+                            @else
+                            <td>no</td>
                             @endif
 
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->site}}</a></td>
@@ -83,6 +87,13 @@
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->unit_price}}</a></td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->levels->name}}</a></td>
                         </tr>
+                        @else
+                        <tr>
+                            <td>no</td>
+                        </tr>
+
+                        @endif
+
 @endforeach
 {{-- <form action="{{ url('updateStatusUnit/'.$item->id) }}" method="POST" enctype="multipart/form-data">
     <div class="d-inline-flex">

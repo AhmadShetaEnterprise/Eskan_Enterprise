@@ -37,7 +37,7 @@ class Construction extends Model
         return $this->belongsTo(MainProject::class, 'main_project_id', 'id');
     }
 
-    // public function level() {
+    // public function levels() {
     //     return $this->belongsToMany(Level::class);
     // }
 
