@@ -72,11 +72,12 @@
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit->unit_price}}</a> </td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $paymentsDone =  $payment->unit_price - $payment->residual}}</a></td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance_id}}</a></td>
+                            <td><a href="{{ url('financeShow/'.$payment->finance_id) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
                         </tr>
 
                         @for ($i = 0; $i < $count=  $payment->installments; $i++)
                         @endfor
+
 
 
                         @if (isset($installments) && !empty($installments))

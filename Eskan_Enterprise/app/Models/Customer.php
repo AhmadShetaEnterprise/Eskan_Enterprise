@@ -3,9 +3,10 @@
 namespace App\Models;
 
 use App\Models\MainProject;
+use App\Models\UnitStatusDate;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Customer extends Model
 {
@@ -25,13 +26,18 @@ class Customer extends Model
         return $this->belongsToMany(Construction::class, 'construction_customer', 'construction_id', 'customer_id', 'id', 'id');
     }
 
+    public function unitStatusDates()
+    {
+        return $this->belongsToMany(UnitStatusDate::class);
+    }
+
     public function main_projects()
     {
         return $this->belongsToMany(MainProject::class);
     }
 
     public function units() {
-        return $this->hasMany(Unit::class);
+        return $this->hasMany(Unit::class, 'customer_id', 'id');
     }
 
     

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Unit;
+use App\Models\Finance;
+use App\Models\Payment;
 use App\Models\Customer;
 use App\Models\Property;
+use App\Models\Installment;
 use App\Models\MainProject;
 use App\Models\Construction;
 use Illuminate\Http\Request;
@@ -127,8 +130,13 @@ public function unitMultipleStore(Request $request)
 public function show($id)
 {
     $unit     = Unit::find($id);
+    $customer_id = $unit->customer_id;
+    $finances = Finance::all();
+    $installment = Installment::with('customers', 'unit', 'constructions', 'property','main_projects')->find($id);
+    $installments = Installment::select()->where('customer_id', $id)->get();
+    $payments = Payment::select()->where('customer_id', $customer_id)->get();
     // $customers = Unit::with('customer')->find($id)->customer;
-    return view('admins.units.unitShow', compact('unit'));
+    return view('admins.units.unitShow', compact('unit', 'finances', 'installments', 'payments'));
 
 }
 ////////////////////////////////////////////////
@@ -168,9 +176,18 @@ public function update(Request $request, $id)
     return redirect('unitsIndex')->with('status', 'Unit Updated successfully');
 }
 ////////////////////////////////////////////////
+//* Show the form for editing the specified resource.
+////////////////////////////////////////////////
+public function editUnitStatus($id)
+{
+    $unitStatus = Unit::find($id);
+    $customers  = Customer::all();
+    return view('admins.units.editUnitStatus', compact('unitStatus', 'customers'));   
+}
+////////////////////////////////////////////////
 //* Update the specified resource in storage.
 ////////////////////////////////////////////////
-public function updateStatusUnit(Request $request, $id)
+public function updateUnitStatus(Request $request, $id)
 {
     $units = Unit::find($id);
 
@@ -179,8 +196,12 @@ public function updateStatusUnit(Request $request, $id)
     $units->status          = $request->input('status');
     $units->customer_id     = $request->input('customer_id');
 
+    if ($units->customer_id == 0) {
+        return '<h1>لم يتم اختيار العميل</h1>';
+    }
+
     $units->update();
-    return redirect('searchConstruction')->with('status', 'status Updated successfully');
+    return redirect('unitShow/'.$id)->with('status', 'status Updated successfully');
 }
 ////////////////////////////////////////////////
 //* Remove the specified resource from storage

@@ -11,7 +11,7 @@ class MyTempleteController extends Controller
 ///////////////////////////////////////////////    
     public function index()
     {
-        $myTempletes = Templete::all();
+        $myTempletes = TempleteModalName::all();
         return view('myTempletesIndex', compact('myTempletes'));
     }
 ///////////////////////////////////////////////
@@ -26,7 +26,7 @@ class MyTempleteController extends Controller
 ////////////////////////////////////////////////
     public function store(Request $request)
     {
-        $myTempletes = new Templete();
+        $myTempletes = new TempleteModalName();
 
         $myTempletes->name = $request->input('name');
         $myTempletes->save();
@@ -44,7 +44,7 @@ class MyTempleteController extends Controller
 ////////////////////////////////////////////////
     public function edit($id)
     {
-        $myTempletes = Templete::find($id);
+        $myTempletes = TempleteModalName::find($id);
         return view('editMyTempletesIndex', compact('myTempletes'));   
     }
 ////////////////////////////////////////////////
@@ -52,7 +52,7 @@ class MyTempleteController extends Controller
 ////////////////////////////////////////////////
     public function update(Request $request, $id)
     {
-        $myTempletes = Templete::find($id);
+        $myTempletes = TempleteModalName::find($id);
 
         $myTempletes->name = $request->input('name');
 
@@ -64,7 +64,7 @@ class MyTempleteController extends Controller
 ////////////////////////////////////////////////
     public function destroy($id)
     {
-        $myTempletes = Templete::find($id);
+        $myTempletes = TempleteModalName::find($id);
 
         $myTempletes->delete();
         return redirect('/myTempletesIndex')->with('status', 'MyTempletesIndex deleted successfully');   

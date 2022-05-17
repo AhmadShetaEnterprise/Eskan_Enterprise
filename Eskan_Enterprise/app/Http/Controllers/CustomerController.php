@@ -72,6 +72,9 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
         $units     = Customer::with('units')->find($id)->units;
+        foreach ($units as $unit) {
+            $unit_id = $unit->id;
+        }
         $installment = Installment::with('customers', 'unit', 'constructions', 'property','main_projects')->find($id);
         $installments = Installment::select()->where('customer_id', $id)->get();
 

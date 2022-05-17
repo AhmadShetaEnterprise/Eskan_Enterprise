@@ -21,7 +21,7 @@
 
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
-            <td class="text-xl-center"><a href=""> {{ $item->name }} </a></td>
+            <td class="text-xl-center"><a href="{{ url('financeShow/'.$item->id) }}"> {{ $item->name }} </a></td>
             <td class="text-xl-center">{{ $item->space_payment }}</td>
             <td class="text-xl-center">{{ $item->licences_payment }}</td>
             <td class="text-xl-center"><a href="">{{ $item->start_payment }}</a></td>

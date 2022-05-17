@@ -5,7 +5,7 @@
 
     <div class="card">
         <div class="card-header">
-            <h1 class="text-success font-italic text-center bg-dark font-weight-bold">اضافة وحدة</h1>
+            <h1 class="text-success font-italic text-center bg-dark font-weight-bold">تعديل وحدة</h1>
         </div>
         <div class="card-body">
             <form action="{{ url('updateUnit/'.$units->id) }}" method="POST" enctype="multipart/form-data">

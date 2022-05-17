@@ -12,6 +12,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\Main_ProjectController;
+use App\Http\Controllers\UnitStatusDateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,15 +147,16 @@ Route::controller(UnitController::class)->group(function () {
     Route::get('/createUnitCustom', 'createUnitCustom')->name('createUnitCustom');
     Route::post('/insertUnit', 'store')->name('insertUnit');
     Route::post('/unitMultipleStore', 'unitMultipleStore')->name('unitMultipleStore');
-    Route::get('/editUnit/{id}', 'edit')->name('editUnit');
+    Route::get('/editUnit/{id}', 'edit')->name('editUnit')->name('editUnit');
+    Route::put('updateUnit/{id}', 'update')->name('updateUnit')->name('updateUnit');
     Route::put('firstUnitPayment{id}', 'firstUnitPayment')->name('firstUnitPayment');
-    Route::get('/editStatusUnit/{id}', 'editStatusUnit')->name('editStatusUnit');
-    Route::put('updateUnit/{id}', 'update')->name('updateUnit');
-    Route::put('updateStatusUnit{id}', 'update')->name('updateStatusUnit');
+    Route::get('/editUnitStatus/{id}', 'editUnitStatus')->name('editUnitStatus');
+    Route::put('updateUnitStatus{id}', 'updateUnitStatus')->name('updateUnitStatus');
     Route::get('deleteUnit/{id}', 'destroy');
     Route::get('/unitShow/{id}', 'show')->name('unitShow');
 });
 Route::get('/editStatusUnit/{id}', [App\Http\Controllers\UnitController::class, 'editStatusUnit'])->name('editStatusUnit');
+Route::Put('/updateUnitStatus/{id}', [App\Http\Controllers\UnitController::class, 'updateUnitStatus'])->name('updateUnitStatus');
 
                 // UnitController end
                 // UnitController end
@@ -168,7 +170,7 @@ Route::controller(FinanceController::class)->group(function () {
     Route::get('/financesIndex', 'index')->name('financesIndex');
     Route::get('/addFinance', 'create')->name('addFinance');
     Route::post('/insertFinance', 'store')->name('insertFinance');
-    Route::get('/unitFinance/{id}', 'show')->name('unitFinance');
+    Route::get('/financeShow/{id}', 'show')->name('financeShow');
     Route::get('/editFinance/{id}', 'edit')->name('editFinance');
     Route::put('updateFinance{id}', 'update')->name('updatFinance');
     Route::get('deleteFinance/{id}', 'destroy');
@@ -184,12 +186,17 @@ Route::controller(FinanceController::class)->group(function () {
 Route::controller(PaymentController::class)->group(function () {
     Route::get('/paymentsIndex', 'index')->name('paymentsIndex');
     Route::get('/addPayment', 'create')->name('addPayment');
+    Route::get('/addUnitPayment', 'createUnitPayment')->name('addUnitPayment');
     Route::post('/insertPayment', 'store')->name('insertPayment');
+    Route::post('/insertUnitePayment', 'storeUnitPayment')->name('insertUnitePayment');
     Route::get('/unitPayment/{id}', 'show')->name('unitPayment');
     Route::get('/editPayment/{id}', 'edit')->name('editPayment');
     Route::put('updatePayment{id}', 'update')->name('updatPayment');
     Route::get('deletePayment/{id}', 'destroy');
-                });
+});
+Route::get('/addUnitPayment/{id}', [App\Http\Controllers\PaymentController::class, 'createUnitPayment'])->name('addUnitPayment');
+Route::post('/insertUnitePayment', [App\Http\Controllers\PaymentController::class, 'storeUnitPayment'])->name('insertUnitePayment');
+
                 // paymentController end
                 // paymentController end
                 // paymentController end
@@ -214,6 +221,19 @@ Route::controller(InstallmentController::class)->group(function () {
                 // paymentController end
                 // paymentController end
                 // paymentController end
+
+
+
+                // UnitStatusDateController start
+                // UnitStatusDateController start
+                // UnitStatusDateController start
+Route::controller(UnitStatusDateController::class)->group(function () {
+    Route::put('updateInstallment{id}', 'update')->name('updatInstallment');
+    Route::get('deleteInstallment/{id}', 'destroy');
+});
+                // UnitStatusDateController end
+                // UnitStatusDateController end
+                // UnitStatusDateController end
 
 
 

@@ -56,7 +56,9 @@ class FinanceController extends Controller
      */
     public function show($id)
     {
-        //
+        $finance = Finance::find($id);
+
+        return view('/admins.finances.financeShow', compact('finance'));
     }
 
     /**

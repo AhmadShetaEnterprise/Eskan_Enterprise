@@ -54,5 +54,10 @@ class unit extends Model
     public function installments() {
         return $this->hasMany(Installment::class, 'unit_id', 'id');
     }
+
+    public function unitStatusDates()
+    {
+        return $this->belongsToMany(UnitStatusDate::class);
+    }
     
 }
