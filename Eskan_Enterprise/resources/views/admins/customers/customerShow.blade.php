@@ -65,7 +65,7 @@
                     </thead>
                     <tbody>
                     @if (isset($payments) && $payments->isNotEmpty() )
-                        
+
 
                         @foreach ($payments as $payment)
                         @endforeach
@@ -74,7 +74,13 @@
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit->unit_price}}</a> </td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $paymentsDone =  $payment->unit_price - $payment->residual}}</a></td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
+                            @if (is_null($payment->finance))
+
+                            <td><a href="" class="btn btn-outline-info m-2" style="width: 125px">لم يشترك بعد</a></td>
+                            @else
+
                             <td><a href="{{ url('financeShow/'.$payment->finance_id) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
+                            @endif
                         </tr>
 
                         @for ($i = 0; $i < $count=  $payment->installments; $i++)
@@ -162,9 +168,9 @@
 
 
                     @else
-                            
+
                     @endif
-                        
+
                     </tbody>
                 </table>
             </div>

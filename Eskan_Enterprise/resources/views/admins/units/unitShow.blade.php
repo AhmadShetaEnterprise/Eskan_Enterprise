@@ -23,7 +23,7 @@
                 @endif
                     class="btn btn-outline-info m-2" style="width: 125px;height: 40px">{{$unit->status}}
                 </a>
-            </div>          
+            </div>
         </div>
         <div class="">
             <div class="card-body col-lg-12"  style="width: 20rem;">
@@ -121,11 +121,17 @@
                         @foreach ($payments as $payment)
 
                         @endforeach
-                        <tr>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit_price}}</a> </td>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $paymentsDone =  $payment->unit_price - $payment->residual}}</a></td>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
-                            <td><a href="{{ url('financeShow/'.$payment->finance_id) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
+                            {{-- {{dd($payment)}} --}}
+                            <tr>
+                                @if (is_null($payment->finance))
+                                <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit_price}}</a> </td>
+
+                                @else
+                                <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit_price}}</a> </td>
+                                <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $paymentsDone =  $payment->unit_price - $payment->residual}}</a></td>
+                                <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
+                                <td><a href="{{ url('financeShow/'.$payment->finance_id) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
+                            @endif
                         </tr>
 
                         @for ($i = 0; $i < $count=  $payment->installments; $i++)
@@ -237,7 +243,7 @@
                     </thead>
                     <tbody>
                         @foreach ($finances as $item)
-                            
+
                         <tr>
                             <td><a class="m-1 p-1 text-lg-center btn btn-outline-danger" style="width: 10rem" href="">{{ $item->name }}</a></td>
                             <td><a class="m-1 p-1 text-lg-center btn btn-outline-primary" style="width: 10rem" href="">{{ $item->space_payment }}</a></td>
