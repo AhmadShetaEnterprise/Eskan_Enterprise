@@ -70,13 +70,13 @@
                                 </a>
                             </td>
                             @if ($item->status == 'خالية')
-                            <td><a href="{{ url('editStatusUnit/'.$item->id) }}" class="btn btn-outline-success m-2" style="width: 125px">حجز</a></td>
+                            <td><a href="{{ url('editUnitStatus/'.$item->id) }}" class="btn btn-outline-success m-2" style="width: 125px">حجز</a></td>
                             @elseif ($item->status == 'تعاقد')
                             <td><a href="{{ url('customerShow/'.$item->customers->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">{{$item->customers->name}}</a></td>
                             @elseif ($item->status == 'محجوزة')
                             <td><a href="{{ url('customerShow/'.$item->customers->id) }}" class="btn btn-outline-warning m-2" style="width: 125px">{{$item->customers->name}}</a></td>
                             @elseif ($item->status == 'ملغاة')
-                            <td><a href="{{ url('editStatusUnit/'.$item->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">حجز</a></td>
+                            <td><a href="{{ url('editUnitStatus/'.$item->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">حجز</a></td>
                             @else
                             <td>no</td>
                             @endif

@@ -36,8 +36,6 @@ Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->nam
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/index', 'index')->name('index');
-    // Route::get('/addCustomer', 'create')->name('addCustomer');
-    // Route::post('/insertCustomer', 'store')->name('insertCustomer');
 
 });
 
@@ -155,7 +153,7 @@ Route::controller(UnitController::class)->group(function () {
     Route::get('deleteUnit/{id}', 'destroy');
     Route::get('/unitShow/{id}', 'show')->name('unitShow');
 });
-Route::get('/editStatusUnit/{id}', [App\Http\Controllers\UnitController::class, 'editStatusUnit'])->name('editStatusUnit');
+Route::get('/editUnitStatus/{id}', [App\Http\Controllers\UnitController::class, 'editUnitStatus'])->name('editUnitStatus');
 Route::Put('/updateUnitStatus/{id}', [App\Http\Controllers\UnitController::class, 'updateUnitStatus'])->name('updateUnitStatus');
 
                 // UnitController end

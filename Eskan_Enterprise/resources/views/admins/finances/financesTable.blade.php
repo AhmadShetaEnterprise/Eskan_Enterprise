@@ -12,7 +12,6 @@
             <th scope="col" class="text-xl-center">دفعة تراخيص</th>
             <th scope="col" class="text-xl-center">دفعة بدأ أعمال</th>
             <th scope="col" class="text-xl-center">دفعة تسليم</th>
-            <th scope="col" class="text-xl-center">عدد الاقساط</th>
             <th scope="col" class="text-xl-center">امر</th>
         </tr>
         </thead>
@@ -31,7 +30,7 @@
                 </a>
             </td>
             <td class="text-xl-center">
-                <a class="btn btn-info btn-sm" href="{{ url('editPayment/'.$item->id) }}">تعديل نظام الدفع</ac>    
+                <a class="btn btn-info btn-sm d-inline-block" href="{{ url('editFinance/'.$item->id) }}">تعديل نظام الدفع</ac>    
             </td>
 
         </tr>

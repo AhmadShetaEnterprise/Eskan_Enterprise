@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Unit;
 use App\Models\Level;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,7 @@ class Construction extends Model
         'property_id',
         'main_project_id',
         'levels',
-        'units',
+        'level_units',
         'total_units',
         'coast',
     ];
@@ -42,9 +43,8 @@ class Construction extends Model
     // }
 
     public function units() {
-        return $this->hasMany(Unit::class, 'construction_id', 'id')->withDefault([
-            'status'=>'خالية'
-        ]);
+        return $this->hasMany(Unit::class, 'construction_id', 'id');
+
     }
 
     

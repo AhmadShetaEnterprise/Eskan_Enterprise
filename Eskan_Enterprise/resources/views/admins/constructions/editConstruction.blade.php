@@ -35,7 +35,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">الوحدات بالطابق</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="units" value="{{ $constructions->units }}">
+                        <input type="text" class="form-control  font-weight-bold text-dark" name="level_units" value="{{ $constructions->level_units }}">
                     </div>
 
                     <div class="col-md-6 mb-3">

@@ -73,7 +73,7 @@
                                 </td>
                                 @elseif ($unit->status == 'تعاقد')
                                 <td>
-                                    <a href="{{ url('customerShow/'.$unit->customers->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">
+                                    <a href="{{ url('customerShow/'.$unit->customers->id) }}" class="btn btn-outline-danger m-2 d-inline-block" style="font-size:1vw;">
                                         {{$unit->customers->name}}
                                     </a>
                                 </td>
@@ -207,6 +207,11 @@
                                     </div>
                                 </form>
                             </td>
+                            <td>
+                                <a href="{{ url('addUnitPayment/'.$unit->id) }}" class="btn btn-success d-inline-block" >
+                                    دفعة جديدة
+                                </a>
+                            </td>
                         </tr>
                             @endif
 
@@ -244,15 +249,6 @@
                     </tbody>
                 </table>
             </div>
-            {{-- @if (isset($payments)  && $payments->isNotEmpty()) --}}
-            <div class="col-lg-4 m-5">
-                <td>
-                    <a href="{{ url('addUnitPayment/'.$unit->id) }}" class="btn btn-success m-2 p-3" style="width: 200px;height:80px; font-size:30px">
-                        دفعة جديدة
-                    </a>
-                </td>
-            </div>
-            {{-- @endif --}}
 
         </div>
     </div>

@@ -23,4 +23,8 @@ class Finance extends Model
     public function payments() {
         return $this->hasMany(Payment::class, 'finance_id', 'id');
     }
+
+    public function units() {
+        return $this->hasMany(Unit::class, 'finance_id', 'id');
+    }
 }

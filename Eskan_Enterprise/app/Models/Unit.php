@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Customer;
+use App\Models\Construction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -60,4 +61,7 @@ class unit extends Model
         return $this->belongsToMany(UnitStatusDate::class);
     }
     
+    public function finance() {
+        return $this->belongsTo(Finance::class, 'finance_id', 'id');
+    }
 }

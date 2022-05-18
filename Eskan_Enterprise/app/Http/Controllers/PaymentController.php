@@ -115,6 +115,7 @@ class PaymentController extends Controller
      */
     public function storeUnitPayment(Request $request)
     {
+
         $payment = new Payment();
 
         $payment->unit_price         = $request->input('unit_price');

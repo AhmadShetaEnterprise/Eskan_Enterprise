@@ -20,7 +20,7 @@
 
             <input type="text" class="form-control m-1 font-weight-bold text-dark" name="levels" placeholder="الطوابق">
 
-            <input type="text" class="form-control m-1 font-weight-bold text-dark" name="units" placeholder="الوحدات ">
+            <input type="text" class="form-control m-1 font-weight-bold text-dark" name="level_units" placeholder="الوحدات ">
 
             <input type="text" class="form-control m-1 font-weight-bold text-dark" name="total_units" placeholder="اجمالي الوحدات (تلقائية) ">
 

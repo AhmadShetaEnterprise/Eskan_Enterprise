@@ -2,8 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Unit;
 use App\Models\Admin;
+use App\Models\Level;
+use App\Models\Finance;
+use App\Models\Payment;
 use App\Models\Customer;
+use App\Models\Property;
+use App\Models\Installment;
+use App\Models\MainProject;
+use App\Models\Construction;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User;
 
@@ -16,8 +24,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $customers = Customer::all();
-        return view('admins.index', compact('customers'));
+        $property       = Property::all();
+        $mainProjects   = MainProject::all();
+        $constructions  = Construction::all();
+        $units          = Unit::all();
+        $levels         = Level::all();
+        $finance        = Finance::all();
+        $payments       = Payment::all();
+        $installments   = Installment::all();
+        $customers      = Customer::all();
+        return view('admins.index', 
+        compact('property', 'mainProjects', 'constructions', 'units', 'levels', 'finance', 'payments', 'installments', 'customers'));
     }
 
     /**

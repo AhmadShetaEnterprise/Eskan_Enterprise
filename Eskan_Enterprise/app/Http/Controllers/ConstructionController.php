@@ -49,9 +49,9 @@ class ConstructionController extends Controller
         $property_id     = $request->input('property_id');
         $main_project_id = $request->input('main_project_id');
         $levels          = $request->input('levels');
-        $units           = $request->input('units');
+        $level_units       = $request->input('level_units');
         $rows            = $request->input('rows');
-        $total_units     = $units * $levels;
+        $total_units     = $level_units * $levels;
         $property     = Property::find($property_id);
         $properties   = Property::all();
         $main_project = MainProject::find($main_project_id);
@@ -85,11 +85,11 @@ class ConstructionController extends Controller
         $constructions->property_id     = $request->input('property_id');
         $constructions->main_project_id = $request->input('main_project_id');
         $constructions->levels          = $request->input('levels');
-        $constructions->units           = $request->input('units');
+        $constructions->level_units     = $request->input('level_units');
         if (!empty($request->input('total_units'))) {
             $constructions->total_units     = $request->input('total_units');            
         } else {
-            $constructions->total_units     = $constructions->units * $constructions->levels;
+            $constructions->total_units     = $constructions->level_units * $constructions->levels;
         }
         $constructions->coast           = $request->input('coast');
         $constructions->save();
@@ -125,7 +125,7 @@ class ConstructionController extends Controller
             $constructions->property_id     = $request->property_id[$key];
             $constructions->main_project_id = $request->main_project_id[$key];
             $constructions->levels          = $request->levels[$key];
-            $constructions->units           = $request->units[$key];
+            $constructions->level_units     = $request->level_units[$key];
             $constructions->total_units     = $request->total_units[$key];
             $constructions->coast           = $request->coast[$key];
             $constructions->save();
@@ -214,9 +214,9 @@ class ConstructionController extends Controller
 
         $constructions->name            = $request->input('name');
         $constructions->property_id     = $request->input('property_id');
-        $constructions->main_project_id  = $request->input('main_project_id');
+        $constructions->main_project_id = $request->input('main_project_id');
         $constructions->levels          = $request->input('levels');
-        $constructions->units           = $request->input('units');
+        $constructions->level_units     = $request->input('level_units');
         $constructions->total_units     = $request->input('total_units');
         $constructions->coast           = $request->input('coast');
         $constructions->update();

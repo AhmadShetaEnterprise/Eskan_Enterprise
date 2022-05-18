@@ -35,8 +35,8 @@
         <tr>
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
             <td class="text-xl-center"><a href="">{{ $item->unit_price }}</a></td>
-            <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->unit_id) }}"> {{ $item->customer->name }} </a></td>
-            <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->customer_id) }}"> {{ $item->unit->name }} </a></td>
+            <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->customer_id) }}"> {{ $item->customer->name }} </a></td>
+            <td class="text-xl-center"><a href="{{ url('unitShow/'.$item->unit_id) }}"> {{ $item->unit->name }} </a></td>
             <td class="text-xl-center"><a href="{{ url('financesTable') }}"> {{ $item->finance->name}} </a></td>
             <td class="text-xl-center">{{ $item->space_payment }}</td>
             <td class="text-xl-center">{{ $item->licences_payment }}</td>

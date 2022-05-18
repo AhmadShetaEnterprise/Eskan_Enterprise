@@ -29,6 +29,11 @@
                     @else                        
                     <div class="col-md-6 mb-3">
                         <label for="">نظام الدفع</label>
+                        @if ()
+                            
+                        @else
+                            
+                        @endif
                         <select name="finance_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
                             <option value="">نظام الدفع</option>
                             @foreach ($finances as $finance)
