@@ -14,7 +14,8 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">الوحدة </label>
-                        <input type="text" value="{{$unit->id}}" class="form-control  font-weight-bold text-dark" name="unit_id" required>
+                        <input type="text" value="{{$unit->name}}" class="form-control  font-weight-bold text-dark" name="" required>
+                        <input type="hidden" value="{{$unit->id}}" class="form-control  font-weight-bold text-dark" name="unit_id" required>
 
                     </div>
 
@@ -26,19 +27,17 @@
                     @if (is_null($finance))
                     <input type="text" value="{{$finance->name}}" class="form-control  font-weight-bold text-dark" name="finance_id" required>
 
-                    @else                        
+                    @else
                     <div class="col-md-6 mb-3">
                         <label for="">نظام الدفع</label>
-                        @if ()
-                            
-                        @else
-                            
-                        @endif
+                        {{-- @isset($record)
+
+                        @endisset --}}
                         <select name="finance_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
                             <option value="">نظام الدفع</option>
                             @foreach ($finances as $finance)
                             <option value="{{ $finance->id }}">{{ $finance->name }}</option>
-                            @endforeach                          
+                            @endforeach
                         </select>
                     </div>
                     @endif
@@ -68,7 +67,7 @@
                         <label for="">خصم نقدي </label>
                         <input type="text" class="form-control  font-weight-bold text-dark" name="discount" >
                     </div>
-                    
+
                     <div class="col-md-6 mb-3">
                         {{-- <label for="">العميل </label> --}}
                         <input type="hidden" value="{{ $unit->customers->id }}" class="form-control  font-weight-bold text-dark" name="customer_id" required>
@@ -78,7 +77,7 @@
                         {{-- <label for="">المتبقى</label> --}}
                         <input type="hidden" class="form-control  font-weight-bold text-dark" name="residual" >
                     </div>
-                    
+
                     <div class="col-md-6 mb-3">
                         {{-- <label for="">عدد الاقساط</label> --}}
                         <input type="hidden" class="form-control  font-weight-bold text-dark" name="installments" >

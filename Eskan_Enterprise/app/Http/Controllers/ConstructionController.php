@@ -49,14 +49,14 @@ class ConstructionController extends Controller
         $property_id     = $request->input('property_id');
         $main_project_id = $request->input('main_project_id');
         $levels          = $request->input('levels');
-        $level_units       = $request->input('level_units');
+        $level_units     = $request->input('level_units');
         $rows            = $request->input('rows');
         $total_units     = $level_units * $levels;
-        $property     = Property::find($property_id);
         $properties   = Property::all();
-        $main_project = MainProject::find($main_project_id);
+        $property     = Property::find($property_id);
         $main_projects= MainProject::all();
-        return view('admins.constructions.addconstructions', compact('properties', 'property', 'main_projects', 'main_project', 'levels', 'units', 'total_units', 'rows'));
+        $main_project = MainProject::find($main_project_id);
+        return view('admins.constructions.addconstructions', compact('properties', 'property', 'main_projects', 'main_project', 'levels', 'level_units', 'total_units', 'rows'));
     }
 
     /**
@@ -87,7 +87,7 @@ class ConstructionController extends Controller
         $constructions->levels          = $request->input('levels');
         $constructions->level_units     = $request->input('level_units');
         if (!empty($request->input('total_units'))) {
-            $constructions->total_units     = $request->input('total_units');            
+            $constructions->total_units     = $request->input('total_units');
         } else {
             $constructions->total_units     = $constructions->level_units * $constructions->levels;
         }
@@ -102,7 +102,7 @@ class ConstructionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function constructionsMultipleStore(Request $request)
+    public function storeMultipleConstructions(Request $request)
     {
 
         foreach ($request->name as $key => $value) {

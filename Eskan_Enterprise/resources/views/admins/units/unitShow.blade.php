@@ -222,6 +222,15 @@
                             @endif
 
                         @endif
+
+                    @else
+                    <tr>
+                        <td>
+                            <a href="{{ url('addUnitPayment/'.$unit->id) }}" class="btn btn-success d-inline-block" >
+                                دفعة جديدة
+                            </a>
+                        </td>
+                    </tr>
                     @endif
 
 

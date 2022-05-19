@@ -63,7 +63,7 @@ Route::controller(ConstructionController::class)->group(function () {
     Route::get('/addConstruction', 'create')->name('addConstruction');
     Route::get('/addConstructions', 'createConstructionsRows')->name('addConstructions');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
-    Route::post('/constructionsMultipleStore', 'constructionsMultipleStore')->name('constructionsMultipleStore');
+    Route::post('/insertMultipleConstructions', 'storeMultipleConstructions')->name('insertMultipleConstructions');
     Route::get('/showConstruction/{id}', 'show')->name('showConstruction');
     Route::get('/showConstructionLevels/{id}', 'showConstructionLevels')->name('showConstructionLevels');
     Route::get('/showConstructionUnits/{id}', 'showConstructionUnits')->name('showConstructionUnits');

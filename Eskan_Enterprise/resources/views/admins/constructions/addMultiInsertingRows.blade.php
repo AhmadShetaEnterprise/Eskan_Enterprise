@@ -8,7 +8,7 @@
         <input type="text" class="form-control  font-weight-bold text-dark" name="name[]" required>
     </div>
 
-    <div class="col-lg-1">
+    <div class="col-lg-2">
         <label for="">القسم </label>
 
         @if (!$property)
@@ -57,7 +57,7 @@
 
     <div class="col-lg-1 mb-3">
         <label for="">وحداته</label>
-        <input type="text" value="{{ $units }}" class="form-control  font-weight-bold text-dark" name="units[]">
+        <input type="text" value="{{ $level_units }}" class="form-control  font-weight-bold text-dark" name="level_units[]">
     </div>
 
     <div class="col-lg-1 mb-3">
@@ -65,14 +65,14 @@
         <input type="text" value="{{ $total_units }}" class="form-control  font-weight-bold text-dark" name="total_units[]">
     </div>
 
-    <div class="col-lg-1 mb-3">
+    <div class="col-lg-2 mb-3">
         <label for="">القيمة </label>
-        <input type="text" value="" class="form-control  font-weight-bold text-dark" name="coast[]">
+        <input type="text" value=""  class="form-control  font-weight-bold text-dark" name="coast[]">
     </div>
 
-    <div class="col-lg-3 mb-3">
+    <div class="col-lg-1 mb-3">
         <label for="">صورة</label>
-        <input type="file" name="image[]" class="form-control  font-weight-bold text-dark">
+        <input type="file" name="image[]" style="width: 80px" class="form-control  font-weight-bold text-dark">
     </div>
 
 
