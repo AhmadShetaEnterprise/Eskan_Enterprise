@@ -33,7 +33,7 @@ class InstallmentController extends Controller
         $customers = Customer::all();
         $finances  = Finance::all();
 
-        return view('admins.installments.addInstallment', compact('units', 'customers', 'finances'));       
+        return view('admins.installments.addInstallment', compact('units', 'customers', 'finances'));
     }
 
     public function existsInstallmentMonth()
@@ -49,41 +49,46 @@ class InstallmentController extends Controller
      */
     public function store(Request $request)
     {
-        
+
         $installment = new Installment();
 
         $installment->customer_id        = $request->input('customer_id');
         $installment->unit_id            = $request->input('unit_id');
         $exist_installment_month = Installment::select('installment_month')->where([['customer_id', $installment->customer_id],['unit_id', $installment->unit_id]])->get();
-        $month   = $request->input('month');  
-        $year   = $request->input('year');  
+        $month   = $request->input('month');
+        $year   = $request->input('year');
         $installment->installment_month  = $month.'-'.$year;
-        
-        foreach ($exist_installment_month as $exist_installment) {
-            $array_month = [];
-            $months_array[] = $exist_installment->installment_month;                            
-            if (in_array($installment->installment_month, $months_array)) {
-                return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
-                dd($installment->installment_month,$exist_installment->installment_month,$exist_installment_month);               
+
+            foreach ($exist_installment_month as $exist_installment) {
+                $array_month = [];
+                $months_array[] = $exist_installment->installment_month;
+                if (in_array($installment->installment_month, $months_array)) {
+                    return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                    dd($installment->installment_month,$exist_installment->installment_month,$exist_installment_month);
+                }
+
+            }
+            if (!$month && !$year) {
+                $installment->installment_month  = $request->input('installment_month');
             }
 
-        }
-        if (!$month && !$year) {
-            $installment->installment_month  = $request->input('installment_month');
-        }
-
-        if (!$month || !$year) {
-            return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
-        }
-                
+            if ($month && !$year) {
+                return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+            } elseif (!$month && $year) {
+                return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+            }
+            if (empty($request->input('installment_value'))) {
+                return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+            } else {
                 $installment->installment_value  = $request->input('installment_value');
-                $installment->property_id        = $request->input('property_id');
-                $installment->main_project_id    = $request->input('main_project_id');
-                $installment->construction_id    = $request->input('construction_id');
-                $installment->level_id           = $request->input('level_id');
-                
-                $installment->save();
-                return redirect('/installmentsIndex')->with('status', 'Installment added successfully');
+            }
+        $installment->property_id        = $request->input('property_id');
+        $installment->main_project_id    = $request->input('main_project_id');
+        $installment->construction_id    = $request->input('construction_id');
+        $installment->level_id           = $request->input('level_id');
+            dd($installment);
+        $installment->save();
+        return redirect('/installmentsIndex')->with('status', 'Installment added successfully');
     }
 
     /**

@@ -21,11 +21,11 @@ return new class extends Migration
             $table->integer('construction_id');
             $table->integer('level_id');
             $table->string('site');
-            $table->string('space');
+            $table->integer('space');
             $table->integer('price_m');
             $table->integer('unit_price');
             $table->text('unitDescription')->nullable();
-            $table->srting('status')->default('خالية');
+            $table->string('status');
             $table->integer('customer_id');
             $table->timestamps();
         });

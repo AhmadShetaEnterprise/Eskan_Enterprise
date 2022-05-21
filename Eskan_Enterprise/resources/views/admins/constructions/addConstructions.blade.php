@@ -12,13 +12,16 @@
                 <div class="col-lg-12 addRow"><a class="btn btn-primary" href="javascript:;">+</a></div>
             </thead>
             <tbody class="tbody">
-                <form action="{{ url('constructionsMultipleStore') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ url('insertMultipleConstructions') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if (!$rows) {{$rows=2}}
+                    @if (!$rows)
+                        @php
+                            $rows=2
+                        @endphp
                     @endif
 
                     @for ($i = 0; $i < $rows; $i++)
-                    @include('admins.constructions.addMultiInsertingRows') {{ $i }}
+                    @include('admins.constructions.addMultiInsertingRows')
                     @endfor
                     <div class="col-md-12 mb-3">
                         <button type="submit" class="btn btn-primary">اضافة</button>
