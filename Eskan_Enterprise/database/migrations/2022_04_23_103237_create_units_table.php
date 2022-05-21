@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->integer('property_id');
             $table->integer('main_project_id');
             $table->integer('construction_id');

@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Property;
 use App\Models\MainProject;
 use Illuminate\Http\Request;
 
-class Main_ProjectController extends Controller
+class MainProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +27,8 @@ class Main_ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $properties  = Property::all();
+        return view('admins.main_projects.add_main_project', compact('properties'));
     }
 
     /**
@@ -37,6 +39,7 @@ class Main_ProjectController extends Controller
      */
     public function store(Request $request)
     {
+
         $main_projects = new MainProject();
 
         $main_projects->name            = $request->input('name');
@@ -83,8 +86,10 @@ class Main_ProjectController extends Controller
      */
     public function edit($id)
     {
-        $main_projects = MainProject::find($id);
-        return view('admins.main_projects.edit_main_project', compact('main_projects'));
+        $properties  = Property::all();
+
+        $main_project = MainProject::find($id);
+        return view('admins.main_projects.edit_main_project', compact('main_project', 'properties'));
     }
 
     /**

@@ -39,6 +39,9 @@ class Payment extends Model
         public function unit() {
             return $this->belongsTo(Unit::class, 'unit_id', 'id');
         }
-
+        
+        public function paymentKind() {
+            return $this->belongsTo(PaymentKind::class, 'payment_kind_id', 'id');
+        }
 
 }

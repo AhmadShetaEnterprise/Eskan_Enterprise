@@ -133,8 +133,8 @@ public function show($id)
     $customer_id = $unit->customer_id;
     $finances = Finance::all();
     $installment = Installment::with('customers', 'unit', 'constructions', 'property','main_projects')->find($id);
-    $installments = Installment::select()->where('customer_id', $id)->get();
-    $payments = Payment::select()->where('customer_id', $customer_id)->get();
+    $installments = Installment::select()->where([['customer_id', $customer_id],['unit_id', $id]])->get();
+    $payments = Payment::select()->where([['customer_id', $customer_id],['unit_id', $id]])->get();
     // $customers = Unit::with('customer')->find($id)->customer;
     return view('admins.units.unitShow', compact('unit', 'finances', 'installments', 'payments'));
 

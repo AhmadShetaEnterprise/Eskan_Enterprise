@@ -8,7 +8,7 @@
             <h3 class="text-success font-italic text-center bg-light font-weight-bold">{{ $unit->customers->name }}</h3>
         </div>
         <div class="card-body">
-            <form action="{{ url('insertPayment') }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ url('insertUnitPayment') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
 
@@ -23,17 +23,9 @@
                         <input type="text" value="{{ $unit->unit_price }}" class="form-control  font-weight-bold text-dark" name="unit_price" required>
                     </div>
 
-                    @if (is_null($finance))
-                    <input type="text" value="{{$finance->name}}" class="form-control  font-weight-bold text-dark" name="finance_id" required>
-
-                    @else                        
+                    @if (is_null($payments) || $payments->isEmpty())
                     <div class="col-md-6 mb-3">
                         <label for="">نظام الدفع</label>
-                        @if ()
-                            
-                        @else
-                            
-                        @endif
                         <select name="finance_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
                             <option value="">نظام الدفع</option>
                             @foreach ($finances as $finance)
@@ -41,28 +33,31 @@
                             @endforeach                          
                         </select>
                     </div>
+                    @else   
+                    @foreach ($payments as $payment)
+                        
+                    @endforeach                     
+                    <div class="col-md-6 mb-3">
+                        <label for="">نظام الدفع</label>
+                        <input type="text" value="{{ $payment->finance->name }}" class="form-control  font-weight-bold text-dark" required>
+                        <input type="hidden" value="{{ $payment->finance_id }}" class="form-control  font-weight-bold text-dark" name="finance_id"  required>
+                    </div>
                     @endif
 
                     <div class="col-md-6 mb-3">
-                        <label for="">دفعة ارض</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="space_payment" >
+                        <label for="">الدفعة</label>
+                        <select name="payment_kind_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
+                            <option value="">الدفعة</option>
+                            @foreach ($paymentKinds as $paymentKind)
+                            <option value="{{ $paymentKind->id }}">{{ $paymentKind->name }}</option>
+                            @endforeach                          
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="">دفعة تراخيص</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="licences_payment" >
+                        <label for=""> قيمة الدفعة </label>
+                        <input type="text" class="form-control  font-weight-bold text-dark" name="payment_value" required>
                     </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="">دفعة بدأ أعمال</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="start_payment" >
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="">دفعة تسليم</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="recieving_payment" >
-                    </div>
-
 
                     <div class="col-md-6 mb-3">
                         <label for="">خصم نقدي </label>

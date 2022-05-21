@@ -1,5 +1,5 @@
 <div class="col-lg-8">
-    <a href="?do=add_main_project" class="btn btn-warning mb-2 myText-button" href="">Add New Project</a>
+    <a href="add_main_project" class="btn btn-warning mb-2 myText-button" href="">Add New Project</a>
     <table class="table table-light table-bordered">
         <thead>
         <tr>

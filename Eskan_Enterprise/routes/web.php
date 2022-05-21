@@ -10,8 +10,8 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\InstallmentController;
+use App\Http\Controllers\MainProjectController;
 use App\Http\Controllers\ConstructionController;
-use App\Http\Controllers\Main_ProjectController;
 use App\Http\Controllers\UnitStatusDateController;
 
 /*
@@ -95,10 +95,10 @@ Route::get('/showProperties/{id}', [App\Http\Controllers\PropertyController::cla
                 // PropertyController end
 
 
-                // Main_ProjectController start
-                // Main_ProjectController start
-                // Main_ProjectController start
-Route::controller(Main_ProjectController::class)->group(function () {
+                // MainProjectcoController start
+                // MainProjectcoController start
+                // MainProjectcoController start
+Route::controller(MainProjectController::class)->group(function () {
     Route::get('/main_projectsIndex', 'index')->name('main_projectsIndex');
     Route::get('/add_main_project', 'create')->name('add_main_project');
     Route::post('/insert_main_project', 'store')->name('insert_main_project');
@@ -108,9 +108,9 @@ Route::controller(Main_ProjectController::class)->group(function () {
     Route::put('update_main_project/{id}', 'update')->name('update_main_project');
     Route::get('/show_main_project/{id}', 'show')->name('show_main_project');
 });
-                // Main_ProjectController end
-                // Main_ProjectController end
-                // Main_ProjectController end
+                // MainProjectcoController end
+                // MainProjectcoController end
+                // MainProjectcoController end
 
 
                 // LevelController start
@@ -186,14 +186,14 @@ Route::controller(PaymentController::class)->group(function () {
     Route::get('/addPayment', 'create')->name('addPayment');
     Route::get('/addUnitPayment', 'createUnitPayment')->name('addUnitPayment');
     Route::post('/insertPayment', 'store')->name('insertPayment');
-    Route::post('/insertUnitePayment', 'storeUnitPayment')->name('insertUnitePayment');
+    Route::post('/insertUnitPayment', 'storeUnitPayment')->name('insertUnitPayment');
     Route::get('/unitPayment/{id}', 'show')->name('unitPayment');
     Route::get('/editPayment/{id}', 'edit')->name('editPayment');
     Route::put('updatePayment{id}', 'update')->name('updatPayment');
     Route::get('deletePayment/{id}', 'destroy');
 });
 Route::get('/addUnitPayment/{id}', [App\Http\Controllers\PaymentController::class, 'createUnitPayment'])->name('addUnitPayment');
-Route::post('/insertUnitePayment', [App\Http\Controllers\PaymentController::class, 'storeUnitPayment'])->name('insertUnitePayment');
+Route::post('/insertUnitPayment', [App\Http\Controllers\PaymentController::class, 'storeUnitPayment'])->name('insertUnitPayment');
 
                 // paymentController end
                 // paymentController end

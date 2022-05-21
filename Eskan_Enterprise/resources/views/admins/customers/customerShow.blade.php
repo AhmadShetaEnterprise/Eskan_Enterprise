@@ -27,8 +27,8 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($units as $item)
                         <tr>
-                            @foreach ($units as $item)
                             <td><a href="{{ url('unitShow/'.$item->id) }}" class="btn btn-primary m-2" style="width: 125px">{{$item->name}}</a></td>
                             <td>
                                 <a href="{{ url('searchConstruction/'.$item->constructions->id.'/?status='.$item->status) }}"
@@ -56,23 +56,26 @@
                 <table>
                     <thead>
                         <tr>
-                            <th class="m-2 p-2 bg-dark text-lg-center">الوحدة</th>
-                            <th class="m-2 p-2 bg-dark text-lg-center"> قيمة الوحدة</th>
-                            <th class="m-2 p-2 bg-dark text-lg-center">المدفوع</th>
-                            <th class="m-2 p-2 bg-dark text-lg-center">المتبقي</th>
-                            <th class="m-2 p-2 bg-dark text-lg-center">نظام الدفع</th>
+                            <td class="">الوحدة</td>
+                            <td class="">قيمة الوحدة</td>
+                            <td class="">المدفوع</td>
+                            <td class="">اسم الدفعة</td>
+                            <td class="">اجمالي الدفعات</td>
+                            <td class="">المتبقي</td>
+                            <td class="">نظام الدفع</td>
                         </tr>
                     </thead>
                     <tbody>
+                        
                     @if (isset($payments) && $payments->isNotEmpty() )
 
-
                         @foreach ($payments as $payment)
-                        @endforeach
                         <tr>
-                            <td><a href="{{ url('unitShow/'.$item->id) }}" class="btn btn-primary m-2" style="width: 125px">{{$payment->unit->name}}</a> </td>
+                            <td><a href="{{ url('unitShow/'.$item->id) }}" class="btn btn-primary m-2 d-inline-block" >{{$payment->unit->name}}</a> </td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->unit->unit_price}}</a> </td>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $paymentsDone =  $payment->unit_price - $payment->residual}}</a></td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $payment->payment_value}}</a></td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $payment->paymentKind->name}}</a> </td>
+                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $payment->unit->unit_price - $payment->residual}}</a> </td>
                             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
                             @if (is_null($payment->finance))
 
@@ -82,6 +85,7 @@
                             <td><a href="{{ url('financeShow/'.$payment->finance_id) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
                             @endif
                         </tr>
+                        @endforeach
 
                         @for ($i = 0; $i < $count=  $payment->installments; $i++)
                         @endfor
@@ -89,10 +93,10 @@
 
                         @if (isset($installments) && !empty($installments))
                             @foreach ($installments as $installment)
-                            @php
-                                $months_array = [];
-                                $months_array[] = $installment->installment_month;
-                            @endphp
+                                @php
+                                    $months_array = [];
+                                    $months_array[] = $installment->installment_month;
+                                @endphp
                             @endforeach
                             @if (!empty($months_array))
                             <tr>
@@ -110,6 +114,9 @@
                                         </div>
                                 </td>
                             </tr>
+                            
+                        </tbody>
+                    </table>
                             <tr>
                                 <td>
                                     <form action="{{ url('insertInstallment') }}" method="POST" enctype="multipart/form-data">
@@ -142,6 +149,7 @@
                                     </form>
                                 </td>
                             </tr>
+                            
                             @else
 
                             <tr>

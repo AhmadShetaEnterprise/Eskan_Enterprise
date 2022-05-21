@@ -6,6 +6,8 @@ use App\Models\Unit;
 use App\Models\Finance;
 use App\Models\Payment;
 use App\Models\Customer;
+use App\Models\Installment;
+use App\Models\PaymentKind;
 use Illuminate\Http\Request;
 use Illuminate\support\facades\DB;
 
@@ -51,8 +53,14 @@ class PaymentController extends Controller
         $customer_id = Unit::select('customer_id')->where('id', $id)->get();
         $customer    = Customer::find($customer_id); 
         $finances    = Finance::all();
-        $finance     = Payment::select()->where('unit_id', $id)->get();
-        return view('admins.payments.addUnitPayment', compact('units', 'unit', 'customer_id', 'customer', 'finances', 'finance'));
+        $payments    = Payment::select()
+                        ->where('unit_id', $id)
+                        ->get();
+        $paymentKinds = PaymentKind::all();
+        $installments= Installment::select()
+                        ->where('unit_id', $id)
+                        ->get();
+        return view('admins.payments.addUnitPayment', compact('units', 'unit', 'customer_id', 'customer', 'finances', 'payments', 'paymentKinds'));
     }
 
     /**
@@ -96,13 +104,11 @@ class PaymentController extends Controller
 
         $payment->residual           = $payment->unit_price - $allPayments;
         $payment->discount           = $request->input('discount');
-            $discount     = $payment->discount/100; 
+        $discount     = $payment->discount/100; 
         $payment->cash_payment       = $request->input('cash_payment');
             if ($discount) {
                 $payment->cash_discount  = $payment->residual - ($payment->residual * $discount);
             }
-        // dd($payment->residual);
-        $payment->save();
 
         return redirect('/paymentsIndex')->with('status', 'Payment added successfully');
     }
@@ -120,10 +126,8 @@ class PaymentController extends Controller
 
         $payment->unit_price         = $request->input('unit_price');
         $payment->finance_id         = $request->input('finance_id');
-        $payment->space_payment      = $request->input('space_payment');
-        $payment->licences_payment   = $request->input('licences_payment');
-        $payment->start_payment      = $request->input('start_payment');
-        $payment->recieving_payment  = $request->input('recieving_payment');
+        $payment->payment_kind_id    = $request->input('payment_kind_id');
+        $payment->payment_value      = $request->input('payment_value');
         $payment->installments       = $request->input('installments');
         $payment->installment_value  = $request->input('installment_value');
         $payment->customer_id        = $request->input('customer_id');
@@ -133,29 +137,34 @@ class PaymentController extends Controller
         $payment->construction_id    = $request->input('construction_id');
         $payment->level_id           = $request->input('level_id');
 
-            $space_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('space_payment');
-            $licences_payment  = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('licences_payment');
-            $start_payment     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('start_payment');
-            $recieving_payment = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('recieving_payment');
+            $beforePayments     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->sum('payment_value');
+            $existsPayments     = Payment::select('payment_kind_id')->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->get();
 
+            foreach ($existsPayments as $existsPayment) {
+                $paymentArray = [];
+                $paymentArray[] = $existsPayment->payment_kind_id;                            
+                if (in_array($payment->payment_kind_id, $paymentArray)) {
+                    return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                }
+            }
 
-            $countPayments = ($space_payment+$licences_payment+$start_payment+$recieving_payment);
-                $currentPayment = ($request->input('space_payment')
-                +$request->input('licences_payment')
-                +$request->input('start_payment')
-                +$request->input('recieving_payment'));
-            
-            $allPayments = $countPayments + $currentPayment;
-
+            $allPayments = $beforePayments + $payment->payment_value;
+// dd($beforePayments);
         $payment->residual           = $payment->unit_price - $allPayments;
         $payment->discount           = $request->input('discount');
-            $discount     = $payment->discount/100; 
-        $payment->cash_payment       = $request->input('cash_payment');
+        $discount     = $payment->discount/100; 
+       
             if ($discount) {
-                $payment->cash_discount  = $payment->residual - ($payment->residual * $discount);
+                $payment->cash_payment  = $payment->residual - ($payment->residual * $discount);
             }
-        // dd($payment->residual);
-        $payment->save();
+
+            $countPayments     = Payment::select()->where([['customer_id', $payment->customer_id], ['unit_id', $payment->unit_id]])->count('payment_value');
+
+        // if($countPayments = 4 && empty($payment->installments)) {
+        //     $payment->installments        = 60;
+        //     $payment->installment_value    = $request->input('construction_id');
+        // }
+        $payment->save();            
 
         return redirect('/paymentsIndex')->with('status', 'Payment added successfully');
     }

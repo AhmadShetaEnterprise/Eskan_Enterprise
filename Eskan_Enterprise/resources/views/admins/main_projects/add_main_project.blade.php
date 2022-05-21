@@ -17,7 +17,11 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">قسم</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="property_id" required>
+                        <select  name="property_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
+                            @foreach ($properties as $property)                               
+                            <option value="{{ $property->id }}">{{ $property->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="col-md-12 mb-3">
