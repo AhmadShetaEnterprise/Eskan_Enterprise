@@ -15,7 +15,7 @@ class ManagerFundController extends Controller
         $managerFunds        = ManagerFund::all();
         $incomingPersonal    = ManagerFund::select('value')->where([['kind', 0],['category', 0]])->sum('value');
         $outgoinPersonal     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
-        $incomingCompany     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
+        $incomingCompany     = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->sum('value');
         $outgoinCompany      = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->sum('value');
         $incomingFunds       = $incomingPersonal + $incomingCompany;
         $outgoingFunds       = $outgoinPersonal + $outgoinCompany;
@@ -36,10 +36,10 @@ class ManagerFundController extends Controller
     {
         $managerFund = new ManagerFund();
 
-        $managerFund->kind = $request->input('kind');
+        $managerFund->kind     = $request->input('kind');
         $managerFund->category = $request->input('category');
-        $managerFund->value = $request->input('value');
-        $managerFund->comment = $request->input('comment');
+        $managerFund->value    = $request->input('value');
+        $managerFund->comment  = $request->input('comment');
         $managerFund->save();
         return redirect('/managerFundIndex')->with('status', 'Manager Fund added successfully');
     }
@@ -57,11 +57,11 @@ class ManagerFundController extends Controller
     {
         $incomingPersonal    = ManagerFund::select('value')->where([['kind', 0],['category', 0]])->sum('value');
         $outgoinPersonal     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
-        $incomingCompany     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
+        $incomingCompany     = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->sum('value');
         $outgoinCompany      = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->sum('value');
         $incomingFunds       = $incomingPersonal + $incomingCompany;
-        $outgoingFunds       = $outgoinPersonal + $outgoinCompany;
-        $managerFunds = ManagerFund::select()->where('category', $id)->get();
+        $outgoingFunds       = $outgoinPersonal  + $outgoinCompany;
+        $managerFunds = ManagerFund::select()->where([['category', $id],['created_at', '>=', date('Y-m-d').' 00:00:00']])->get();
         return view('admins.managerFundIndex', compact('managerFunds', 'incomingPersonal', 'outgoinPersonal', 'incomingCompany', 'outgoinCompany', 'incomingFunds', 'outgoingFunds'));
     }
     ////////////////////////////////////////////////
@@ -69,20 +69,23 @@ class ManagerFundController extends Controller
     ////////////////////////////////////////////////
     public function edit($id)
     {
-        $myTempletes = TempleteModalName::find($id);
-        return view('editMyTempletesIndex', compact('myTempletes'));   
+        $managerFund = ManagerFund::find($id);
+        return view('admins.manager.editManagerFund', compact('managerFund')); 
     }
     ////////////////////////////////////////////////
     //* Update the specified resource in storage.
     ////////////////////////////////////////////////
     public function update(Request $request, $id)
     {
-        $myTempletes = TempleteModalName::find($id);
+        $managerFund = ManagerFund::find($id);
 
-        $myTempletes->name = $request->input('name');
+        $managerFund->kind     = $request->input('kind');
+        $managerFund->category = $request->input('category');
+        $managerFund->value    = $request->input('value');
+        $managerFund->comment  = $request->input('comment');
 
-        $myTempletes->update();
-        return redirect('/myTempletesIndexIndex')->with('status', 'MyTempletesIndex Updated successfully'); 
+        $managerFund->update();
+        return redirect('/managerFundIndex')->with('status', 'MyTempletesIndex Updated successfully'); 
     }
     ////////////////////////////////////////////////
     //* Remove the specified resource from storage

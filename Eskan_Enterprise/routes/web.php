@@ -52,7 +52,7 @@ Route::controller(ManagerFundController::class)->group(function () {
     Route::put('updateManagerFund/{id}', 'update')->name('updateManagerFund');
     Route::get('/showManagerFund/{id}', 'show')->name('showManagerFund');
 });
-// Route::get('/managerFundIndex', [App\Http\Controllers\ManagerFundController::class, 'index'])->name('managerFundIndex');
+Route::put('/updateManagerFund', [App\Http\Controllers\ManagerFundController::class, 'update'])->name('updateManagerFund');
 // Route::get('/addManagerFund', [App\Http\Controllers\ManagerFundController::class, 'index'])->name('addManagerFund');
 
                 // ManagerFundController end

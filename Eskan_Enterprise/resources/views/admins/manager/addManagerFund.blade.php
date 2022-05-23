@@ -60,7 +60,7 @@
                     </div>
 
                     <div class="col-md-12 mb-3">
-                        <button type="submit" class="btn btn-primary">submit</button>
+                        <button type="submit" class="btn btn-primary">Add</button>
                     </div>
                 </div>
             </form>
