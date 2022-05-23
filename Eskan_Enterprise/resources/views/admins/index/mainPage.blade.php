@@ -52,7 +52,7 @@
 
                             <p class="bg-primary text-lg-center">
                                 <a class=" text-light" href="{{ url('showConstruction/'.$construction->id) }}">
-                                    {{ $construction->name }}
+                                    {{$construction->name}}
                                 </a>
                             </p>
                             <div class="row">
