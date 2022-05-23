@@ -24,21 +24,9 @@
                         <input type="text" value="{{ $unit->unit_price }}" class="form-control  font-weight-bold text-dark" name="unit_price" required>
                     </div>
 
-<<<<<<< HEAD
                     @if (is_null($payments) || $payments->isEmpty())
                     <div class="col-md-6 mb-3">
                         <label for="">نظام الدفع</label>
-=======
-                    @if (is_null($finance))
-                    <input type="text" value="{{$finance->name}}" class="form-control  font-weight-bold text-dark" name="finance_id" required>
-
-                    @else
-                    <div class="col-md-6 mb-3">
-                        <label for="">نظام الدفع</label>
-                        {{-- @isset($record)
-
-                        @endisset --}}
->>>>>>> 2f67102b568ab68ad76ff5c9caa81b686ac1b892
                         <select name="finance_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
                             <option value="">نظام الدفع</option>
                             @foreach ($finances as $finance)

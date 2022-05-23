@@ -16,6 +16,7 @@
                     </ul>
                 </li> --}}
                 <li><a href="{{ url('index') }}">الرئيسية </a></li>
+                <li><a href="{{ url('managerFundIndex') }}">M</a></li>
                 <li><a href="{{ url('customerIndex') }}">العملاء </a></li>
                 <li><a href="{{ url('constructionsIndex') }}">المنشئات</a></li>
                 <li><a href="{{ url('unitsIndex') }}">الوحدات</a></li>

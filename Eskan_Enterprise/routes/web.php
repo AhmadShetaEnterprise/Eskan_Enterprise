@@ -11,6 +11,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\MainProjectController;
+use App\Http\Controllers\ManagerFundController;
 use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\UnitStatusDateController;
 
@@ -38,6 +39,27 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/index', 'index')->name('index');
 
 });
+
+                // ManagerFundController start
+                // ManagerFundController start
+                // ManagerFundController start
+Route::controller(ManagerFundController::class)->group(function () {
+    Route::get('/managerFundIndex', 'index')->name('managerFundIndex');
+    Route::get('/addManagerFund', 'create')->name('addManagerFund');
+    Route::post('/insertManagerFund', 'store')->name('insertManagerFund');
+    Route::get('/searchManagerFund/{id}', 'search')->name('searchManagerFund');
+    Route::get('/editManagerFund/{id}', 'edit')->name('editManagerFund');
+    Route::put('updateManagerFund/{id}', 'update')->name('updateManagerFund');
+    Route::get('/showManagerFund/{id}', 'show')->name('showManagerFund');
+});
+Route::put('/updateManagerFund', [App\Http\Controllers\ManagerFundController::class, 'update'])->name('updateManagerFund');
+// Route::get('/addManagerFund', [App\Http\Controllers\ManagerFundController::class, 'index'])->name('addManagerFund');
+
+                // ManagerFundController end
+                // ManagerFundController end
+                // ManagerFundController end
+
+
 
                 // CustomerController start
                 // CustomerController start
