@@ -34,7 +34,7 @@ class AdminController extends Controller
         $installments   = Installment::all();
         $customers      = Customer::all();
         return view('admins.index', 
-        compact('property', 'mainProjects', 'constructions', 'units', 'levels', 'finance', 'payments', 'installments', 'customers'));
+            compact('property', 'mainProjects', 'constructions', 'units', 'levels', 'finance', 'payments', 'installments', 'customers'));
     }
 
     /**

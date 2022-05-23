@@ -2,7 +2,7 @@
 
 @section('content')
 @if (!isset($_GET['do']))
-@include('admins.customers.customerTable')
+@include('admins.index.mainPage')
 @elseif ($_GET['do'] == 'addCustomer')
 @include('admins.customers.addCustomer')
 @elseif ($_GET['do'] == 'editCustomer')
