@@ -126,10 +126,10 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">العميل</label>
-                        <select class="custom-select form-control  font-weight-bold text-dark" name="customer_id" >
-                            <option  selected value="0">عميل</option>
+                        <select data-show-subtext="true" data-live-search="true" class="selectpicker btn btn-primary w-100" name="customer_id" id="search-select">
+                            <option selected value="0">عميل</option>                          
                             @foreach ( $customers as $customer)
-                            <option value="{{ $customer->id }}" >{{ $customer->name }}</option>
+                            <option data-subtext="{{ $customer->phone }}" value="{{ $customer->id }}">{{ $customer->name }}</option>
                             @endforeach
                         </select>
                     </div>

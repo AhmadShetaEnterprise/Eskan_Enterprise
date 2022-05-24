@@ -2,7 +2,14 @@
     <a href="{{ url('addManagerFund') }}" class="mb-2 btn btn-warning text-light text-bold myText-tr">حركة مالية</a>
     <a href="{{ url('managerFundIndex') }}" class="mb-2 btn btn-primary text-light text-bold myText-tr">كل الحركات</a>
     <a href="{{ url('searchManagerFund/'.'0') }}" class="mb-2 btn btn-danger text-light text-bold myText-tr">حركات شخصية</a>
-    <a href="{{ url('searchManagerFund/'.'1') }}" class="mb-2 btn btn-success text-light text-bold myText-tr">حركات المؤسسة</a>
+    <a href="{{ url('searchManagerFund/'.'0') }}" class="mb-2 btn btn-success text-light text-bold myText-tr">حركات المؤسسة</a>
+    <form method="GET" action="{{ url('searchManagerFund/'.'day') }}" class="d-inline-flex" enctype="multipart/form-data">
+        @csrf
+        <input type="date" name="day_from" id="">
+        <input type="date" name="day_to" id="">
+        <input type="date" name="one_day" id="">
+        <button type="submit"></button>
+    </form>
     <table class="table table-light table-bordered">
         <thead>
         <tr>
@@ -68,8 +75,8 @@
         </thead>
         <tbody>
             <tr>
-                <td class="text-xl-center bg-primary">{{ $outgoinPersonal}}</td>
-                <td class="text-xl-center">{{ $outgoinCompany}}</td>
+                <td class="text-xl-center bg-primary">{{ $outgoingPersonal}}</td>
+                <td class="text-xl-center">{{ $outgoingCompany}}</td>
                 <td class="text-xl-center bg-primary">{{ $incomingPersonal}}</td>
                 <td class="text-xl-center ">{{ $incomingCompany}}</td>
                 <td class="text-xl-center bg-danger">{{ $outgoingFunds}}</td>
@@ -97,8 +104,8 @@
         </thead>
         <tbody>
             <tr>
-                <td class="text-xl-center bg-primary">{{ $outgoinPersonal}}</td>
-                <td class="text-xl-center">{{ $outgoinCompany}}</td>
+                <td class="text-xl-center bg-primary">{{ $outgoingPersonal}}</td>
+                <td class="text-xl-center">{{ $outgoingCompany}}</td>
                 <td class="text-xl-center bg-primary">{{ $incomingPersonal}}</td>
                 <td class="text-xl-center ">{{ $incomingCompany}}</td>
                 <td class="text-xl-center bg-danger">{{ $outgoingFunds}}</td>

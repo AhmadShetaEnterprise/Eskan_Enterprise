@@ -14,13 +14,13 @@ class ManagerFundController extends Controller
     {
         $managerFunds        = ManagerFund::all();
         $incomingPersonal    = ManagerFund::select('value')->where([['kind', 0],['category', 0]])->sum('value');
-        $outgoinPersonal     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
+        $outgoingPersonal     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
         $incomingCompany     = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->sum('value');
-        $outgoinCompany      = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->sum('value');
+        $outgoingCompany      = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->sum('value');
         $incomingFunds       = $incomingPersonal + $incomingCompany;
-        $outgoingFunds       = $outgoinPersonal + $outgoinCompany;
+        $outgoingFunds       = $outgoingPersonal + $outgoingCompany;
 
-        return view('admins.managerFundIndex', compact('managerFunds' , 'incomingPersonal', 'outgoinPersonal', 'incomingCompany', 'outgoinCompany', 'incomingFunds', 'outgoingFunds'));
+        return view('admins.managerFundIndex', compact('managerFunds' , 'incomingPersonal', 'outgoingPersonal', 'incomingCompany', 'outgoingCompany', 'incomingFunds', 'outgoingFunds'));
     }
     ///////////////////////////////////////////////
     //* Show the form for creating a new resource.
@@ -55,14 +55,43 @@ class ManagerFundController extends Controller
     ////////////////////////////////////////////////
     public function search($id)
     {
-        $incomingPersonal    = ManagerFund::select('value')->where([['kind', 0],['category', 0]])->sum('value');
-        $outgoinPersonal     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
-        $incomingCompany     = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->sum('value');
-        $outgoinCompany      = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->sum('value');
-        $incomingFunds       = $incomingPersonal + $incomingCompany;
-        $outgoingFunds       = $outgoinPersonal  + $outgoinCompany;
-        $managerFunds = ManagerFund::select()->where([['category', $id],['created_at', '>=', date('Y-m-d').' 00:00:00']])->get();
-        return view('admins.managerFundIndex', compact('managerFunds', 'incomingPersonal', 'outgoinPersonal', 'incomingCompany', 'outgoinCompany', 'incomingFunds', 'outgoingFunds'));
+        if (isset($_GET['day_from']) && isset($_GET['day_to']) && empty($_GET['one_day'])) {
+            if (empty($_GET['day_to'])) {
+                $day_from = $_GET['day_from'];
+                $day_to   = date('Y-m-d');
+            }else {
+                
+                $day_from = $_GET['day_from'];
+                $day_to   = $_GET['day_to'];
+            }
+            $incomingPersonal   = ManagerFund::select('value')->where([['kind', 0],['category', 0]])->whereBetween('created_at', [$day_from, $day_to])->sum('value');
+            $outgoingPersonal   = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->whereBetween('created_at', [$day_from, $day_to])->sum('value');
+            $incomingCompany    = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->whereBetween('created_at', [$day_from, $day_to])->sum('value');
+            $outgoingCompany    = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->whereBetween('created_at', [$day_from, $day_to])->sum('value');
+            $incomingFunds      = $incomingPersonal + $incomingCompany;
+            $outgoingFunds      = $outgoingPersonal  + $outgoingCompany;
+            $managerFunds  = ManagerFund::select()->whereBetween('created_at', [$day_from, $day_to])->get();
+        } elseif ($_GET['one_day'] && !empty($_GET['one_day'])) {
+            $one_day = $_GET['one_day'];
+            
+            $incomingPersonal   = ManagerFund::select('value')->where([['kind', 0],['category', 0],['created_at', '=', $one_day]])->sum('value');
+            $outgoingPersonal   = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->where('created_at', $one_day)->sum('value');
+            $incomingCompany    = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->where('created_at', $one_day)->sum('value');
+            $outgoingCompany    = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->where('created_at', $one_day)->sum('value');
+            $incomingFunds      = $incomingPersonal + $incomingCompany;
+            $outgoingFunds      = $outgoingPersonal  + $outgoingCompany;
+            $managerFunds  = ManagerFund::select()->where('created_at', $one_day)->get();
+            // dd($one_day);
+        }else {
+            
+            $outgoingPersonal     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
+            $incomingCompany     = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->sum('value');
+            $outgoingCompany      = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->sum('value');
+            $incomingFunds       = $incomingPersonal + $incomingCompany;
+            $outgoingFunds       = $outgoingPersonal  + $outgoingCompany;
+            $managerFunds = ManagerFund::select()->where([['category', $id],['created_at', '>=', date('Y-m-d').' 00:00:00']])->get();
+        }
+        return view('admins.managerFundIndex', compact('managerFunds', 'incomingPersonal', 'outgoingPersonal', 'incomingCompany', 'outgoingCompany', 'incomingFunds', 'outgoingFunds'));
     }
     ////////////////////////////////////////////////
     //* Show the form for editing the specified resource.

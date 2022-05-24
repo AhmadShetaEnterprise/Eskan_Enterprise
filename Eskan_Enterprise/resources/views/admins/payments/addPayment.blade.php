@@ -13,7 +13,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">الوحدة </label>
-                        <select name="unit_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
+                        <select name="unit_id" id="search-select" data-show-subtext="true" data-live-search="true" class="selectpicker w-100 font-weight-bold text-dark" required>
                             <option value="">الوحدات</option>
                             @foreach ($units as $unit)
                                 <option value="{{ $unit->id }}">{{ $unit->name }}</option>
@@ -28,11 +28,11 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">العميل </label>
-                        <select name="customer_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
-                            <option value="">العميل</option>
-                            @foreach ($customers as $customer)
-                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                            @endforeach                          
+                        <select data-show-subtext="true" data-live-search="true" class="selectpicker btn btn-primary w-100" name="customer_id" id="search-select">
+                            <option selected value="0">عميل</option>                          
+                            @foreach ( $customers as $customer)
+                            <option data-subtext="{{ $customer->phone }}" value="{{ $customer->id }}">{{ $customer->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Unit;
 use App\Models\Finance;
+use App\Models\Payment;
 use App\Models\Customer;
 use App\Models\Installment;
 use Illuminate\Http\Request;
@@ -32,8 +33,9 @@ class InstallmentController extends Controller
         $units     = Unit::all();
         $customers = Customer::all();
         $finances  = Finance::all();
+        $payments  = Payment::all();
 
-        return view('admins.installments.addInstallment', compact('units', 'customers', 'finances'));
+        return view('admins.installments.addInstallment', compact('units', 'customers', 'finances', 'payments'));
     }
 
     public function existsInstallmentMonth()

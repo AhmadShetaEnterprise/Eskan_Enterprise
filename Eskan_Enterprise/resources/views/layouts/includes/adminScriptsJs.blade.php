@@ -14,10 +14,8 @@
         <script>
             $(document).ready(function () {
                 alert('hi');
-            })
-            jQuery(document).ready(function($){
-    //----- Open model CREATE -----//
-                alert('hi');
+
+                //----- Open model CREATE -----//
 
                 jQuery('#btn-add').click(function () {
                     jQuery('#btn-save').val("add");
@@ -62,5 +60,7 @@
             
             $('tbody').on('click', 'deleteRow', function (){
                      $(this).parent().parent().remove();
-                    });
+                });
+            })
+
         </script>
