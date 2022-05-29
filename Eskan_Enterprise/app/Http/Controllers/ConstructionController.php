@@ -34,7 +34,7 @@ class ConstructionController extends Controller
     {
         $properties   = Property::all();
         $main_projects = MainProject::all();
-        return view('admins.constructions.addconstruction', compact('properties', 'main_projects'));
+        return view('admins.constructions.addConstruction', compact('properties', 'main_projects'));
     }
 
     /**
