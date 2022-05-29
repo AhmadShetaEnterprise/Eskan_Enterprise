@@ -2,9 +2,13 @@
 
 @section('content')
 
+<a href="?do=addLevel" class="btn btn-warning mb-2 myText-button" href="">اضافة طابق جديد</a>
+
     <div class="card" style="width: ;">
+        @if (isset($constructions) && $constructions->isNotEmpty())
         <div class="card-header text-lg-center text-danger col-lg-12">
             <h1>
+                    
                 {{ $constructions->name }}
             </h1>
             <img src="..." class="card-img-top" alt="...">
@@ -41,6 +45,25 @@
             </div>
 
         </div>
+        @else
+        <div class="card-header text-lg-center text-danger col-lg-12">
+            <h1>
+                   الطوابق
+            </h1>
+            <img src="..." class="card-img-top" alt="...">
+        </div>
+        <br>
+        <div class="d-lg-inline-flex">
+            <div class="card-body col-lg-6"  style="width: 20rem;">
+                @foreach ($levels as $level)
+                    {{$level->name}}
+                @endforeach
+
+            </div>
+
+        </div>
+        @endif
+
     </div>
 
 @endsection
