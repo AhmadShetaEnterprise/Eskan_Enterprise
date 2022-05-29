@@ -12,6 +12,7 @@ use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\MainProjectController;
 use App\Http\Controllers\ManagerFundController;
+use App\Http\Controllers\PaymentKindController;
 use App\Http\Controllers\ConstructionController;
 use App\Http\Controllers\UnitStatusDateController;
 
@@ -216,6 +217,22 @@ Route::controller(PaymentController::class)->group(function () {
 });
 Route::get('/addUnitPayment/{id}', [App\Http\Controllers\PaymentController::class, 'createUnitPayment'])->name('addUnitPayment');
 Route::post('/insertUnitPayment', [App\Http\Controllers\PaymentController::class, 'storeUnitPayment'])->name('insertUnitPayment');
+
+                // paymentController end
+                // paymentController end
+                // paymentController end
+
+
+                // paymentController start
+                // paymentController start
+                // paymentController start
+Route::controller(PaymentKindController::class)->group(function () {
+    Route::get('/paymentKindsIndex', 'index')->name('paymentKindsIndex');
+    Route::get('/addPaymentKind', 'create')->name('addPaymentKind');
+    Route::post('/insertPaymentKind', 'store')->name('insertPaymentKind');
+
+});
+
 
                 // paymentController end
                 // paymentController end
