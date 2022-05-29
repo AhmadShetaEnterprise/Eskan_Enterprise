@@ -9,6 +9,7 @@
 
 @else
 I don't have any records!
+
 @endif
 
 @endsection
