@@ -45,7 +45,6 @@
                         </a>
                     </h5>
                     <div class="row">
-                        {{dd($mainProject->constructions)}}
                         @if ($mainProject->constructions->isNotEmpty() || !is_null($mainProject->constructions))
 
                         @foreach ($mainProject->constructions as $construction)
