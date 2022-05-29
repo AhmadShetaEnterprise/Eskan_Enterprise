@@ -25,7 +25,7 @@ return new class extends Migration
             $table->integer('price_m');
             $table->integer('unit_price');
             $table->text('unitDescription');
-            $table->srting('status');
+            $table->string('status');
             $table->integer('customer_id');
             $table->timestamps();
         });
