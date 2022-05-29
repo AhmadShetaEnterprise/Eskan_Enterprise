@@ -128,6 +128,7 @@ class ConstructionController extends Controller
             $constructions->level_units     = $request->level_units[$key];
             $constructions->total_units     = $request->total_units[$key];
             $constructions->coast           = $request->coast[$key];
+            $constructions->coast           = $request->coast[$key];
             $constructions->save();
         }
             return redirect('/constructionsIndex?addConstruction')->with('status', 'Category added successfully');

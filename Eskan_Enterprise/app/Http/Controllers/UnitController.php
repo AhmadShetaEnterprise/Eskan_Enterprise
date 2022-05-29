@@ -93,7 +93,7 @@ public function store(Request $request)
     $units->space           = $request->input('space');
     $units->price_m         = $request->input('price_m');
     $units->unit_price      = $request->input('unit_price');
-    $units->unitDescription = $request->input('unitDescription');
+    $units->unitDescription = 'وحدات';
     $units->status          = $request->input('status');
     $units->customer_id     = $request->input('customer_id');
     $units->save();
@@ -110,14 +110,14 @@ public function unitMultipleStore(Request $request)
         
         $units->name            = $value;
         $units->property_id     = $request->property_id[$key];
-        $units->main_project_id  = $request->main_project_id[$key];
+        $units->main_project_id = $request->main_project_id[$key];
         $units->construction_id = $request->construction_id[$key];
         $units->level_id        = $request->level_id[$key];
         $units->site            = $request->site[$key];
         $units->space           = $request->space[$key];
         $units->price_m         = $request->price_m[$key];
-        $units->unit_price     = $request->unit_price[$key];
-        $units->unitDescription = $request->unitDescription[$key];
+        $units->unit_price      = $request->unit_price[$key];
+        $units->unitDescription = 'وحدات';
         $units->status          = $request->status[$key];
         $units->customer_id     = $request->customer_id[$key];
         $units->save();
@@ -161,14 +161,14 @@ public function update(Request $request, $id)
 
     $units->name            = $request->input('name');
     $units->property_id     = $request->input('property_id');
-    $units->main_project_id  = $request->input('main_project_id');
+    $units->main_project_id = $request->input('main_project_id');
     $units->construction_id = $request->input('construction_id');
     $units->level_id        = $request->input('level_id');
     $units->site            = $request->input('site');
     $units->space           = $request->input('space');
     $units->price_m         = $request->input('price_m');
-    $units->unit_price     = $request->input('unit_price');
-    $units->unitDescription = $request->input('unitDescription');
+    $units->unit_price      = $request->input('unit_price');
+    $units->unitDescription = 'وحدات';
     $units->status          = $request->input('status');
     $units->customer_id     = $request->input('customer_id');
 
