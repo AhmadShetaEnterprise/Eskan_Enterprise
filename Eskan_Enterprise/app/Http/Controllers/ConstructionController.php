@@ -56,7 +56,7 @@ class ConstructionController extends Controller
         $property     = Property::find($property_id);
         $main_projects= MainProject::all();
         $main_project = MainProject::find($main_project_id);
-        return view('admins.constructions.addconstructions', compact('properties', 'property', 'main_projects', 'main_project', 'levels', 'level_units', 'total_units', 'rows'));
+        return view('admins.constructions.addConstructions', compact('properties', 'property', 'main_projects', 'main_project', 'levels', 'level_units', 'total_units', 'rows'));
     }
 
     /**
