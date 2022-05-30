@@ -39,6 +39,7 @@
                     <!-- AMA.MY Main page row START -->
                     <h4 class="text-lg-center text-light bg-info">المشاريع الرئيسية</h4>
                     @foreach ($mainProjects as $mainProject)
+                    {{dd($mainProjects)}}
                     <h5 class="text-lg-center text-dark border border-danger">
                         <a href="{{ url('show_main_project/'.$mainProject->id) }}">
                             {{ $mainProject->name }}

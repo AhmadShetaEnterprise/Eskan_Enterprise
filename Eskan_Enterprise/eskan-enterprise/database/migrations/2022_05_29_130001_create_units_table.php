@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('space');
             $table->integer('price_m');
             $table->integer('unit_price');
-            $table->text('unitDescription');
+            $table->text('unitDescription')->nullable();
             $table->string('status');
             $table->integer('customer_id');
             $table->timestamps();

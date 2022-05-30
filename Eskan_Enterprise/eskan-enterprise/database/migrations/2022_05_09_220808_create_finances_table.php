@@ -16,10 +16,7 @@ return new class extends Migration
         Schema::create('finances', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('space_payment');
-            $table->integer('licences_payment');
-            $table->integer('start_payment');
-            $table->integer('recieving_payment');
+            $table->integer('payment_value');
             $table->timestamps();
         });
     }

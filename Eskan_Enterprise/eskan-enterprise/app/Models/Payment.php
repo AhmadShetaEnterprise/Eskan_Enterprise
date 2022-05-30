@@ -13,10 +13,7 @@ class Payment extends Model
     protected $fillable = [
         'unit_price',
         'finance_id',
-        'space_payment',
-        'licences_payment',
-        'start_payment',
-        'recieving_payment',
+        'payment_value',
         'residual',
         'installments',
         'installment_value',

@@ -14,10 +14,7 @@ class Finance extends Model
 
     protected $fillable = [
         'name',
-        'space_payment',
-        'licences_payment',
-        'start_payment',
-        'recieving_payment',
+        'payment_value',
     ];
 
     public function payments() {

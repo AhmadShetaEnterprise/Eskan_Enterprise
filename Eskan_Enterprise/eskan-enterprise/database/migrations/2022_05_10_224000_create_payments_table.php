@@ -17,10 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('unit_price');
             $table->integer('finance_id')->nullable();
-            $table->integer('space_payment')->nullable();
-            $table->integer('licences_payment')->nullable();
-            $table->integer('start_payment')->nullable();
-            $table->integer('recieving_payment')->nullable();
+            $table->integer('payment_value')->nullable();
             $table->integer('residual')->nullable();
             $table->integer('discount')->nullable();
             $table->integer('cash_payment')->nullable();
