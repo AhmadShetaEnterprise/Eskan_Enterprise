@@ -49,6 +49,11 @@
                         <input type="email" class="form-control  font-weight-bold text-dark" name="email" value="{{ $customers->email }}">
                     </div>
 
+                    <div class="col-md-6 mb-3">
+                        <label for="">National id</label>
+                        <input type="text" value="{{ $customers->national_id }}" class="form-control  font-weight-bold text-dark" name="national_id">
+                    </div>
+
                     <div class="col-md-12 mb-3">
                         <label for="">image</label>
                         <input type="file" name="image" class="form-control  font-weight-bold text-dark">

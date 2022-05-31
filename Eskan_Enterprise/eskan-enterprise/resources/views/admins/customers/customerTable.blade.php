@@ -1,4 +1,4 @@
-<div class="col-lg-8">
+<div class="col-lg-10">
     <a href="?do=addCustomer" class="btn btn-warning mb-2 text-dark text-bold myText-button" href="">اضافة عميل جديد</a>
     <table class="table table-light table-bordered">
         <thead>
@@ -9,6 +9,7 @@
             <th scope="col" class="text-xl-center">Gender</th>
             <th scope="col" class="text-xl-center">Phone</th>
             <th scope="col" class="text-xl-center">Email</th>
+            <th scope="col" class="text-xl-center">National id</th>
             <th scope="col" class="text-xl-center">Action</th>
         </tr>
         </thead>
@@ -27,6 +28,7 @@
                     {{ $item->email }}
                 </a>
             </td>
+            <td class="text-xl-center">{{ $item->national_id }}</td>
             <td class="text-xl-center">
                 <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل العميل</ac>    
             </td>
