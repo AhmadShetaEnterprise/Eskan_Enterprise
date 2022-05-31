@@ -66,8 +66,17 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        {{-- <label for="">العميل </label> --}}
-                        <input type="hidden" value="{{ $unit->customers->id }}" class="form-control  font-weight-bold text-dark" name="customer_id" required>
+                        <label for="">العميل </label>
+                        @if ($unit->customers->id)
+                            <input type="text" value="{{ $unit->customers->id }}" class="form-control  font-weight-bold text-dark" name="customer_id" required>                            
+                        @else
+                            <select data-show-subtext="true" data-live-search="true" class="selectpicker btn btn-primary w-100" name="customer_id" id="search-select">
+                                <option selected value="0">عميل</option>                          
+                                @foreach ( $customers as $customer)
+                                <option data-subtext="{{ $customer->phone }}" value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endforeach
+                            </select>
+                        @endif
                     </div>
 
                     <div class="col-md-6 mb-3">

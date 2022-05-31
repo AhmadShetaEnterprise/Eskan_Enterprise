@@ -127,8 +127,8 @@
 
                             {{-- {{dd($payment)}} --}}
                             <tr>
-                                @if (is_null($payment->finance) || $payments->isNotEmpty())
-                                <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">لا يوجد  </a> </td>
+                                @if (is_null($payment->finance) || $payments->isEmpty())
+                                <td><a href="#" class="btn btn-outline-info m-2 d-inline-block" style="font-size: 1vw">لا يوجد  </a> </td>
 
                                 @else
                                 <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{ $payment->payment_value}}</a></td>
@@ -137,7 +137,7 @@
                                 <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->residual}}</a> </td>
                                 @if (is_null($payment->finance))
 
-                                <td><a href="" class="btn btn-outline-info m-2" style="width: 125px">لا يوجد  </a></td>
+                                <td><a href="" class="btn btn-outline-info m-2 d-inline-block" style="font-size: 1vw">لا يوجد  </a></td>
                                 @else
     
                                 <td><a href="{{ url('financeShow/'.$payment->finance_id) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$payment->finance->name}}</a></td>
@@ -164,15 +164,16 @@
                         <tr>
                             <td>
                                 <div class="d-inline-flex">
-                                        <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
-                                        <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ date('m-Y') }}">
+                                    @foreach ($payment->customer->installments as $installment)
+                                    @endforeach
+                                        <input type="text" name="" class="form-control btn btn-success m-1 text-dark" style="width: 125px" value="{{ $installment->installment_value }}">
                                         <input type="hidden" name="" class="form-control" value="{{ $payment->customer_id }}">
                                         <input type="hidden" name="" class="form-control" value="{{ $payment->unit_id }}">
                                         <input type="hidden" name="" class="form-control" value="{{ $payment->property_id }}">
                                         <input type="hidden" name="" class="form-control" value="{{ $payment->main_project_id }}">
                                         <input type="hidden" name="" class="form-control" value="{{ $payment->construction_id }}">
                                         <input type="hidden" name="" class="form-control" value="{{ $payment->level_id }}">
-                                    <a type="" class="btn btn-success mt-1 text-dark" style="width: 200px;height:40px">تم دفع شهر{{ date('m-Y') }}</a>
+                                    <a type="" class="btn btn-success m-1 text-dark" style="width: 200px;height:40px">تم دفع شهر{{ date('m-Y') }}</a>
                                 </div>
                             </td>
                         </tr>

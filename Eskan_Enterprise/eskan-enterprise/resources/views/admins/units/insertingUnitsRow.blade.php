@@ -45,11 +45,11 @@
 
     </div>
 
-    <div class="col-lg-2">
+    <div class="col-lg-1">
         <label for="">المنشأة </label>
 
         @if (!$construction)
-        <select class="custom-select form-control   text-dark" name="construction_id" >
+        <select class="custom-select form-control text-dark" style="width: 100px" name="construction_id" >
             <option selected>المنشأة</option>
             @foreach ( $constructions as $construction)
             <option value="{{ $construction->id }}">{{ $construction->name }}</option>
@@ -68,9 +68,17 @@
         <input type="text" class="form-control   text-dark" style="width: 50px" name="level_id[]" required>
     </div>
 
-    <div class="col-lg-1">
-        <label for="">الموقع</label>
-        <input type="text" class="form-control   text-dark" style="width: 50px" name="site[]" required>
+    <div class="col-lg-2">
+        <div>
+            <label for="">الموقع</label>
+        </div>
+        <select class="custom-select form-control  font-weight-bold text-dark" style="width: 150px" name="site[]" >
+            <option selected>الموقع</option>
+            <option value="بحري شرقي">بحري شرقي</option>
+            <option value="بحري غربي">بحري غربي</option>
+            <option value="قبلي شرقي">قبلي شرقي</option>
+            <option value="قبلي غربي">قبلي غربي</option>
+        </select>
     </div>
 
     <div class="col-lg-1">
@@ -102,10 +110,10 @@
 
     <div class="col-lg-1">
         <label for="">العميل</label>
-        <select class="custom-select l   text-dark" style="width: 80px" name="customer_id[]" >
-            <option  selected value="0">عميل</option>
+        <select data-show-subtext="true" data-live-search="true" class="selectpicker btn btn-primary w-100" name="customer_id[]" id="search-select">
+            <option selected value="0">عميل</option>                          
             @foreach ( $customers as $customer)
-            <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+            <option data-subtext="{{ $customer->phone }}" value="{{ $customer->id }}">{{ $customer->name }}</option>
             @endforeach
         </select>
     </div>

@@ -14,7 +14,10 @@ class Finance extends Model
 
     protected $fillable = [
         'name',
-        'payment_value',
+        'space_payment',
+        'licences_payment',
+        'start_payment',
+        'recieving_payment',
     ];
 
     public function payments() {
@@ -23,5 +26,9 @@ class Finance extends Model
 
     public function units() {
         return $this->hasMany(Unit::class, 'finance_id', 'id');
+    }
+
+    public function customers() {
+        return $this->belongsToMany(Customer::class);
     }
 }

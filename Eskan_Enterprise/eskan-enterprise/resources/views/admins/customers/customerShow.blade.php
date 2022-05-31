@@ -102,8 +102,8 @@
                             <tr>
                                 <td>
                                         <div class="d-inline-flex">
-                                                <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
-                                                <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ date('m-Y') }}">
+                                                {{-- <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
+                                                <input type="text" name="" class="form-control m-1" style="width: 125px" value="{{ date('m-Y') }}"> --}}
                                                 <input type="hidden" name="" class="form-control" value="{{ $payment->customer_id }}">
                                                 <input type="hidden" name="" class="form-control" value="{{ $payment->unit_id }}">
                                                 <input type="hidden" name="" class="form-control" value="{{ $payment->property_id }}">
@@ -116,14 +116,13 @@
                             </tr>
                             
                         </tbody>
-                    </table>
-                            <tr>
+                        </table>
+                            {{-- <tr>
                                 <td>
                                     <form action="{{ url('insertInstallment') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="d-inline-flex">
                                                 <input type="text" name="installment_value" class="form-control m-1" style="width: 125px" value="{{ $payment->installment_value }}">
-                                                {{-- <input type="text" name="installment_month" class="form-control m-1" style="width: 125px" value="" placeholder="دفع شهر اخر"> --}}
                                                 <div class="d-inline-flex m-1">
                                                     <select class="folm-select " name="month" id="" style="width: 50px;height:40px">
                                                         <option value="">شهر</option>
@@ -148,11 +147,11 @@
                                         </div>
                                     </form>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             
                             @else
 
-                            <tr>
+                            {{-- <tr>
                                 <td>
                                     <form action="{{ url('insertInstallment') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
@@ -169,7 +168,7 @@
                                         </div>
                                     </form>
                                 </td>
-                            </tr>
+                            </tr> --}}
                             @endif
 
                         @endif

@@ -28,8 +28,8 @@
                         <tr>
                             <td><a href="{{ url('showConstruction/'.$unit->constructions->id) }}" class="btn btn-outline-primary m-2">{{$unit->constructions->name}}</a></td>
                             <td><a href="{{ url('unitShow/'.$unit->id) }}" class="btn btn-primary m-2" style="width: 125px">{{$unit->name}}</a></td>
-                            <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->properties->name}}</a></td>
-                            <td><a href="{{ url('customerShow/'.$unit->customers->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">{{$unit->customers->name}}</a></td>
+                            <td><a href="{{ url('showProperties/'.$unit->properties->id) }}" class="btn btn-outline-info m-2" style="width: 125px">{{$unit->properties->name}}</a></td>
+                            <td><a href="{{ url('customerShow/'.$unit->customers->id) }}" class="btn btn-outline-danger m-2 d-inline-block" style="font-size: 1vw">{{$unit->customers->name}}</a></td>
                         </tr>
                         @endforeach
                     </tbody>

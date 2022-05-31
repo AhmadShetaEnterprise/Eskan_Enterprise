@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('finances', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->integer('space_payment');
-            $table->integer('licences_payment');
-            $table->integer('start_payment');
-            $table->integer('recieving_payment');
+        Schema::create('customer_payment_kind', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('customer_id');
+            $table->integer('payment_kind_id');
             $table->timestamps();
         });
     }
@@ -31,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('finances');
+        Schema::dropIfExists('customer_payment_kind');
     }
 };

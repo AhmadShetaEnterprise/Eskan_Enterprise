@@ -51,7 +51,12 @@ class ConstructionController extends Controller
         $levels          = $request->input('levels');
         $level_units     = $request->input('level_units');
         $rows            = $request->input('rows');
-        $total_units     = $level_units * $levels;
+        if (empty($total_units)) {
+            $total_units     = $request->input('total_units');
+
+        } else {
+            $total_units     = $level_units * $levels;
+        }
         $properties   = Property::all();
         $property     = Property::find($property_id);
         $main_projects= MainProject::all();

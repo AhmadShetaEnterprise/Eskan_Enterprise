@@ -12,10 +12,7 @@
             <th scope="col" class="text-xl-center"> العميل </th>
             <th scope="col" class="text-xl-center"> الوحدة </th>
             <th scope="col" class="text-xl-center">نظام الدفع</th>
-            <th scope="col" class="text-xl-center">دفعة ارض</th>
-            <th scope="col" class="text-xl-center">دفعة تراخيص</th>
-            <th scope="col" class="text-xl-center">دفعة بدأ أعمال</th>
-            <th scope="col" class="text-xl-center">دفعة تسليم</th>
+            <th scope="col" class="text-xl-center">دفعة </th>
             <th scope="col" class="text-xl-center"> ما تم دفعه</th>
             <th scope="col" class="text-xl-center"> المتبقى </th>
             <th scope="col" class="text-xl-center"> خصم النقدي </th>
@@ -42,10 +39,7 @@
         @else
             <td class="text-xl-center"><a href=""> {{ $item->finance->name}} </a></td>
         @endif
-            <td class="text-xl-center">{{ $item->space_payment }}</td>
-            <td class="text-xl-center">{{ $item->licences_payment }}</td>
-            <td class="text-xl-center"><a href="">{{ $item->start_payment }}</a></td>
-            <td class="text-xl-center">{{ $item->recieving_payment }}</td>
+            <td class="text-xl-center">{{ $item->paymentKind->name }}</td>
             <td class="text-xl-center"><a href="">{{ $item->unit_price - $item->residual }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->residual }}</a></td>
             <td class="text-xl-center"><a href="">{{ $item->discount }}</a></td>

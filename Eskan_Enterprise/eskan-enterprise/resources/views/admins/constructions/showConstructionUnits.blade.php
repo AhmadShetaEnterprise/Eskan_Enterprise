@@ -28,7 +28,7 @@
         <tr>
             <td><a href="{{ url('unitShow/'.$item->id) }}" class="btn btn-primary m-2" style="width: 125px">{{$item->name}}</a></td>
             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->status}}</a></td>
-            <td><a href="{{ url('customerShow/'.$item->customers->id) }}" class="btn btn-outline-danger m-2" style="width: 125px">{{$item->customers->name}}</a></td>
+            <td><a href="{{ url('customerShow/'.$item->customers->id) }}" class="btn btn-outline-danger m-2 d-inline-block" style="font-size: 1vw">{{$item->customers->name}}</a></td>
             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->site}}</a></td>
             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->space}}</a></td>
             <td><a href="#" class="btn btn-outline-info m-2" style="width: 125px">{{$item->price_m}}</a></td>

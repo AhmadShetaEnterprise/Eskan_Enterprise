@@ -19,6 +19,7 @@
             <th scope="row" class="text-xl-center">{{ $item->id }}</th>
             <td class="text-xl-center"><a href="{{ url('customerShow/'.$item->id) }}"> {{ $item->name }} </a></td>
             <td class="text-xl-center">{{ $item->age }}</td>
+            {{-- <td class="text-xl-center">{{ $item->paymentKinds }}</td> --}}
             <td class="text-xl-center">{{ $item->gender }}</td>
             <td class="text-xl-center"><a href="tel:{{ $item->phone }}">{{ $item->phone }}</a></td>
             <td class="text-xl-center">

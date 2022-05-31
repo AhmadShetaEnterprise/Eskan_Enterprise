@@ -191,8 +191,6 @@ public function updateUnitStatus(Request $request, $id)
 {
     $units = Unit::find($id);
 
-    // $customer_id = $_GET['customer_id'];
-
     $units->status          = $request->input('status');
     $units->customer_id     = $request->input('customer_id');
 

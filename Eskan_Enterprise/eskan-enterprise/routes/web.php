@@ -84,8 +84,8 @@ Route::controller(CustomerController::class)->group(function () {
 Route::controller(ConstructionController::class)->group(function () {
     Route::get('/constructionsIndex', 'index')->name('constructionsIndex');
     Route::get('/addConstruction', 'create')->name('addConstruction');
-    Route::get('/addConstructions', 'createConstructionsRows')->name('addConstructions');
     Route::post('/insertConstruction', 'store')->name('insertConstruction');
+    Route::get('/addConstructions', 'createConstructionsRows')->name('addConstructions');
     Route::post('/insertMultipleConstructions', 'storeMultipleConstructions')->name('insertMultipleConstructions');
     Route::get('/showConstruction/{id}', 'show')->name('showConstruction');
     Route::get('/showConstructionLevels/{id}', 'showConstructionLevels')->name('showConstructionLevels');

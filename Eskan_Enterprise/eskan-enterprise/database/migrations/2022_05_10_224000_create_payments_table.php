@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('unit_price');
             $table->integer('finance_id')->nullable();
+            $table->integer('payment_kind_id')->nullable();
             $table->integer('payment_value')->nullable();
             $table->integer('residual')->nullable();
             $table->integer('discount')->nullable();
@@ -33,6 +34,7 @@ return new class extends Migration
         });
     }
 
+    
     /**
      * Reverse the migrations.
      *

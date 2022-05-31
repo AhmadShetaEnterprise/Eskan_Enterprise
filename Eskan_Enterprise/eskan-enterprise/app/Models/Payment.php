@@ -15,6 +15,7 @@ class Payment extends Model
         'finance_id',
         'payment_value',
         'residual',
+        'discount',
         'installments',
         'installment_value',
         'customer_id',

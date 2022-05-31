@@ -49,5 +49,12 @@ class Customer extends Model
     public function installments() {
         return $this->hasMany(Installment::class, 'customer_id', 'id');
     }
-
+        
+    public function paymentKinds() {
+        return $this->belongsToMany(PaymentKind::class);
+    }
+   
+    public function finances() {
+        return $this->belongsToMany(Finance::class);
+    }
 }

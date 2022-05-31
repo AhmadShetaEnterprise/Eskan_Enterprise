@@ -49,12 +49,12 @@
                         <div>
                             <label for="">المنشأة</label>
                         </div>
-                            <select class="custom-select form-control  font-weight-bold text-dark" name="construction_id" >
-                                <option selected>المنشأة</option>
-                                @foreach ( $constructions as $construction)
-                                <option value="{{ $construction->id }}">{{ $construction->name }}</option>
-                                @endforeach
-                            </select>
+                        <select class="custom-select form-control  font-weight-bold text-dark" name="construction_id" >
+                            <option selected>المنشأة</option>
+                            @foreach ( $constructions as $construction)
+                            <option value="{{ $construction->id }}">{{ $construction->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -63,8 +63,16 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="">الموقع</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="site" required>
+                        <div>
+                            <label for="">الموقع</label>
+                        </div>
+                        <select class="custom-select form-control  font-weight-bold text-dark" name="site" >
+                            <option selected>الموقع</option>
+                            <option value="بحري شرقي">بحري شرقي</option>
+                            <option value="بحري غربي">بحري غربي</option>
+                            <option value="قبلي شرقي">قبلي شرقي</option>
+                            <option value="قبلي غربي">قبلي غربي</option>
+                        </select>
                     </div>
 
                     <div class="col-md-6 mb-3">

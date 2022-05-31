@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('installments', function (Blueprint $table) {
             $table->id();
+            $table->integer('residual');
             $table->integer('installment_value');
             $table->string('installment_month');
             $table->integer('customer_id');
