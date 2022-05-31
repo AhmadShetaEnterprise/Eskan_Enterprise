@@ -25,6 +25,8 @@
                 @endforeach
             </select>
         
+            <input type="text" class="form-control m-1 font-weight-bold text-dark" name="level_id" placeholder="الطابق">
+            
             <input type="text" class="form-control m-1 font-weight-bold text-dark" name="space" placeholder="المساحة">
         
             <input type="text" class="form-control m-1 font-weight-bold text-dark" name="price_m" placeholder="سعر المتر">

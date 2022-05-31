@@ -62,6 +62,7 @@ public function createUnitCustom(Request $request)
     $property_id     = $request->input('property_id');
     $main_project_id = $request->input('main_project_id');
     $construction_id = $request->input('construction_id');
+    $level_id = $request->input('level_id');
     $space           = $request->input('space');
     $price_m         = $request->input('price_m');
     $unit_price      = $space * $price_m;
@@ -75,7 +76,7 @@ public function createUnitCustom(Request $request)
     $main_projects= MainProject::all();
     $construction = Construction::find($construction_id);
     $constructions= Construction::all();
-    return view('admins.units.createUnitCustom', compact('units','customers' , 'property', 'properties', 'main_project', 'main_projects', 'construction', 'constructions', 'space', 'price_m', 'unit_price', 'rows'));
+    return view('admins.units.createUnitCustom', compact('units','customers' , 'property', 'properties', 'main_project', 'main_projects', 'construction', 'constructions', 'level_id', 'space', 'price_m', 'unit_price', 'rows'));
 }
 ////////////////////////////////////////////////
 //* Store a newly created resource in storage.

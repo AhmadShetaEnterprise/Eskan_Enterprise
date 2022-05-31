@@ -58,6 +58,7 @@ class CustomerController extends Controller
         $customers->gender      = $request->input('gender');
         $customers->phone       = $request->input('phone');
         $customers->email       = $request->input('email');
+        $customers->national_id = $request->input('national_id');
         $customers->save();
         return redirect('/addCustomer')->with('status', 'Category added successfully');
     }
@@ -143,6 +144,7 @@ class CustomerController extends Controller
         $customers->gender      = $request->input('gender');
         $customers->phone       = $request->input('phone');
         $customers->email       = $request->input('email');
+        $customers->national_id = $request->input('national_id');
         $customers->update();
         return redirect('/addCustomer')->with('status', 'Category added successfully');
     }

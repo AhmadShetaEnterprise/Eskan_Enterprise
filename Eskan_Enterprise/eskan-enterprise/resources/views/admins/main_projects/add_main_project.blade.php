@@ -18,6 +18,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="">قسم</label>
                         <select  name="property_id" id="" class="custom-select form-control  font-weight-bold text-dark" required>
+                            <option value="">القسم</option>
                             @foreach ($properties as $property)                               
                             <option value="{{ $property->id }}">{{ $property->name }}</option>
                             @endforeach
