@@ -8,7 +8,7 @@
                 {{ $customer->name }}
             </h1>
             {{-- {{ $customers->item->name}} --}}
-            <img src="..." class="card-img-top" alt="...">
+            <a href=""><img src="{{asset('assets/images/uploads/customer/'.$customer->image)}}" class="w-50 m-0 p-0" alt="image here"></a>
         </div>
         <div class="d-lg-inline-flex">
             <div class="card-body col-lg-6"  style="width: 20rem;">

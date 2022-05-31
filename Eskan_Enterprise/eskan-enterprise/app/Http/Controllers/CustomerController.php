@@ -7,6 +7,7 @@ use App\Models\Payment;
 use App\Models\Customer;
 use App\Models\Installment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class CustomerController extends Controller
 {
@@ -40,14 +41,15 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $customers = new Customer();
-        // if ($request->hasFile('image'))
-        // {
-        //     $file            = $request->file('image');
-        //     $ext             = $file->getClientOriginalExtension();
-        //     $filename        = time().'.'.$ext;
-        //     $file->move('assets/images/uploads/customer/',$filename);
-        //     $customers->image = $filename;
-        // }
+        
+        if ($request->hasFile('image'))
+        {
+            $file            = $request->file('image');
+            $ext             = $file->getClientOriginalExtension();
+            $filename        = time().'.'.$ext;
+            $file->move('assets/images/uploads/customer/',$filename);
+            $customers->image = $filename;
+        }
         // if ($request->input('email')->exists())
         // {
         //     alert('email exists');
@@ -126,14 +128,21 @@ class CustomerController extends Controller
     public function update(Request $request, $id)
     {
         $customers = Customer::find($id);
-        // if ($request->hasFile('image'))
-        // {
-        //     $file            = $request->file('image');
-        //     $ext             = $file->getClientOriginalExtension();
-        //     $filename        = time().'.'.$ext;
-        //     $file->move('assets/images/uploads/customer/',$filename);
-        //     $customers->image = $filename;
-        // }
+
+        if ($request->hasFile('image'))
+        {
+            $path = 'assets/images/uploads/customer/'.$customers->image;
+            if (File::exists($path))
+            {
+                File::delete($path);
+            }
+            $file            = $request->file('image');
+            $ext             = $file->getClientOriginalExtension();
+            $filename        = time().'.'.$ext;
+            $file->move('assets/images/uploads/customer/',$filename);
+            $customers->image = $filename;
+        }
+
         // if ($request->input('email')->exists())
         // {
         //     alert('email exists');

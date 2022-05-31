@@ -1,4 +1,4 @@
-<div class="col-lg-10">
+<div class="col-lg-12">
     <a href="?do=addCustomer" class="btn btn-warning mb-2 text-dark text-bold myText-button" href="">اضافة عميل جديد</a>
     <table class="table table-light table-bordered">
         <thead>
@@ -10,6 +10,7 @@
             <th scope="col" class="text-xl-center">Phone</th>
             <th scope="col" class="text-xl-center">Email</th>
             <th scope="col" class="text-xl-center">National id</th>
+            <th scope="col" class="text-xl-center">image</th>
             <th scope="col" class="text-xl-center">Action</th>
         </tr>
         </thead>
@@ -29,6 +30,9 @@
                 </a>
             </td>
             <td class="text-xl-center">{{ $item->national_id }}</td>
+            <td class="text-xl-center" style="padding: 0; margin: 0;line-height:0px;">
+                <a href=""><img src="{{asset('assets/images/uploads/customer/'.$item->image)}}" class="w-25"  alt=" "></a>
+            </td>
             <td class="text-xl-center">
                 <a class="btn btn-info btn-sm" href="{{ url('editCustomer/'.$item->id) }}">تعديل العميل</ac>    
             </td>
