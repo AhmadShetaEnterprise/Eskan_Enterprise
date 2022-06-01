@@ -107,14 +107,7 @@ class PropertyController extends Controller
     public function destroy($id)
     {
         $properties = Property::find($id);
-        // if ($category->image)
-        // {
-        //    $path = 'assets/images/uploads/Construction/'.$constructions->image;
-        //    if (File::exists($path))
-        //    {
-        //        File::delete($path);
-        //    }
-        // }
+
         $properties->delete();
         return redirect('/propertiesIndex')->with('status', 'Property deleted successfully');
     }

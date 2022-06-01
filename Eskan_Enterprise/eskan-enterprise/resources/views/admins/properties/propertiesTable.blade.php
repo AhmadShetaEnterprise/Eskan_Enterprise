@@ -6,6 +6,7 @@
             <th scope="col" class="text-xl-center">id</th>
             <th scope="col" class="text-xl-center">القسم</th>
             <th scope="col" class="text-xl-center">امر</th>
+        </tr>
         </thead>
         <tbody>
 @foreach ($property as $item)
@@ -21,3 +22,4 @@
 @endforeach
         </tbody>
     </table>
+</div>

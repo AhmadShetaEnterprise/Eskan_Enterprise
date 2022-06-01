@@ -2,8 +2,14 @@
     <div class="nano">
         <div class="nano-content">
             <ul>
-                <div class="logo"><a href="index.html">
-                        <!-- <img src="assets/images/logo.png" alt="" /> --><span>Eskan</span></a></div>
+                <div class="logo">
+                    <a href="{{ url('index') }}">
+                        <!-- <img src="assets/images/logo.png" alt="" /> --><span>Eskan</span>
+                    </a>
+                </div>
+                <div>
+                        <!-- <img src="assets/images/logo.png" alt="" /> --><span>{{ Auth::user()->name }}</span>
+                </div>
                 <li class="label">Main</li>
                 {{-- <li>
                     <a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard <span
@@ -27,6 +33,7 @@
                 <li><a href="{{ url('constructionsIndex') }}">المنشئات</a></li>
                 <li><a href="{{ url('main_projectsIndex') }}">المشاريع الرئيسية</a></li>
                 <li><a href="{{ url('propertiesIndex') }}">الاقسام</a></li>
+                <li><a href="{{ url('privilegesIndex') }}">الصلاحيات</a></li>
                 <li><a href="{{ url('?do=allDetails') }}">Main Details</a></li>
 
 

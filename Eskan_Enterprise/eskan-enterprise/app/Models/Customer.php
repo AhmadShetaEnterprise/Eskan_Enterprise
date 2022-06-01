@@ -19,6 +19,7 @@ class Customer extends Model
         'phone',
         'email',
         'password',
+        'privilege_id',
     ];
 
     public function constructions()
@@ -57,4 +58,9 @@ class Customer extends Model
     public function finances() {
         return $this->belongsToMany(Finance::class);
     }
+   
+    public function privilege() {
+        return $this->belongsTo(Privilege::class, 'privilege_id', 'id');
+    }
+
 }

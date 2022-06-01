@@ -9,6 +9,7 @@ use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\PrivilegeController;
 use App\Http\Controllers\InstallmentController;
 use App\Http\Controllers\MainProjectController;
 use App\Http\Controllers\ManagerFundController;
@@ -35,11 +36,28 @@ Auth::routes();
 
 Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Route::controller(AdminController::class)->group(function () {
     Route::get('/index', 'index')->name('index');
-
 });
+
+                // ManagerFundController start
+                // ManagerFundController start
+                // ManagerFundController start
+Route::controller(PrivilegeController::class)->group(function () {
+    Route::get('/privilegesIndex', 'index')->name('privilegesIndex');
+    Route::get('/addPrivilege', 'create')->name('addPrivilege');
+    Route::post('/insertPrivilege', 'store')->name('insertPrivilege');
+    Route::get('/editPrivilege/{id}', 'edit')->name('editPrivilege');
+    Route::put('updatePrivilege/{id}', 'update')->name('updatePrivilege');
+    Route::get('/showPrivilege/{id}', 'show')->name('showPrivilege');
+});
+
+
+                // ManagerFundController end
+                // ManagerFundController end
+                // ManagerFundController end
+
+
 
                 // ManagerFundController start
                 // ManagerFundController start
