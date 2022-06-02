@@ -1,17 +1,19 @@
-<div class="col-lg-8">
+<div class="col-lg-12">
     <a href="{{ url('addManagerFund') }}" class="mb-2 btn btn-warning text-light text-bold myText-tr">حركة مالية</a>
     <a href="{{ url('managerFundIndex') }}" class="mb-2 btn btn-primary text-light text-bold myText-tr">كل الحركات</a>
     <a href="{{ url('searchManagerFund/'.'0') }}" class="mb-2 btn btn-danger text-light text-bold myText-tr">حركات شخصية</a>
     <a href="{{ url('searchManagerFund/'.'1') }}" class="mb-2 btn btn-success text-light text-bold myText-tr">حركات المؤسسة</a>
     <form method="GET" action="{{ url('searchManagerFund/'.'day') }}" class="d-inline-flex" enctype="multipart/form-data">
         @csrf
-        <label for="">From date</label>
-        <input type="date" name="day_from" id="">
-        <label for="">To date</label>
-        <input type="date" name="day_to" id="">
-        <label for="">date</label>
-        <input type="date" name="one_day" id="">
-        <button type="submit">Search</button>
+        <div class="input-group date" id="datepicker">
+            <label for="">From date</label>
+            <input  type="date" class="form-control m-1" id="date" type="date" name="day_from">
+            <label for="">To date</label>
+            <input  type="date" class="form-control m-1" id="date" type="date" name="day_to">
+            <label for="">date</label>
+            <input  type="date" class="form-control m-1" id="date" type="date" name="one_day">
+        </div>
+        <button type="submit" class="btn btn-primary m-1">Search</button>
     </form>
     <table class="table table-light table-bordered">
         <thead>
