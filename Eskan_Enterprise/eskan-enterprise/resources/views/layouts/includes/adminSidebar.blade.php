@@ -33,7 +33,7 @@
                 <li><a href="{{ url('constructionsIndex') }}">المنشئات</a></li>
                 <li><a href="{{ url('main_projectsIndex') }}">المشاريع الرئيسية</a></li>
                 <li><a href="{{ url('propertiesIndex') }}">الاقسام</a></li>
-                <li><a href="{{ url('privilegesIndex') }}">الصلاحيات</a></li>
+                {{-- <li><a href="{{ url('privilegesIndex') }}">الصلاحيات</a></li> --}}
                 <li><a href="{{ url('?do=allDetails') }}">Main Details</a></li>
 
 

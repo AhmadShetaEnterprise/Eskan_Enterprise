@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CustomerController;
@@ -35,6 +36,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/index', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post("/logout",[LogoutController::class,"store"])->name("logout");
 
 Route::controller(AdminController::class)->group(function () {
     Route::get('/index', 'index')->name('index');

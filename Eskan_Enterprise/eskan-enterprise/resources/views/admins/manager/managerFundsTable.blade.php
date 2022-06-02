@@ -2,13 +2,16 @@
     <a href="{{ url('addManagerFund') }}" class="mb-2 btn btn-warning text-light text-bold myText-tr">حركة مالية</a>
     <a href="{{ url('managerFundIndex') }}" class="mb-2 btn btn-primary text-light text-bold myText-tr">كل الحركات</a>
     <a href="{{ url('searchManagerFund/'.'0') }}" class="mb-2 btn btn-danger text-light text-bold myText-tr">حركات شخصية</a>
-    <a href="{{ url('searchManagerFund/'.'0') }}" class="mb-2 btn btn-success text-light text-bold myText-tr">حركات المؤسسة</a>
+    <a href="{{ url('searchManagerFund/'.'1') }}" class="mb-2 btn btn-success text-light text-bold myText-tr">حركات المؤسسة</a>
     <form method="GET" action="{{ url('searchManagerFund/'.'day') }}" class="d-inline-flex" enctype="multipart/form-data">
         @csrf
+        <label for="">From date</label>
         <input type="date" name="day_from" id="">
+        <label for="">To date</label>
         <input type="date" name="day_to" id="">
+        <label for="">date</label>
         <input type="date" name="one_day" id="">
-        <button type="submit"></button>
+        <button type="submit">Search</button>
     </form>
     <table class="table table-light table-bordered">
         <thead>

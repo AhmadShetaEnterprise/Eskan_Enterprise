@@ -1,10 +1,11 @@
 <div class="col-lg-8">
-    <a href="{{ url('addPrivilege/?do=addPrivilege') }}" class="btn btn-warning mb-2 myText-button">اضافة صلاحية</a>
+    <a href="{{ url('addPrivilege/?do=addPrivilege&') }}" class="btn btn-warning mb-2 myText-button">اضافة صلاحية</a>
     <table class="table table-light table-bordered">
         <thead>
         <tr>
             <th scope="col" class="text-xl-center">id</th>
             <th scope="col" class="text-xl-center">الصلاحية</th>
+            <th scope="col" class="text-xl-center">الكود</th>
             <th scope="col" class="text-xl-center">امر</th>
         </tr>
         </thead>
