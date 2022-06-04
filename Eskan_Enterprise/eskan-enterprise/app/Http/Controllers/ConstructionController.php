@@ -98,7 +98,7 @@ class ConstructionController extends Controller
         }
         $constructions->coast           = $request->input('coast');
         $constructions->save();
-        return redirect('/constructionsIndex?addConstruction')->with('status', 'Category added successfully');
+        return redirect('/constructionsIndex?addConstruction')->with('status', 'Construction added successfully');
     }
 
     /**
@@ -136,7 +136,7 @@ class ConstructionController extends Controller
             $constructions->coast           = $request->coast[$key];
             $constructions->save();
         }
-            return redirect('/constructionsIndex?addConstruction')->with('status', 'Category added successfully');
+            return redirect('/constructionsIndex?addConstruction')->with('status', 'Constructions added successfully');
         }
 
     /**

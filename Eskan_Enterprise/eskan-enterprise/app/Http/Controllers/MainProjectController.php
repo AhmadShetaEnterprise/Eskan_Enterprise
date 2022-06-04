@@ -45,7 +45,7 @@ class MainProjectController extends Controller
         $main_projects->name            = $request->input('name');
         $main_projects->property_id     = $request->input('property_id');
         $main_projects->save();
-        return redirect('/main_projectsIndex')->with('status', 'Category added successfully');
+        return redirect('/main_projectsIndex')->with('status', 'MainProject added successfully');
     }
 
     /**
@@ -106,7 +106,7 @@ class MainProjectController extends Controller
         $main_projects->name            = $request->input('name');
         $main_projects->property_id     = $request->input('property_id');
         $main_projects->update();
-        return redirect('/main_projectsIndex')->with('status', 'Category added successfully');
+        return redirect('/main_projectsIndex')->with('status', 'MainProject added successfully');
     }
 
     /**

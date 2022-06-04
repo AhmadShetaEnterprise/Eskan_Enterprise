@@ -60,10 +60,7 @@ class InstallmentController extends Controller
             $payments_array[] = $unit_payment->payment_kind_id;
         }
         if (!in_array(4, $payments_array)) {
-            return 
-            '<h1>ان العميل لم يكمل الدفعات الاساسية</h1>' 
-                        ;
-            return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+            return redirect('/unitShow/'.$installment->unit_id )->with('status', 'لم يكمل الدفعات الاساسية '.$installment->customers->name);
         } 
 
 
@@ -76,8 +73,7 @@ class InstallmentController extends Controller
                 $array_month = [];
                 $months_array[] = $exist_installment->installment_month;
                 if (in_array($installment->installment_month, $months_array)) {
-                    return '<h1>تم دفع قسط شهر'.$installment->installment_month.'من قبل</h1>';
-                    // return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                    return redirect('/unitShow/'.$installment->unit_id )->with('status', 'تم دفع قسط شهر'.$installment->installment_month.'من قبل ');
                 }
 
             }
@@ -86,22 +82,13 @@ class InstallmentController extends Controller
             }
 
             if ($month && !$year) {
-                return '<h1>
-                            ادخل العام
-                        </h1>';
-
-                // return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                return redirect('/unitShow/'.$installment->unit_id )->with('status', 'ادخل العام ');
             } elseif (!$month && $year) {
-                return '<h1>
-                            ادخل الشهر
-                        </h1>';
-                // return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                return redirect('/unitShow/'.$installment->unit_id )->with('status', 'ادخل الشهر ');
             }
+
             if (empty($request->input('installment_value'))) {
-                return '<h1>
-                            ادخل قيمة القسط
-                        </h1>';
-                // return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                return redirect('/unitShow/'.$installment->unit_id )->with('status', ' ادخل قيمة القسط ');
             } else {
                 $installment->installment_value  = $request->input('installment_value');
             }

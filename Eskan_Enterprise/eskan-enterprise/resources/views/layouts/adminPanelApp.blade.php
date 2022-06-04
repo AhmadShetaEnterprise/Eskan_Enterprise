@@ -83,7 +83,13 @@
     <!-- scripit search select selectpicker start-->
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @if (session('status'))
+    <script>
+        swal("{{ session('status') }}")
+    </script>
+        
+    @endif
     <!-- (Optional) Latest compiled and minified JavaScript translation files -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-*.min.js"></script> --}}
     

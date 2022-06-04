@@ -62,7 +62,7 @@ class UnitStatusDateController extends Controller
         $myTempletes->name = $request->input('name');
 
         $myTempletes->update();
-        return redirect('/myTempletesIndexIndex')->with('status', 'MyTempletesIndex Updated successfully'); 
+        return redirect('/myTempletesIndexIndex')->with('status', 'Unit Status Date Updated successfully'); 
     }
 ////////////////////////////////////////////////
 //* Update the specified resource in storage.
@@ -74,7 +74,7 @@ class UnitStatusDateController extends Controller
         $unitStatus->name = $request->input('name');
 
         $unitStatus->update();
-        return redirect('/myTempletesIndexIndex')->with('status', 'MyTempletesIndex Updated successfully'); 
+        return redirect('/myTempletesIndexIndex')->with('status', 'Unit Status Updated successfully'); 
     }
 ////////////////////////////////////////////////
 //* Remove the specified resource from storage
@@ -84,7 +84,7 @@ class UnitStatusDateController extends Controller
         $myTempletes = UnitStatusDate::find($id);
 
         $myTempletes->delete();
-        return redirect('/myTempletesIndex')->with('status', 'MyTempletesIndex deleted successfully');   
+        return redirect('/myTempletesIndex')->with('status', 'Unit Status Date deleted successfully');   
     }
 ////////////////////////////////////////////////
 

@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('phone', '11');
             $table->string('email')->unique();
+            $table->string('image')->nullable();
+            $table->integer('privilege_id');
             $table->rememberToken();
             $table->timestamps();
         });

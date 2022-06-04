@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('main_projects', function (Blueprint $table) {
             $table->id();
-            $table->integer('property_id');
+            $table->integer('property_id')->references('id')->on('properties')->onDelete('restrict')->onUpdate('restrict');
             $table->string('name');
             $table->timestamps();
         });

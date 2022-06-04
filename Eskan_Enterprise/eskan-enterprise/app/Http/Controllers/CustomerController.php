@@ -61,8 +61,9 @@ class CustomerController extends Controller
         $customers->phone       = $request->input('phone');
         $customers->email       = $request->input('email');
         $customers->national_id = $request->input('national_id');
+        $customers->privilege_id = $request->input('privilege_id');
         $customers->save();
-        return redirect('/addCustomer')->with('status', 'Category added successfully');
+        return redirect('/addCustomer')->with('status', 'Customer added successfully');
     }
 
     /**
@@ -154,8 +155,9 @@ class CustomerController extends Controller
         $customers->phone       = $request->input('phone');
         $customers->email       = $request->input('email');
         $customers->national_id = $request->input('national_id');
+        $customers->privilege_id = $request->input('privilege_id');
         $customers->update();
-        return redirect('/addCustomer')->with('status', 'Category added successfully');
+        return redirect('/addCustomer')->with('status', 'Customer updated successfully');
     }
 
     /**

@@ -18,8 +18,9 @@ class Customer extends Model
         'gender',
         'phone',
         'email',
-        'password',
+        'image',
         'privilege_id',
+        'password',
     ];
 
     public function constructions()

@@ -128,7 +128,7 @@ class PaymentController extends Controller
 
         foreach ($existsPaymentKinds as $existsPaymentKind) {
             if ($existsPaymentKind->payment_kind_id == $payment->payment_kind_id) {
-                return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                return redirect('/existsInstallmentMonth')->with('status', 'Payment exists');
             }
         }
         $payment->unit_price         = $request->input('unit_price');
@@ -148,7 +148,7 @@ class PaymentController extends Controller
                 $paymentArray = [];
                 $paymentArray[] = $existsPayment->payment_kind_id;                            
                 if (in_array($payment->payment_kind_id, $paymentArray)) {
-                    return redirect('/existsInstallmentMonth')->with('status', 'Installment added successfully');
+                    return redirect('/existsInstallmentMonth')->with('status', 'Payment exists');
                 }
             }
 

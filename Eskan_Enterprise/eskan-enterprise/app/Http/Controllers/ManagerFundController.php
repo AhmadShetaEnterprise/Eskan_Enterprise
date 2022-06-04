@@ -119,17 +119,17 @@ class ManagerFundController extends Controller
         $managerFund->comment  = $request->input('comment');
 
         $managerFund->update();
-        return redirect('/managerFundIndex')->with('status', 'MyTempletesIndex Updated successfully'); 
+        return redirect('/managerFundIndex')->with('status', 'ManagerFund Updated successfully'); 
     }
     ////////////////////////////////////////////////
     //* Remove the specified resource from storage
     ////////////////////////////////////////////////
     public function destroy($id)
     {
-        $myTempletes = TempleteModalName::find($id);
+        $myTempletes = ManagerFund::find($id);
 
         $myTempletes->delete();
-        return redirect('/myTempletesIndex')->with('status', 'MyTempletesIndex deleted successfully');   
+        return redirect('/managerFundIndex')->with('status', 'ManagerFund deleted successfully');   
     }
     ////////////////////////////////////////////////
 
