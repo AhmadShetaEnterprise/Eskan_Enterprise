@@ -15,6 +15,7 @@
         </div>
         <button type="submit" class="btn btn-primary m-1">Search</button>
     </form>
+    @include('admins.manager.fundsSearchForm')
     <table class="table table-light table-bordered">
         <thead>
         <tr>

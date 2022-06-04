@@ -89,14 +89,39 @@ class ManagerFundController extends Controller
             
             $incomingPersonal     = ManagerFund::select('value')->where([['kind', 0],['category', 0]])->sum('value');
             $outgoingPersonal     = ManagerFund::select('value')->where([['kind', 1],['category', 0]])->sum('value');
-            $incomingCompany     = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->sum('value');
+            $incomingCompany      = ManagerFund::select('value')->where([['kind', 0],['category', 1]])->sum('value');
             $outgoingCompany      = ManagerFund::select('value')->where([['kind', 1],['category', 1]])->sum('value');
-            $incomingFunds       = $incomingPersonal + $incomingCompany;
+            $incomingFunds       = $incomingPersonal  + $incomingCompany;
             $outgoingFunds       = $outgoingPersonal  + $outgoingCompany;
 
             $managerFunds = ManagerFund::select()->where([['category', $id],['created_at', '>=', date('Y-m-d').' 00:00:00']])->get();
         }
         return view('admins.managerFundIndex', compact('managerFunds', 'incomingPersonal', 'outgoingPersonal', 'incomingCompany', 'outgoingCompany', 'incomingFunds', 'outgoingFunds'));
+    }
+    ////////////////////////////////////////////////
+    //* Search the specified resource.
+    ////////////////////////////////////////////////
+    public function searchByAll(Request $request)
+    {
+        if (isset($_GET)) {
+            $day_from = $_GET['day_from'];
+            $day_to   = $_GET['day_to'];
+            $one_day  = $_GET['one_day'];
+            $kind     = $_GET['kind'];
+            $category = $_GET['category'];
+
+            if (empty($one_day) && !empty($kind) && !empty($category)) {
+                $managerFunds  = ManagerFund::select()->where([['kind', $kind],['category', $category]])->whereBetween('created_at', [$day_from, $day_to])->get();
+            } elseif (!empty($one_day) && !empty($kind) && !empty($category)) {
+                $managerFunds  = ManagerFund::select()->where([['kind', $kind],['category', $category]])->whereDate('created_at', $one_day)->get();
+            } elseif (empty($one_day) && empty($kind) && empty($category)) {
+                $managerFunds  = ManagerFund::select()->whereBetween('created_at', [$day_from, $day_to])->get();
+            } elseif (!empty($one_day)) {
+                # code...
+            }
+            dd($managerFunds);
+        }
+
     }
     ////////////////////////////////////////////////
     //* Show the form for editing the specified resource.

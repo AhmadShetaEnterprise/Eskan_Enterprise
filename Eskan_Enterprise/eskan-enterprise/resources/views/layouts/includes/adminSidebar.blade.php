@@ -27,7 +27,7 @@
                 <li><a href="{{ url('paymentsIndex') }}">الدفعات</a></li>
                 <li><a href="{{ url('financesIndex') }}">طرق الدفع</a></li>
                 <li><a href="{{ url('paymentKindsIndex') }}">انواع الدفعات</a></li>
-                <li><a href="{{ url('customerIndex') }}">العملاء </a></li>
+                <li><a href="{{ url('customerIndex') }}"><i class="fa-solid fa-users"></i>العملاء </a></li>
                 <li><a href="{{ url('unitsIndex') }}">الوحدات</a></li>
                 <li><a href="{{ url('levelsIndex') }}">الطوابق</a></li>
                 <li><a href="{{ url('constructionsIndex') }}">المنشئات</a></li>
