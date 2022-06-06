@@ -19,9 +19,9 @@ return new class extends Migration
             $table->tinyInteger('age')->nullable();
             $table->string('gender')->nullable();
             $table->string('phone', '11');
-            $table->string('email')->unique();
+            $table->string('email')->unique()->nullable();
             $table->string('image')->nullable();
-            $table->integer('privilege_id');
+            $table->bigInteger('national_id')->naullable()->unique();
             $table->rememberToken();
             $table->timestamps();
         });
