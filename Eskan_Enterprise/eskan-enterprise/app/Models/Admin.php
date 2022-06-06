@@ -16,6 +16,7 @@ class Admin extends Model
         'phone',
         'email',
         'password',
+        'privilege_id',
     ];
        
     public function privilege() {

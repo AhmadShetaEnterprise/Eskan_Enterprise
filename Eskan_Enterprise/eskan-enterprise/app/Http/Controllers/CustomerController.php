@@ -40,36 +40,30 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-
-
-        $validate = $this->validate($request,[
-                        // 'email' => 'required|email|unique:users',
-                        'phone' => 'required|regex:/(01)[0-9]{9}/',
-                        ]);
-
         $customers = new Customer();
-        if ($validate) {           
-            if ($request->hasFile('image'))
-            {
-                $file            = $request->file('image');
-                $ext             = $file->getClientOriginalExtension();
-                $filename        = time().'.'.$ext;
-                $file->move('assets/images/uploads/customer/',$filename);
-                $customers->image = $filename;
-            }
-
-            $customers->name         = $request->input('name');
-            $customers->age          = $request->input('age');
-            $customers->gender       = $request->input('gender');
-            $customers->phone        = $request->input('phone');
-            $customers->email        = $request->input('email');
-            $customers->national_id  = $request->input('national_id');
-            $customers->privilege_id = $request->input('privilege_id');
-            $customers->save();
-            return redirect('/addCustomer')->with('status', 'Customer added successfully');
-        } else {
-            return redirect('/addCustomer')->with('status', 'يرجى ادخال 11 رقم تبدأ ب  01');
+        
+        if ($request->hasFile('image'))
+        {
+            $file            = $request->file('image');
+            $ext             = $file->getClientOriginalExtension();
+            $filename        = time().'.'.$ext;
+            $file->move('assets/images/uploads/customer/',$filename);
+            $customers->image = $filename;
         }
+        // if ($request->input('email')->exists())
+        // {
+        //     alert('email exists');
+        // }
+
+        $customers->name        = $request->input('name');
+        $customers->age         = $request->input('age');
+        $customers->gender      = $request->input('gender');
+        $customers->phone       = $request->input('phone');
+        $customers->email       = $request->input('email');
+        $customers->national_id = $request->input('national_id');
+        $customers->privilege_id = $request->input('privilege_id');
+        $customers->save();
+        return redirect('/addCustomer')->with('status', 'Customer added successfully');
     }
 
     /**

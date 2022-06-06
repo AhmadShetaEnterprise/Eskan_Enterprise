@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('name');
             $table->tinyInteger('age')->nullable();
             $table->string('gender')->nullable();
-            $table->string('phone', '11')->unique();
-            $table->string('email')->unique()->nullable();
+            $table->string('phone', '11');
+            $table->string('email')->unique();
             $table->string('image')->nullable();
-            $table->bigInteger('national_id')->nullable()->uniqid();
+            $table->integer('privilege_id');
             $table->rememberToken();
             $table->timestamps();
         });
