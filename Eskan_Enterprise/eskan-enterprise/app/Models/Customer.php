@@ -19,7 +19,6 @@ class Customer extends Model
         'phone',
         'email',
         'image',
-        'privilege_id',
         'password',
     ];
 

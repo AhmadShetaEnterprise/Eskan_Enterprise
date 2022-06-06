@@ -41,7 +41,12 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">Phone</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="phone" required>
+                        <input type="text" class="form-control  font-weight-bold text-dark @error('phone') is-invalid @enderror" name="phone" required>
+                        @error('phone')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                     
                     <div class="col-md-6 mb-3">
@@ -51,7 +56,12 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="">National id</label>
-                        <input type="text" class="form-control  font-weight-bold text-dark" name="national_id">
+                        <input type="text" class="form-control font-weight-bold text-dark @error('national_id') is-invalid @enderror" name="national_id">
+                        @error('national_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="col-md-12 mb-3">
@@ -59,10 +69,6 @@
                         <input type="file" name="image" class="form-control  font-weight-bold text-dark">
                     </div>
 
-                    <div class="col-md-1">
-                        <input type="hidden" class="form-control" name="privilege_id" value="0">
-                    </div>
-                    
                     <div class="col-md-12 mb-3">
                         <button type="submit" class="btn btn-primary">submit</button>
                     </div>
