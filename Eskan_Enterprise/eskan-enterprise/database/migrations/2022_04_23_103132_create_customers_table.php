@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone', '11')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('image')->nullable();
-            $table->bigInteger('national_id')->nullable();
+            $table->bigInteger('national_id')->nullable()->uniqid();
             $table->rememberToken();
             $table->timestamps();
         });
