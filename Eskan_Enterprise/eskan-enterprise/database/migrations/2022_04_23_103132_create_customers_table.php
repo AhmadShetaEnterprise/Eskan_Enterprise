@@ -21,8 +21,7 @@ return new class extends Migration
             $table->string('phone', '11')->unique();
             $table->string('email')->unique()->nullable();
             $table->string('image')->nullable();
-            $table->integer('national_id')->nullable();
-            $table->bigInteger('privilege_id', '16')->unique()->nullable();
+            $table->bigInteger('national_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
